@@ -1,0 +1,200 @@
+/* Polices */
+@font-face {
+  font-family: 'Montserrat-Black';
+  src: url('../font/Montserrat-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'QuattrocentoSans-Regular';
+  src: url('../font/QuattrocentoSans-Regular.ttf') format('truetype');
+}
+
+  /* Réinitialisation du navigateur */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+$font-color: white;
+$red: #D92332;
+$pink: #D9777F;
+$black: #262526;
+$grey: #F2F2F2;
+
+.login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 25px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(255,255,255,.3);
+    text-align:center;
+    font-family: 'Montserrat-Black';
+    font-size: 16px;
+    }
+
+    .input {
+      background-color: #F2F2F2; 
+      text-align:center;
+    }
+    
+    .connect{
+      height:50px;
+      border: solid; 
+      font-weight: bold; 
+      border-color : $red;
+      text-align:center; 
+      background-color : $font-color; 
+      color: $red; 
+    }
+    
+    .padding {
+      padding: 5%;
+    }
+    
+    .login > div > a {
+      color: $black;
+      text-decoration: none;
+    }
+
+    /* Conteneur du menu */
+  .menu-container {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 70px;
+    margin: 2%;
+  }
+
+  /* coté menu */
+  .menu-block {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+  }
+
+  /* items du menu */
+  .menu {
+    padding: 10px;
+  }
+
+  /*
+  .mon-container{
+    margin: 2% 5% 2% 5%;
+  }
+
+
+  .section-flex {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    margin: 2% 5% 2% 5%;
+  }
+*/
+
+.button-style {
+  border-radius: 30px;
+  height: 50px;
+  width: auto;
+  padding: 5px 5px 5px 5px;
+}
+  .section {
+    margin: 2% 5% 2% 5%;
+  }
+
+  a {
+    text-decoration: none;
+    color: $pink;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+  button {
+    border: solid;
+    font-weight: bold;
+    border-color: #D92332;
+    text-align: center;
+    background-color: white;
+    color: #D92332;
+  }
+
+  button:hover {
+    border: solid;
+    font-weight: bold;
+    border-color: #D92332;
+    text-align: center;
+    background-color: #D92332;
+    color: white;
+  }
+
+  .prestation-card{
+    height:200px; 
+    width:350px;
+  }
+
+  .valeur {
+    text-align: center;
+    background-color: #D92332;
+    height: 200px;
+    color: white;
+    font-weight: bold;
+    margin: 30px;
+  }
+
+  .voiture-card {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    text-align: start;
+    margin: 20px 0px 20px 0px;
+    padding: 1%;
+    background-color: #F2F2F2;
+    height: 200px;
+    width: 100%;
+    box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: bold;
+  }
+
+  .card-avis {
+    text-align: start;
+    padding: 1%;
+    background-color: #F2F2F2;
+    height: 200px;
+    width:300px;
+    margin: 10px;
+    box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
+  }
+
+  footer {
+    background-color: $black;
+    height: auto;
+    color: $font-color;
+    padding: 10px;
+  }
+
+  .header-footer {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
