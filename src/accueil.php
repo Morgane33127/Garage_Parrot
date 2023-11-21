@@ -1,19 +1,17 @@
 <?php
 
-require_once 'header.php';
-require_once 'menu.php';
 require_once './config/db.php';
 
 ?>
-<div class="container">
+<div class="container-sm">
 
   <section id="presentation">
     <div class="container">
       <div class="row align-items-start">
-        <div class="col">
-          <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" style="width:500px;">
+        <div class="col-sm">
+          <img src="../public/assets/img/garage.jpg" alt="photo garage v parrot" style="width:500px;">
         </div>
-        <div class="col">
+        <div class="col-sm">
           <h3>Présentation</h3>
           <p>Bienvenue chez Garage V. Parrot, votre partenaire automobile de
             confiance. Notre petit garage offre des services de réparation et
@@ -43,7 +41,7 @@ require_once './config/db.php';
           $nom = $row['nom_p'];
           $pteDescription = $row['petite_description_p'];
         ?>
-          <div class="col-4 p-3">
+          <div class="col-sm-4 p-3">
             <a href="prestations.php">
               <button type="submit" class="prestation-card">
                 <h4><?php echo $nom; ?></h4>
@@ -63,19 +61,19 @@ require_once './config/db.php';
     <h3>Nos valeurs</h3>
     <div class="container text-center">
       <div class="row align-items-start">
-        <div class="col valeur">
+        <div class="col-sm valeur">
           <h3 style="margin-top:50%">Experience</h3>
         </div>
-        <div class="col valeur">
+        <div class="col-sm valeur">
           <h3 style="margin-top:50%">Rapidité</h3>
         </div>
-        <div class="col valeur">
+        <div class="col-sm valeur">
           <h3 style="margin-top:50%">Satisfaction client</h3>
         </div>
-        <div class="col valeur">
+        <div class="col-sm valeur">
           <h3 style="margin-top:50%">Qualité</h3>
         </div>
-        <div class="col valeur">
+        <div class="col-sm valeur">
           <h3 style="margin-top:50%">Couts</h3>
         </div>
       </div>
@@ -97,7 +95,7 @@ require_once './config/db.php';
           $note = $row['note_a'];
           $star = str_repeat('&#x2605;', $note);
         ?>
-          <div class="col-4">
+          <div class="col-sm-4">
             <div class="card-avis">
               <div style="display: flex; justify-content: space-between; flex-wrap: nowrap;flex-direction: row;">
                 <b><?php echo $titre; ?></b>

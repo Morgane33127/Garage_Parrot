@@ -16,19 +16,19 @@ require_once 'header.php';
         <h6><a style=" color:#D92332;" href="accueil.php" id="Accueil">Accueil</a></h6>
       </li>
       <li class="nav-item menu">
-        <h6><a href="apropos.php" id="A propos">A propos</a></h6>
+        <h6><a href="?page=apropos" id="A propos">A propos</a></h6>
       </li>
       <li class="nav-item menu">
-        <h6><a href="prestations.php" id="Nos prestations">Nos prestations</a></h6>
+        <h6><a href="?page=prestations" id="Nos prestations">Nos prestations</a></h6>
       </li>
       <li class="nav-item menu">
-        <h6><a href="vehicules.php" id="Nos véhicules">Nos véhicules</a></h6>
+        <h6><a href="?page=vehicules" id="Nos véhicules">Nos véhicules</a></h6>
       </li>
       <li class="nav-item menu">
-        <h6><a href="notice.php" id="Avis">Avis</a></h6>
+        <h6><a href="?page=avis" id="Avis">Avis</a></h6>
       </li>
       <li class="nav-item menu">
-        <h6><a href="contact.php" id="Contact">Contact</a></h6>
+        <h6><a href="?page=contact" id="Contact">Contact</a></h6>
       </li>
       <li class="nav-item menu">
         <a href="../login.php"><img src="../public/assets/img/admin-users.svg" style="width:40px;"></a>

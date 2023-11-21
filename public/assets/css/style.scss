@@ -53,10 +53,14 @@ $grey: #F2F2F2;
       padding: 5%;
     }
     
-    .login > div > a {
+    .login  div  a {
       color: $black;
       text-decoration: none;
     }
+
+    nav li {
+      color : $black;
+   }
 
     /* Conteneur du menu */
   .menu-container {
@@ -166,11 +170,8 @@ $grey: #F2F2F2;
     box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
   }
 
@@ -189,6 +190,7 @@ $grey: #F2F2F2;
     height: auto;
     color: $font-color;
     padding: 10px;
+    margin:10px 0px 0px 0px;
   }
 
   .header-footer {
@@ -197,4 +199,8 @@ $grey: #F2F2F2;
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
+  }
+
+  section {
+    margin : 10px 0px 10px 0px;
   }
