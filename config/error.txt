@@ -1,0 +1,4 @@
+Call to undefined method Avis::getInfosVisiteu()Too few arguments to function AvisManager::affichageAvis(), 0 passed in C:\wamp64-2\www\Garage_Parrot\src\accueil.php on line 104 and exactly 1 expectedCall to undefined method Car::getPetiteDecription()Cannot use object of type Car as array
+Cannot use object of type Car as array
+Cannot use object of type Car as array
+Cannot use object of type Car as array

@@ -6,57 +6,41 @@ require_once './config/db.php';
 
 <div class="container">
 
-  <h3 style="padding:5%">Avis clients</h3>
+  <h3>Avis clients</h3>
 
-  <div style="text-align:center">
-    <button style="border: solid; font-weight: bold; border-color : #D92332;text-align:center; 
-      background-color : white; color: #D92332;border-radius:30px;" type="submit">Ajouter un avis</button>
+  <div class="action-sup">
+    <button type="submit">Laisser un avis</button>
   </div>
 
-  <div class="avis">
+  <div id="avis">
+    <div class="row align-items-start">
+      <?php
+      $avis = $pdo->query("SELECT * FROM avis ORDER BY dt_a DESC");
+      foreach ($avis as $row) {
+        $titre = $row['titre_a'];
+        $comment = $row['commentaire_a'];
+        $dt = $row['dt_a'];
+        $nom = $row['visiteur_nom'];
+        $prenom = $row['visiteur_prenom'];
+        $note = $row['note_a'];
+        $star = str_repeat('&#x2605;', $note);
+      ?>
+        <div class="col-sm-4">
+          <div class="card-avis">
+            <div class="flex">
+              <b><?php echo $titre; ?></b>
+              <p><small><?php echo $dt; ?></small></p>
+            </div>
+            <p style="color: #EDDB35;"><?php echo $star; ?></p>
+            <p><?php echo $comment; ?></p>
+            <p><?php echo $prenom . " " . $nom; ?></p>
+          </div>
+        </div>
+      <?php
+      }
+      ?>
+    </div>
 
-    <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; width:28%; 
-    margin:30px;">
-      <b>Titre</b>
-      <p>Note</p>
-      <p>Commentaire</p>
-      <p>Auteur</p>
-    </div>
-    <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; width:28%; 
-    margin:30px;">
-      <b>Titre</b>
-      <p>Note</p>
-      <p>Commentaire</p>
-      <p>Auteur</p>
-    </div>
-    <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; width:28%; 
-    margin:30px;">
-      <b>Titre</b>
-      <p>Note</p>
-      <p>Commentaire</p>
-      <p>Auteur</p>
-    </div>
-    <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; width:28%; 
-    margin:30px;">
-      <b>Titre</b>
-      <p>Note</p>
-      <p>Commentaire</p>
-      <p>Auteur</p>
-    </div>
-    <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; width:28%; 
-    margin:30px;">
-      <b>Titre</b>
-      <p>Note</p>
-      <p>Commentaire</p>
-      <p>Auteur</p>
-    </div>
-    <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; width:28%; 
-    margin:30px;">
-      <b>Titre</b>
-      <p>Note</p>
-      <p>Commentaire</p>
-      <p>Auteur</p>
-    </div>
 
   </div>
 

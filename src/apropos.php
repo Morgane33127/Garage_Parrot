@@ -27,19 +27,19 @@ require_once './config/db.php';
     <div class="container text-center">
       <div class="row align-items-start">
         <div class="col-sm valeur">
-          <h3 style="margin-top:50%">Experience</h3>
+          <h3>Experience</h3>
         </div>
         <div class="col-sm valeur">
-          <h3 style="margin-top:50%">Rapidité</h3>
+          <h3>Rapidité</h3>
         </div>
         <div class="col-sm valeur">
-          <h3 style="margin-top:50%">Satisfaction client</h3>
+          <h3>Coûts</h3>
         </div>
         <div class="col-sm valeur">
-          <h3 style="margin-top:50%">Qualité</h3>
+          <h3>Qualité</h3>
         </div>
         <div class="col-sm valeur">
-          <h3 style="margin-top:50%">Couts</h3>
+          <h3>Satisfaction client</h3>
         </div>
       </div>
     </div>
@@ -50,21 +50,33 @@ require_once './config/db.php';
     <div class="container text-center">
       <div class="row align-items-start">
         <?php
-        $presta = $pdo->query("SELECT * FROM prestations");
-        foreach ($presta as $row) {
-          $nom = $row['nom_p'];
-          $pteDescription = $row['petite_description_p'];
+        try {
+          require_once 'src/model/PrestationManager.php';
+          require_once 'config/db.php';
+          $connection = new PrestationManager($pdo);
+          $prestation = $connection->affichageInfos();
+
+          $i = 0;
+          foreach ($prestation as $row) {
+            $nom = $row->getNom();
+            $pteDescription = $row->getPetiteDescription();
+            $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
         ?>
-          <div class="col-sm-4 p-3">
-            <a href="prestations.php">
-              <button type="submit" class="prestation-card">
-                <h4><?php echo $nom; ?></h4>
-                <p><?php echo $pteDescription; ?></p>
-                <p>En savoir plus >></p>
-              </button>
-            </a>
-          </div>
+            <div class="col-sm-4 p-3">
+              <a href="index.php?page=prestations">
+                <button type="submit" class="prestation-card">
+                  <h4><i class="<?php echo $icons[$i]; ?>"></i></h4>
+                  <h4><?php echo $nom; ?></h4>
+                  <p><?php echo $pteDescription; ?></p>
+                  <p>En savoir plus >></p>
+                </button>
+              </a>
+            </div>
         <?php
+            $i++;
+          }
+        } catch (error $e) {
+          file_put_contents("../config/error.txt", $e->getMessage());
         }
         ?>
       </div>

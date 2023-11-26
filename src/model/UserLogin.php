@@ -21,12 +21,36 @@ class UserLogin
       $mail->bindValue(':email', $login);
       if ($mail->execute()) {
         $user = $mail->fetch();
+        $id_u = $user->getId();
         if (!empty($user) && password_verify($mdp, $user->getPassword()) == true) {
-          echo "yes";
-          header('Location:administr.php');
+          $event = $this->pdo->prepare('INSERT INTO evenements (id_u, info_e) VALUES (:id_u, :info_e)');
+          $event->bindValue(':id_u', $user->getId());
+          $event->bindValue('info_e', 'Nouvelle connexion');
+          $event->execute();
+
+          header("Location:index.php?page=administr&&id=$id_u");
         } else {
           throw new Exception('Identifiants invalides');
         }
+      }
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function role(string $id): User
+  {
+
+    require_once 'User.php';
+    try {
+      $role = $this->pdo->prepare('SELECT * FROM utilisateurs WHERE id_u= :id');
+      $role->setFetchMode(PDO::FETCH_CLASS, 'User');
+      $role->bindValue(':id', $id);
+      if ($role->execute()) {
+        $personne = $role->fetch();
+        return $personne;
+      } else {
+        throw new Exception('Affichage impossible');
       }
     } catch (Exception $e) {
       echo $e->getMessage();

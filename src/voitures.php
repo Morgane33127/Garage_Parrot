@@ -1,6 +1,8 @@
 <?php
 
-require_once './config/db.php';
+require './config/db.php';
+$annees = $pdo->query("SELECT DISTINCT annee FROM voitures");
+$result = $pdo->query("SELECT COUNT(*) AS count FROM voitures")->fetch(PDO::FETCH_OBJ);
 
 ?>
 
@@ -10,27 +12,35 @@ require_once './config/db.php';
   <div class="container">
     <div class="row align-items-start">
       <div class="col price">
-        <label for="prix"><b>Prix : </b></label>
+        <label for="prix"><b>Prix max : </b></label>
         <input id="prix" class="form-range" name="prix" type="range" min="0" max="50000" step="500" onchange="changePrix()">
       </div>
       <div class="col kilometer">
-        <label for="km"><b>Km : </b></label>
+        <label for="km"><b>Km max: </b></label>
         <input id="km" class="form-range" name="km" type="range" min="0" max="500000" step="1000" onchange="changeKm()">
       </div>
       <div class=" col">
-        <label for="year"><b>Année de mise en circulation : </b></label>
+        <label for="year"><b>Année min : </b></label>
         <select id="year" class="form-select" name="year" onchange="changeDate()">
+          <option value="">Année</option>
           <?php
-          $annees = $pdo->query("SELECT DISTINCT annee FROM voitures");
           foreach ($annees as $annee) {
           ?>
-            <option value=" 1"><?php echo $annee['annee']; ?></option>
+            <option value="<?php echo $annee['annee']; ?>"><?php echo $annee['annee']; ?></option>
           <?php
           }
           ?>
         </select>
       </div>
     </div>
+  </div>
+
+  <div style="padding:2%"><?php echo $result->count . " resultats :"; ?></div>
+
+  <div id="request">
+    <?php
+    require 'affichageVoitures.php';
+    ?>
   </div>
 
 </div>

@@ -3,6 +3,7 @@
 class User
 {
 
+  private string $id_u;
   private string $nom_u;
   private string $prenom_u;
   private string $login_u;
@@ -20,6 +21,11 @@ class User
 
   public function getInfos(): string
   {
-    return $this->nom_u . $this->prenom_u;
+    return $this->prenom_u . " " . $this->nom_u;
+  }
+
+  public function getId(): string
+  {
+    return $this->id_u;
   }
 }

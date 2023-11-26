@@ -14,6 +14,7 @@ try {
   }
 } catch (PDOException $exception) {
   error($exception->getMessage());
+  file_put_contents("../config/error.txt", $exception->getMessage(), FILE_APPEND);
   die($exception->getMessage());
 }
 
@@ -21,17 +22,18 @@ try {
 <div class="container-sm">
   <div class="login">
     <form action="#" method="POST">
-      <div class="padding">
+      <div class="m-3">
         <a href="../index.php">Revenir au site >></a>
       </div>
       <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="350px;">
-      <div class="padding">
+      <div class="m-3">
         <input class="form-control input" type="email" name="email" placeholder="Login" required>
         <br>
         <input class="form-control input" type="password" name="password" placeholder="Mot de passe" minlength="8" required>
-      </div class="padding">
+      </div>
+      <br>
       <button class="connect" type="submit" name="connect">Se connecter</button>
-      <div class="padding">
+      <div class="m-3">
         <a href="#">Mot de passe oublié ?</a>
       </div>
     </form>

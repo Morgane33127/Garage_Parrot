@@ -19,6 +19,15 @@ if (!empty($_GET['page'])) {
     case 'contact':
       require('src/contact.php');
       break;
+    case 'accueil':
+      require('src/accueil.php');
+      break;
+    case 'vinfo':
+      require('src/voitureInfo.php');
+      break;
+    case 'administr':
+      require('src/administr.php');
+      break;
   }
 } else {
   require('src/accueil.php');
