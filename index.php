@@ -28,6 +28,9 @@ if (!empty($_GET['page'])) {
     case 'administr':
       require('src/administr.php');
       break;
+    case 'demande':
+      require('src/demande.php');
+      break;
   }
 } else {
   require('src/accueil.php');

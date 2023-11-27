@@ -2,6 +2,7 @@
 
 try {
   require 'db.php';
+  require 'functions.php';
 
   $mdp = password_hash('Jaimelesvoitures', PASSWORD_DEFAULT);
 
@@ -24,10 +25,10 @@ try {
     $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('VEN', '08:00', '18:00')") &&
     $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('SAM', '08:00', '18:00')") &&
     $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('DIM', 'Ferme', 'Ferme')") &&
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a) 
-    VALUES ('Super', 'Très bon garage. Acceuil chaleureux. Réparations rapide.', 'Parker', 'Peter', 5)") &&
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a) 
-        VALUES ('Très bien.', 'Réparations rapides.', 'Jane', 'Marie', 5)") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) 
+    VALUES ('Super', 'Très bon garage. Acceuil chaleureux. Réparations rapide.', 'Parker', 'Peter', 5, 'Valide')") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) 
+        VALUES ('Très bien.', 'Réparations rapides.', 'Jane', 'Marie', 5, 'En attente')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
         VALUES ('Entretien', 'Preservez la fiabilité et la durabilité de votre voiture', 'Nos services d*entretien méticuleux garantissent non seulement des performances optimales mais aussi une tranquillité d*esprit, en préservant la fiabilité et la durabilité de votre voiture.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
@@ -70,8 +71,10 @@ try {
   ) {
     echo "Ajout réussis";
   } else {
-    echo "Erreur ajout";
+    echo "Données non ajoutées à la BDD";
+    error("Données non ajoutées à la BDD");
   }
 } catch (PDOException $exception) {
+  error($exception->getMessage());
   die($exception->getMessage());
 }

@@ -2,3 +2,6 @@ Call to undefined method Avis::getInfosVisiteu()Too few arguments to function Av
 Cannot use object of type Car as array
 Cannot use object of type Car as array
 Cannot use object of type Car as array
+Call to undefined method Car::getId()
+CarInfos::affichageVoitures2(): Return value must be of type array, none returned
+Failed opening required '/src/model/CarInfos.php' (include_path='.;C:\php\pear')

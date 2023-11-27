@@ -14,7 +14,6 @@ try {
   }
 } catch (PDOException $exception) {
   error($exception->getMessage());
-  file_put_contents("../config/error.txt", $exception->getMessage(), FILE_APPEND);
   die($exception->getMessage());
 }
 

@@ -128,7 +128,7 @@ require_once './config/db.php';
       <button type="submit">Ajouter</button>
     </div>
     <?php
-    $avis = $pdo->query("SELECT * FROM avis ORDER BY dt_a DESC");
+    $avis = $pdo->query("SELECT * FROM avis WHERE statut='En attente' ORDER BY dt_a ASC");
     foreach ($avis as $row) {
       $titre = $row['titre_a'];
       $comment = $row['commentaire_a'];

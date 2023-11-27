@@ -12,19 +12,16 @@ range.addEventListener('input', () => {
   elem.textContent = range.value;
 });
 
-const elem2 = document.createElement('span');
-kilo.appendChild(elem2);
 
-elem2.textContent = range2.value;
+range.addEventListener('change', affichagePrix);
 
-range2.addEventListener('input', () => {
-  elem2.textContent = range2.value;
-});
+function affichagePrix(){
+  value= range.value;
+  changePrix(value);
+}
 
-
-function changePrix() {
-  let prix = document.getElementById('prix').value;
-
+function changePrix(value) {
+  let prix = value;
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('readystatechange', () => {
@@ -41,8 +38,24 @@ function changePrix() {
 }
 
 
-function changeKm() {
-  let kilometer = document.getElementById('km').value;
+const elem2 = document.createElement('span');
+kilo.appendChild(elem2);
+
+elem2.textContent = range2.value;
+
+range2.addEventListener('input', () => {
+  elem2.textContent = range2.value;
+});
+
+range2.addEventListener('change', affichageKm);
+
+function affichageKm(){
+  value= range2.value;
+  changeKm(value);
+}
+
+function changeKm(value) {
+  let kilometer = value;
 
   const xhr = new XMLHttpRequest();
 
@@ -59,8 +72,17 @@ function changeKm() {
 
 }
 
-function changeDate() {
-  let date = document.getElementById('year').value;
+year = document.getElementById('year');
+year.addEventListener('change', affichageAnnee);
+
+function affichageAnnee(){
+  value= year.value;
+  changeDate(value);
+}
+
+
+function changeDate(value) {
+  let date = value;
 
   const xhr = new XMLHttpRequest();
 

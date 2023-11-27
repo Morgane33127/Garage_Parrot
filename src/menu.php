@@ -3,12 +3,12 @@
 require_once 'header.php';
 
 try {
-  if (isset($_GET['id']) && !empty($_GET['id'])) {
+  if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
     require_once 'src/model/UserLogin.php';
     require_once 'config/db.php';
     $login = new UserLogin($pdo);
-    $id = $_GET['id'];
-    $personne = $login->role($id);
+    $user_id = $_GET['user_id'];
+    $personne = $login->role($user_id);
     $bonjour = "Bonjour " . $personne->getInfos();
   } else {
     $bonjour = '';
@@ -19,22 +19,21 @@ try {
 }
 
 ?>
-<nav class="navbar navbar-expand-lg menu-container">
-  <div>
-    <div class="row align-items-start">
-      <div class="col-sm">
-        <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
-      </div>
-      <div class="col-sm">
-        <h6><?php echo $bonjour; ?></h6>
-      </div>
+
+<nav class="navbar navbar-expand-lg navigation">
+  <div class="row">
+    <div class="col-sm-1">
+      <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
     </div>
-    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="col-sm-1">
+      <h6><?php echo $bonjour; ?></h6>
+    </div>
   </div>
-  <div class="menu-block collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse  menu-block" id="navbarNav">
+    <ul class=" navbar-nav">
       <li class="nav-item menu">
         <h6><a class="link-menu" href="?page=accueil" id="Accueil">Accueil</a></h6>
       </li>

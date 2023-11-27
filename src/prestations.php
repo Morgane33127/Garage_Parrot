@@ -1,4 +1,4 @@
-<div class="container-sm">
+<div class="container-sm margin-top">
   <h3>Nos prestations</h3>
 
   <?php
@@ -10,43 +10,13 @@
     $nom = $row['nom_p'];
     $largeDescription = $row['large_description_p'];
     $largeDescription = str_replace("*", "'", $largeDescription);
-    if ($id % 2 != 0) {
   ?>
 
-      <div class="container">
-        <div class="row align-items-start">
-          <div class="col-sm-4 p-3">
-            <div class="prestation-card">
-              <h4><?php echo $nom; ?></h4>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <p><?php echo $largeDescription; ?></p>
-          </div>
-        </div>
-      </div>
-
-    <?php
-    } else {
-
-    ?>
-
-      <div class="container">
-        <div class="row align-items-start">
-          <div class="col-sm-8">
-            <p><?php echo $largeDescription; ?></p>
-          </div>
-          <div class="col-sm-4 p-3">
-            <div class="prestation-card">
-              <h4><?php echo $nom; ?></h4>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="container">
+      <h5><i class="bi-nut-fill"> </i><?php echo $nom; ?></h5>
+      <p><?php echo $largeDescription; ?></p>
+    </div>
   <?php
-
-    }
   }
   ?>
 

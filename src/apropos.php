@@ -1,9 +1,10 @@
 <?php
 
 require_once './config/db.php';
+require './config/functions.php';
 
 ?>
-<div class="container-sm">
+<div class="container-sm margin-top">
   <section>
     <h3>A propos du Garage V. Parrot</h3>
     <div class="container">
@@ -76,7 +77,7 @@ require_once './config/db.php';
             $i++;
           }
         } catch (error $e) {
-          file_put_contents("../config/error.txt", $e->getMessage());
+          error($e->getMessage());
         }
         ?>
       </div>

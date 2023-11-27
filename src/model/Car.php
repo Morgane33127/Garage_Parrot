@@ -21,6 +21,11 @@ class Car
   private int $nb_places;
   private int $puissance_fiscale;
 
+  public function getId(): int
+  {
+    return $this->id_v;
+  }
+
   public function getTitre(): string
   {
     return $this->titre_v;
@@ -28,11 +33,13 @@ class Car
 
   public function getPetiteDescription(): string
   {
+    $this->petite_description_v = str_replace("*", "'", $this->petite_description_v);
     return $this->petite_description_v;
   }
 
   public function getLargeDescription(): string
   {
+    $this->large_description_v = str_replace("*", "'", $this->large_description_v);
     return $this->large_description_v;
   }
 

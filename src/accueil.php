@@ -1,9 +1,10 @@
 <?php
 
 require_once './config/db.php';
+require './config/functions.php';
 
 ?>
-<div class="container-sm">
+<div class="container-sm margin-top">
 
   <section id="presentation">
     <div class="container">
@@ -22,9 +23,11 @@ require_once './config/db.php';
             Chez nous, chaque client est accueilli chaleureusement dans une
             atmosphère conviviale. Confiez-nous votre voiture, et nous nous
             engageons à assurer son bon fonctionnement avec
-            professionnalisme. <a href="index.php?page=apropos" class="link">En savoir plus >></a></p>
+            professionnalisme.
+            <br><a href="index.php?page=apropos" class="link">En savoir plus >></a>
+          </p>
           <div>
-            <a href="index.php?page=contact"><button type="button">Nous contacter</button></a>
+            <a href="index.php?page=contact"><button type="button" class="button">Nous contacter</button></a>
           </div>
         </div>
       </div>
@@ -62,7 +65,7 @@ require_once './config/db.php';
             $i++;
           }
         } catch (error $e) {
-          file_put_contents("../config/error.txt", $e->getMessage(), FILE_APPEND);
+          error($e);
         }
         ?>
       </div>
@@ -99,9 +102,9 @@ require_once './config/db.php';
         <?php
         try {
           require_once 'src/model/AvisManager.php';
-          require_once 'config/db.php';
+
           $connection = new AvisManager($pdo);
-          $avis = $connection->affichageAvis(2);
+          $avis = $connection->affichageAvis(1);
 
           foreach ($avis as $row) {
             $titre = $row->getTitre();
@@ -125,7 +128,7 @@ require_once './config/db.php';
         <?php
           }
         } catch (error $e) {
-          file_put_contents("./config/error.txt", $e->getMessage(), FILE_APPEND);
+          error($e);
         }
         ?>
       </div>
@@ -143,6 +146,7 @@ require_once './config/db.php';
           $connection = new CarInfos($pdo);
           $voitures = $connection->affichageVoitures(2);
           foreach ($voitures as $row) {
+            $id = $row->getId();
             $titre = $row->getTitre();
             $description = $row->getPetiteDescription();
             $img = '../public/assets/img/' . $row->getImage();
@@ -152,10 +156,10 @@ require_once './config/db.php';
               <div>
                 <h5><?php echo $titre; ?></h5>
                 <p><?php echo $description; ?></p>
-                <button>
-                  <h3><?php echo $prix . "€"; ?><h3>
+                <button class="button">
+                  <p class="titre"><?php echo $prix . "€"; ?></p>
                 </button>
-                <a href=" #" class="link">En savoir plus >></a>
+                <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="link">En savoir plus >></a>
               </div>
               <div>
                 <img src="<?php echo $img; ?>" alt="Logo Garge V. Parrot" style="height:150px;">
@@ -164,13 +168,13 @@ require_once './config/db.php';
         <?php
           }
         } catch (error $e) {
-          file_put_contents("./config/error.txt", $e->getMessage() . "\n", FILE_APPEND);
+          error($e->getMessage());
         }
         ?>
       </div>
     </div>
     <div class="action-sup">
-      <a href="index.php?page=vehicules"><button>Voir +</button></a>
+      <a href="index.php?page=vehicules"><button class="button">Voir +</button></a>
     </div>
   </section>
 

@@ -36,7 +36,8 @@ try {
   dt_a TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   visiteur_nom VARCHAR(30) NOT NULL,
   visiteur_prenom VARCHAR(30) NOT NULL,
-  note_a INT(1) NOT NULL
+  note_a INT(1) NOT NULL,
+  statut VARCHAR(15) NOT NULL
 )';
 
       $prestations = 'CREATE TABLE prestations (
@@ -67,7 +68,7 @@ try {
   couleur VARCHAR(30),
   nb_portes INT(1),
   nb_places INT(2),
-  puissance_fiscale CHAR(1)
+  puissance_fiscale CHAR(1),
   FOREIGN KEY (id_i) REFERENCES voitures (id_v)
 )';
 
@@ -81,7 +82,7 @@ try {
 
       foreach ($table as $tabl) {
         if ($garageParrot->exec($tabl) !== false) {
-          echo "Installation réussis !";
+          echo "$tabl : Installation réussis !";
         } else {
           echo 'Erreur installation !';
         }
@@ -91,5 +92,6 @@ try {
     }
   }
 } catch (PDOException $exception) {
+  error($exception->getMessage());
   die($exception->getMessage());
 }

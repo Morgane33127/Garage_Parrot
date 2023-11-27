@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container margin-top">
   <div class="row align-items-center">
     <div class="col-sm-6">
       <div class="py-3">
-        <span class="button-style">1 rue de nulle part 33600 Pessac</span>
+        <span class="button">1 rue de nulle part 33600 Pessac</span>
       </div>
 
       <div class="row align-items-start">
         <div class="col-sm-4">
-          <span class="button-style">05.56.00.00.00</span>
+          <span class="button">05.56.00.00.00</span>
         </div>
         <div class="col-sm-8">
           <p>
@@ -27,23 +27,23 @@
         <h3>Nous contacter</h3>
         <div class="row align-items-start">
           <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="nom*" required>
+            <input type="text" class="form-control" name="nom" placeholder="nom*" required>
           </div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" placeholder="prenom*" required>
+            <input type="text" class="form-control" name="prenom" placeholder="prenom*" required>
           </div>
           <div class="col-sm-4">
-            <input type="tel" class="form-control" placeholder="tel*" required>
+            <input type="tel" class="form-control" name="tel" placeholder="tel*" required>
           </div>
         </div>
         <div class="py-2">
-          <input type="email" class="form-control" placeholder="email*" required>
+          <input type="email" class="form-control" name="email" placeholder="email*" required>
         </div>
         <div class="py-2">
-          <textarea class="form-control" placeholder="Message**" required></textarea>
+          <textarea class="form-control" name="message" placeholder="Message**" required></textarea>
         </div>
         <div class="text-end">
-          <button type="submit">Envoyer</button>
+          <button type="submit" class="button">Envoyer</button>
         </div>
       </form>
     </div>
