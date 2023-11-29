@@ -55,6 +55,10 @@ $grey: #F2F2F2;
       text-align:center;
       margin : 20px 0px 20px 0px;
     }
+
+    .pagination {
+      color: $red;
+    }
     
 
     .button {
@@ -80,11 +84,6 @@ $grey: #F2F2F2;
     }
 
 
-    .connect{
-      width: 300px;
-      border-radius:0px;
-    }
-
     .link {
       text-decoration: none;
       color: $pink;
@@ -106,9 +105,7 @@ $grey: #F2F2F2;
       border: solid;
       font-weight: bold;
       border-color: $red;
-      text-align: center;
       background-color: white;
-      padding: 5px 5px 5px 5px;
     }
 
     
@@ -120,9 +117,7 @@ $grey: #F2F2F2;
       border: solid;
       font-weight: bold;
       border-color: $red;
-      text-align: center;
       background-color: $red;
-      padding: 5px 5px 5px 5px;
     }
 
     .link-menu {
@@ -171,6 +166,7 @@ $grey: #F2F2F2;
 
   .margin-top{
     margin-top: 150px;
+    margin-bottom: 150px;
   }
 
   /*
@@ -219,8 +215,7 @@ $grey: #F2F2F2;
     margin: 20px;
   }
 
-  .valeur h3,
-  .prestation-card h4 {
+  .valeur h3 {
     line-height: 100px;
   }
 

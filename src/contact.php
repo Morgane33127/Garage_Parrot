@@ -23,27 +23,27 @@
       </div>
     </div>
     <div class="col-sm-6 p-5">
-      <form method="POST" action="#">
+      <form method="POST" action="index.php?page=demande">
         <h3>Nous contacter</h3>
         <div class="row align-items-start">
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="nom" placeholder="nom*" required>
+            <input type="text" class="form-control" name="nom" placeholder="Nom*" required>
           </div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="prenom" placeholder="prenom*" required>
+            <input type="text" class="form-control" name="prenom" placeholder="Prenom*" required>
           </div>
           <div class="col-sm-4">
-            <input type="tel" class="form-control" name="tel" placeholder="tel*" required>
+            <input type="tel" class="form-control" name="tel" placeholder="Tel*" required>
           </div>
         </div>
         <div class="py-2">
-          <input type="email" class="form-control" name="email" placeholder="email*" required>
+          <input type="email" class="form-control" name="email" placeholder="Email*" required>
         </div>
         <div class="py-2">
           <textarea class="form-control" name="message" placeholder="Message**" required></textarea>
         </div>
         <div class="text-end">
-          <button type="submit" class="button">Envoyer</button>
+          <button type="submit" class="button" name="contact">Envoyer</button>
         </div>
       </form>
     </div>

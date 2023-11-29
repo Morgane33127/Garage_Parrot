@@ -14,7 +14,7 @@ try {
 
 ?>
 
-    <div class="container p-2">
+    <div class="container margin-top">
       <div class="text-end m-2">
         <h2><?php echo $voiture->getPrix() . "€"; ?></h2>
       </div>
@@ -47,7 +47,7 @@ try {
         <div class="col-sm-5">
           <img src="../public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getImage(); ?>" style="max-width:100%;">
           <div class="text-end m-2">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#voitureContact">Nous contacter</button>
+            <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#voitureContact">Nous contacter</button>
           </div>
         </div>
       </div>
@@ -69,17 +69,17 @@ try {
               <div>
                 <div class="row align-items-start">
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nom" placeholder="nom*" required>
+                    <input type="text" class="form-control" name="nom" placeholder="Nom*" required>
                   </div>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="prenom" placeholder="prenom*" required>
+                    <input type="text" class="form-control" name="prenom" placeholder="Prenom*" required>
                   </div>
                   <div class="col-sm-4">
-                    <input type="tel" class="form-control" name="tel" placeholder="tel*" required>
+                    <input type="tel" class="form-control" name="tel" placeholder="Tel*" required>
                   </div>
                 </div>
                 <div class="py-2">
-                  <input type="email" class="form-control" name="email" placeholder="email*" required>
+                  <input type="email" class="form-control" name="email" placeholder="Email*" required>
                 </div>
                 <div class="py-2">
                   <textarea class="form-control" name="message" placeholder="Message**" required></textarea>
@@ -88,7 +88,7 @@ try {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-              <button type="submit" name="contact">Etre recontacter</button>
+              <button type="submit" class="button" name="contact">Etre recontacter</button>
             </div>
           </div>
         </div>

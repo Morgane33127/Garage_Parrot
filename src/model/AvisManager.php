@@ -40,4 +40,15 @@ class AvisManager
       echo $e->getMessage();
     }
   }
+
+  public function newAvis($titre, $commentaire, $nom, $prenom, $note)
+  {
+    require_once 'Avis.php';
+    try {
+      $insert = $this->pdo->prepare("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) VALUES (?,?,?,?,?,?)");
+      $insert->execute([$titre, $commentaire, $nom, $prenom, $note, 'En attente']);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
 }

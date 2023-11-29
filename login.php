@@ -31,7 +31,7 @@ try {
         <input class="form-control input" type="password" name="password" placeholder="Mot de passe" minlength="8" required>
       </div>
       <br>
-      <button class="connect" type="submit" name="connect">Se connecter</button>
+      <button class="button" type="submit" name="connect">Se connecter</button>
       <div class="m-3">
         <a href="#">Mot de passe oublié ?</a>
       </div>

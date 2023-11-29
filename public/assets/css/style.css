@@ -49,6 +49,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 20px 0px 20px 0px;
 }
 
+.pagination {
+  color: #D92332;
+}
+
 .button {
   border: solid;
   font-weight: bold;
@@ -69,11 +73,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #D92332;
   color: white;
   border-radius: 30px;
-}
-
-.connect {
-  width: 300px;
-  border-radius: 0px;
 }
 
 .link {
@@ -97,9 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   border: solid;
   font-weight: bold;
   border-color: #D92332;
-  text-align: center;
   background-color: white;
-  padding: 5px 5px 5px 5px;
 }
 
 .prestation-card:hover {
@@ -110,9 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   border: solid;
   font-weight: bold;
   border-color: #D92332;
-  text-align: center;
   background-color: #D92332;
-  padding: 5px 5px 5px 5px;
 }
 
 .link-menu {
@@ -161,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .margin-top {
   margin-top: 150px;
+  margin-bottom: 150px;
 }
 
 /*
@@ -205,8 +201,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 20px;
 }
 
-.valeur h3,
-.prestation-card h4 {
+.valeur h3 {
   line-height: 100px;
 }
 

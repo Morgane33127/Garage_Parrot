@@ -30,14 +30,6 @@ require_once './config/db.php';
     grid-row: 1/3;
 
   }
-
-  .section1 {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-  }
 </style>
 
 <div class="wrapper">
@@ -123,7 +115,7 @@ require_once './config/db.php';
 
   </div>
   <div class="three">
-    <div class="section1">
+    <div>
       <h3 class="p-3">Avis à vérifier</h3>
       <button type="submit">Ajouter</button>
     </div>
