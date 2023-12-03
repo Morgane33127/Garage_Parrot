@@ -1,57 +1,54 @@
 <?php
+  include '../config/Database.php';
+  include '../src/controllers/VoitureController.php';
+  include '../src/models/VoitureManager.php';
+
+// Gestion de la requête
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $data = json_decode(file_get_contents('php://input'), true);
 
 
+if(!empty($data['prix'])){
 
-if (!empty($_GET['p'])) {
-  $page = $_GET['p'];
-} else {
-  $page = 1;
-}
-
-$filter = '';
-
-/*
-foreach ($_GET as $cle => $valeur) {
-  $filter = $cle;
-  echo $filter;
-  include './config/autoload.php';
-  include './config/Database.php';
-  include './src/controllers/VoitureController.php';
+  // Traitement pour mettre à jour la liste des voitures
+  $prixSaisi = $data['prix'];
   $voitureController = new VoitureController();
-  $voitureController->affichageCardFilter($filter, $page);
+  $voituresMisesAJour =   $voitureController->filtrerPrice($prixSaisi);
+
+  /* Renvoyer les voitures mises à jour en tant que réponse JSON
+  header('Content-Type: application/json');
+  echo json_encode($voituresMisesAJour);
+  */
+  echo $voituresMisesAJour;
+} else if (!empty($data['km'])){
+  // Traitement pour mettre à jour la liste des voitures
+  $kmSaisi = $data['km'];
+  $voitureController = new VoitureController();
+  $voituresMisesAJour =   $voitureController->filtrerKm($kmSaisi);
+
+  /* Renvoyer les voitures mises à jour en tant que réponse JSON
+  header('Content-Type: application/json');
+  echo json_encode($voituresMisesAJour);
+  */
+  echo $voituresMisesAJour;
+} else if (!empty($data['date'])){
+  // Traitement pour mettre à jour la liste des voitures
+  $dateSaisi = $data['date'];
+  $voitureController = new VoitureController();
+  $voituresMisesAJour =   $voitureController->filtrerDate($dateSaisi);
+
+  /* Renvoyer les voitures mises à jour en tant que réponse JSON
+  header('Content-Type: application/json');
+  echo json_encode($voituresMisesAJour);
+  */
+  echo $voituresMisesAJour;
 }
-*/
 
 
-try {
-  if (empty($_GET['prix']) && empty($_GET['km']) && empty($_GET['year'])) {
-    $voitureController = new VoitureController();
-    $voitureController->affichageCard($filter, $page);
-  } else {
-    $voitureController = new VoitureController();
-    $voitureController->affichageCard();
-  }
-} catch (error $e) {
-  echo $e->getMessage();
+} else {
+  echo 'Méthode non autorisée.';
 }
 
 
 ?>
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="index.php?page=vehicules&p=<?php echo $page - 1; ?>" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="index.php?page=vehicules&p=1">1</a></li>
-    <li class="page-item"><a class="page-link" href="index.php?page=vehicules&p=2">2</a></li>
-    <li class="page-item"><a class="page-link" href="index.php?page=vehicules&p=3">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="index.php?page=vehicules&p=<?php echo $page + 1; ?>" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>

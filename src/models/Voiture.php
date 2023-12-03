@@ -4,6 +4,7 @@ class Voiture
 {
 
   private int $id_v;
+  private int $id_i;
   private string $titre_v;
   private string $petite_description_v;
   private string $large_description_v;
@@ -24,6 +25,11 @@ class Voiture
   public function getId(): int
   {
     return $this->id_v;
+  }
+
+  public function getIdI(): int
+  {
+    return $this->id_i;
   }
 
   public function getTitre(): string

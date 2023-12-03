@@ -2,6 +2,7 @@ const range = document.querySelector('#prix');
 const range2 = document.querySelector('#km');
 const price = document.querySelector('.price');
 const kilo = document.querySelector('.kilometer');
+const div = document.getElementById('request');
 
 const elem = document.createElement('span');
 price.appendChild(elem);
@@ -21,21 +22,31 @@ function affichagePrix(){
 }
 
 function changePrix(value) {
-  let prix = value;
-  const xhr = new XMLHttpRequest();
+  let prixapasser = value;
 
-  xhr.addEventListener('readystatechange', () => {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let affichage = document.getElementById("request");
-      affichage.innerHTML = xhr.response;
-
-    }
-
+  fetch('src/affichageVoitures.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 'prix': prixapasser })
   })
-  xhr.open('GET', '../src/affichageVoitures.php?prix=' + prix);
-  xhr.send();
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erreur lors de la requête.');
+    }
+    return response.text();
+  })
+  .then(data => {
+    div.innerHTML = '';
+    div.innerHTML = data;
 
-}
+    })
+  .catch(error => {
+    console.error('Erreur :', error);
+  });
+};
+
 
 
 const elem2 = document.createElement('span');
@@ -57,18 +68,27 @@ function affichageKm(){
 function changeKm(value) {
   let kilometer = value;
 
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('readystatechange', () => {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let affichage = document.getElementById("request");
-      affichage.innerHTML = xhr.response;
-
-    }
-
+  fetch('src/affichageVoitures.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 'km': kilometer })
   })
-  xhr.open('GET', '../src/affichageVoitures.php?km=' + kilometer);
-  xhr.send();
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erreur lors de la requête.');
+    }
+    return response.text();
+  })
+  .then(data => {
+    div.innerHTML = '';
+    div.innerHTML = data;
+
+    })
+  .catch(error => {
+    console.error('Erreur :', error);
+  });
 
 }
 
@@ -84,17 +104,26 @@ function affichageAnnee(){
 function changeDate(value) {
   let date = value;
 
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('readystatechange', () => {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let affichage = document.getElementById("request");
-      affichage.innerHTML = xhr.response;
-
-    }
-
+  fetch('src/affichageVoitures.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 'date': date })
   })
-  xhr.open('GET', '../src/affichageVoitures.php?year=' + date);
-  xhr.send();
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erreur lors de la requête.');
+    }
+    return response.text();
+  })
+  .then(data => {
+    div.innerHTML = '';
+    div.innerHTML = data;
+
+    })
+  .catch(error => {
+    console.error('Erreur :', error);
+  });
 
 }

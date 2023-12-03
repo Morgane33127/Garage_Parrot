@@ -16,8 +16,7 @@ class VoitureManager
 
     require_once 'Voiture.php';
     try {
-      $infos = $this->pdo->prepare('SELECT * FROM voitures LEFT JOIN infos_voiture ON id_v = id_i
-      WHERE id_v= :id');
+      $infos = $this->pdo->prepare('SELECT * FROM voitures LEFT JOIN infos_voiture ON id_v = id_i WHERE id_v= :id');
       $infos->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
       $infos->bindValue(':id', $v_id);
       if ($infos->execute()) {

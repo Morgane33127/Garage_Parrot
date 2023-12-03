@@ -8,6 +8,8 @@ include_once './config/autoload.php';
 include_once './config/Database.php';
 include_once './src/controllers/VoitureController.php';
 
+$page=1;
+
 ?>
 
 <div class="container margin-top">
@@ -43,9 +45,29 @@ include_once './src/controllers/VoitureController.php';
 
   <div id="request">
     <?php
-    require 'affichageVoitures.php';
+        $voitureController = new VoitureController();
+        $voitureController->affichageCard();
     ?>
   </div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="index.php?page=vehicules&p=<?php echo $page - 1; ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="index.php?page=vehicules&p=1">1</a></li>
+    <li class="page-item"><a class="page-link" href="index.php?page=vehicules&p=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="index.php?page=vehicules&p=3">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="index.php?page=vehicules&p=<?php echo $page + 1; ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 </div>
 

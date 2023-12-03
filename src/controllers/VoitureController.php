@@ -27,32 +27,102 @@ class VoitureController
     }
   }
 
-  public function affichageCardFilter($filter, $page)
+  public function voitureInfos($id)
   {
-    switch ($filter) {
-      case 'prix':
-        $voiture = new VoitureManager($this->db);
-        $voitures = $voiture->affichageVoituresPrix($prix, $page);
-        foreach ($voitures as $row) {
-          $id = $row->getId();
-          $titre = $row->getTitre();
-          $description = $row->getPetiteDescription();
-          $img = '../public/assets/img/' . $row->getImage();
-          $prix = number_format($row->getPrix(), 0, ',', ' ');
-          include 'src/views/voitureCard.php'; // Afficher la vue voiture
-        }
-        break;
-      case '':
-        $voiture = new VoitureManager($this->db);
-        $voitures = $voiture->affichageVoituresPrix($prix, $page);
-        foreach ($voitures as $row) {
-          $id = $row->getId();
-          $titre = $row->getTitre();
-          $description = $row->getPetiteDescription();
-          $img = '../public/assets/img/' . $row->getImage();
-          $prix = number_format($row->getPrix(), 0, ',', ' ');
-          include 'src/views/voitureCard.php'; // Afficher la vue voiture
-        }
-    }
+
+    // Obtenir les détails de les prestations
+    $voiture = new VoitureManager($this->db);
+    $voiture = $voiture->affichageInfos($id);
+    echo ($voiture->getImage());
+      include 'src/views/voitureInfos.php'; // Afficher la vue voitureInfos
+    
   }
+
+  public function filtrerPrice($prix)
+  {
+        $page=1;
+        $voiture = new VoitureManager($this->db);
+        $voitures = $voiture->affichageVoituresPrix($prix, $page);
+        $response = '';
+        foreach ($voitures as $row) {
+          $id = $row->getId();
+          $titre = $row->getTitre();
+          $description = $row->getPetiteDescription();
+          $img = '../public/assets/img/' . $row->getImage();
+          $prix = number_format($row->getPrix(), 0, ',', ' ');
+          $response .= "<div class=\"voiture-card\">
+          <div>
+            <h5>$titre</h5>
+            <p>$description</p>
+            <button class=\"button\">
+              <p class=\"titre\">$prix €</p>
+            </button>
+            <a href=\"index.php?page=vinfo&id=$id\" class=\"link\">En savoir plus >></a>
+          </div>
+          <div>
+            <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
+          </div>
+        </div>";
+    }
+    return $response;
+  }
+
+  public function filtrerKm($km)
+  {
+        $page=1;
+        $voiture = new VoitureManager($this->db);
+        $voitures = $voiture->affichageVoituresKm($km, $page);
+        $response = '';
+        foreach ($voitures as $row) {
+          $id = $row->getId();
+          $titre = $row->getTitre();
+          $description = $row->getPetiteDescription();
+          $img = '../public/assets/img/' . $row->getImage();
+          $prix = number_format($row->getPrix(), 0, ',', ' ');
+          $response .= "<div class=\"voiture-card\">
+          <div>
+            <h5>$titre</h5>
+            <p>$description</p>
+            <button class=\"button\">
+              <p class=\"titre\">$prix €</p>
+            </button>
+            <a href=\"index.php?page=vinfo&id=$id\" class=\"link\">En savoir plus >></a>
+          </div>
+          <div>
+            <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
+          </div>
+        </div>";
+    }
+    return $response;
+  }
+
+  public function filtrerDate($date)
+  {
+        $page=1;
+        $voiture = new VoitureManager($this->db);
+        $voitures = $voiture->affichageVoituresAnnee($date, $page);
+        $response = '';
+        foreach ($voitures as $row) {
+          $id = $row->getId();
+          $titre = $row->getTitre();
+          $description = $row->getPetiteDescription();
+          $img = '../public/assets/img/' . $row->getImage();
+          $prix = number_format($row->getPrix(), 0, ',', ' ');
+          $response .= "<div class=\"voiture-card\">
+          <div>
+            <h5>$titre</h5>
+            <p>$description</p>
+            <button class=\"button\">
+              <p class=\"titre\">$prix €</p>
+            </button>
+            <a href=\"index.php?page=vinfo&id=$id\" class=\"link\">En savoir plus >></a>
+          </div>
+          <div>
+            <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
+          </div>
+        </div>";
+    }
+    return $response;
+  }
+
 }
