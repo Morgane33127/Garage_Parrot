@@ -1,6 +1,6 @@
 <?php
 
-class Car
+class Voiture
 {
 
   private int $id_v;

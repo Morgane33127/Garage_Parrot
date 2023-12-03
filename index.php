@@ -1,6 +1,25 @@
 <?php
 require_once 'src/header.php';
 require_once 'src/menu.php';
+require_once 'config/autoload.php';
+
+/*Traitement des routes avec un contrôleur par défaut (UserController)
+$userController = new UserController();
+
+if (isset($_GET['action'])) {
+  $action = $_GET['action'];
+  echo "<br><br><br><br><br>$action";
+  // Déterminez quelle action du contrôleur appeler
+  if (method_exists($userController, $action)) {
+    $userController->{$action}();
+  } else {
+    echo "Action non trouvée.";
+  }
+} else {
+  // Action par défaut (par exemple, afficher la page de connexion)
+  $userController->login();
+}
+*/
 
 if (!empty($_GET['page'])) {
   switch ($_GET['page']) {

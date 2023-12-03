@@ -2,6 +2,7 @@
 
 require_once 'header.php';
 
+/*
 try {
   if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
     require_once 'src/model/UserLogin.php';
@@ -17,16 +18,17 @@ try {
   error($exception->getMessage());
   die($exception->getMessage());
 }
+*/
 
 ?>
 
 <nav class="navbar navbar-expand-lg navigation">
   <div class="row">
-    <div class="col-sm-1">
+    <div class="col-sm-6">
       <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
     </div>
-    <div class="col-sm-1">
-      <h6><?php echo $bonjour; ?></h6>
+    <div class="col-sm-6">
+      <!--<h6><?php echo $bonjour; ?></h6>-->
     </div>
   </div>
   <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +55,7 @@ try {
         <h6><a class="link-menu" href="?page=contact" id="Contact">Contact</a></h6>
       </li>
       <li class="nav-item menu">
-        <a href="../login.php"><img src="../public/assets/img/admin-users.svg" width="40px"></a>
+        <a href="login2.php"><img src="../public/assets/img/admin-users.svg" width="40px"></a>
       </li>
     </ul>
   </div>

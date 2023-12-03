@@ -1,6 +1,9 @@
 <?php
 
-require_once './config/db.php';
+require './config/functions.php';
+include_once './config/autoload.php';
+include_once './config/Database.php';
+include_once './src/controllers/AvisController.php';
 
 if (!empty($_GET['p']) && !isset($_GET['p'])) {
   $page = $_GET['p'];
@@ -21,31 +24,9 @@ if (!empty($_GET['p']) && !isset($_GET['p'])) {
   <div id="avis">
     <div class="row align-items-start">
       <?php
-      require 'src/model/AvisManager.php';
-      $connection = new AvisManager($pdo);
-      $avis = $connection->affichageAvis($page);
-
-      foreach ($avis as $row) {
-        $titre = $row->getTitre();
-        $comment = $row->getCommentaire();
-        $dt = $row->getDate();
-        $visiteur = $row->getInfosVisiteur();
-        $note = $row->getNote();
-        $star = str_repeat('&#x2605;', $note);
-      ?>
-        <div class="col-sm-4">
-          <div class="card-avis">
-            <div class="flex">
-              <b><?php echo $titre; ?></b>
-              <p><small><?php echo $dt; ?></small></p>
-            </div>
-            <p style="color: #EDDB35;"><?php echo $star; ?></p>
-            <p><?php echo $comment; ?></p>
-            <p><?php echo $visiteur; ?></p>
-          </div>
-        </div>
-      <?php
-      }
+      // Création du contrôleur de avis
+      $avisController = new AvisController();
+      $avisController->affichage();
       ?>
     </div>
   </div>

@@ -1,62 +1,40 @@
 <?php
 
-if (!empty($_GET['p']) && isset($_GET['p'])) {
+
+
+if (!empty($_GET['p'])) {
   $page = $_GET['p'];
 } else {
   $page = 1;
 }
 
+$filter = '';
+
+/*
+foreach ($_GET as $cle => $valeur) {
+  $filter = $cle;
+  echo $filter;
+  include './config/autoload.php';
+  include './config/Database.php';
+  include './src/controllers/VoitureController.php';
+  $voitureController = new VoitureController();
+  $voitureController->affichageCardFilter($filter, $page);
+}
+*/
+
+
 try {
   if (empty($_GET['prix']) && empty($_GET['km']) && empty($_GET['year'])) {
-    $voitures = $connection->affichageVoitures2($page);
-  } else if (!empty($_GET['prix'])) {
-    require '../src/model/CarInfos.php';
-    require '../config/db.php';
-    $connection = new CarInfos($pdo);
-    $prix = $_GET['prix'];
-    $voitures = $connection->affichageVoituresPrix($prix, $page);
-  } else if (!empty($_GET['km'])) {
-    $km = $_GET['km'];
-    require '../src/model/CarInfos.php';
-    require '../config/db.php';
-    $connection = new CarInfos($pdo);
-    $voitures = $connection->affichageVoituresKm($km, $page);
-  } else if (!empty($_GET['year'])) {
-    $year = $_GET['year'];
-    require '../src/model/CarInfos.php';
-    require '../config/db.php';
-    $connection = new CarInfos($pdo);
-    $voitures = $connection->affichageVoituresAnnee($year, $page);
-  }
-
-  foreach ($voitures as $row) {
-
-    $id = $row->getId();
-    $titre = $row->getTitre();
-    $description = $row->getPetiteDescription();
-    $img = '../public/assets/img/' . $row->getImage();
-    $prix = number_format($row->getPrix(), 0, ',', ' ');
-
-?>
-    <div class="voiture-card">
-      <div>
-        <h5><?php echo $titre; ?></h5>
-        <p><?php echo $description; ?></p>
-        <button class="button">
-          <p class="titre"><?php echo $prix . "€"; ?></p>
-        </button>
-        <a class="link" href="index.php?page=vinfo&id=<?php echo $id; ?>">En savoir plus >></a>
-      </div>
-      <div>
-        <img src="<?php echo $img; ?>" alt="Logo Garge V. Parrot" style="height:150px;">
-      </div>
-    </div>
-
-<?php
+    $voitureController = new VoitureController();
+    $voitureController->affichageCard($filter, $page);
+  } else {
+    $voitureController = new VoitureController();
+    $voitureController->affichageCard();
   }
 } catch (error $e) {
-  error($e->getMessage());
+  echo $e->getMessage();
 }
+
 
 ?>
 

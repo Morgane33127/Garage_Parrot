@@ -1,7 +1,12 @@
 <?php
 
-require_once './config/db.php';
+//require_once './config/db.php';
 require './config/functions.php';
+include_once './config/autoload.php';
+include_once './config/Database.php';
+include_once './src/controllers/PrestationController.php';
+include_once './src/controllers/AvisController.php';
+include_once './src/controllers/VoitureController.php';
 
 ?>
 <div class="container-sm margin-top">
@@ -39,34 +44,9 @@ require './config/functions.php';
     <div class="container text-center">
       <div class="row align-items-start">
         <?php
-        try {
-          require_once 'src/model/PrestationManager.php';
-          require_once 'config/db.php';
-          $connection = new PrestationManager($pdo);
-          $prestation = $connection->affichageInfos();
-
-          $i = 0;
-          foreach ($prestation as $row) {
-            $nom = $row->getNom();
-            $pteDescription = $row->getPetiteDescription();
-            $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
-        ?>
-            <div class="col-sm-4 p-3">
-              <a href="index.php?page=prestations">
-                <button type="submit" class="prestation-card">
-                  <h4><i class="<?php echo $icons[$i]; ?>"></i></h4>
-                  <h4><?php echo $nom; ?></h4>
-                  <p><?php echo $pteDescription; ?></p>
-                  <p>En savoir plus >></p>
-                </button>
-              </a>
-            </div>
-        <?php
-            $i++;
-          }
-        } catch (error $e) {
-          error($e);
-        }
+        // Création du contrôleur de prestations
+        $prestationController = new PrestationController();
+        $prestationController->affichage();
         ?>
       </div>
     </div>
@@ -100,36 +80,9 @@ require './config/functions.php';
     <div class="container-sm text-center">
       <div class="row align-items-start">
         <?php
-        try {
-          require_once 'src/model/AvisManager.php';
-
-          $connection = new AvisManager($pdo);
-          $avis = $connection->affichageAvis(1);
-
-          foreach ($avis as $row) {
-            $titre = $row->getTitre();
-            $comment = $row->getCommentaire();
-            $dt = $row->getDate();
-            $visiteur = $row->getInfosVisiteur();
-            $note = $row->getNote();
-            $star = str_repeat('&#x2605;', $note);
-        ?>
-            <div class="col-sm-4">
-              <div class="card-avis">
-                <div class="flex">
-                  <b><?php echo $titre; ?></b>
-                  <p><small><?php echo $dt; ?></small></p>
-                </div>
-                <p style="color: #EDDB35;"><?php echo $star; ?></p>
-                <p><?php echo $comment; ?></p>
-                <p><?php echo $visiteur; ?></p>
-              </div>
-            </div>
-        <?php
-          }
-        } catch (error $e) {
-          error($e);
-        }
+        // Création du contrôleur de avis
+        $avisController = new AvisController();
+        $avisController->affichage();
         ?>
       </div>
     </div>
@@ -140,36 +93,8 @@ require './config/functions.php';
     <div class="container">
       <div class="row align-items-start">
         <?php
-        try {
-          require_once 'src/model/CarInfos.php';
-          require_once 'config/db.php';
-          $connection = new CarInfos($pdo);
-          $voitures = $connection->affichageVoitures(2);
-          foreach ($voitures as $row) {
-            $id = $row->getId();
-            $titre = $row->getTitre();
-            $description = $row->getPetiteDescription();
-            $img = '../public/assets/img/' . $row->getImage();
-            $prix = number_format($row->getPrix(), 0, ',', ' ');
-        ?>
-            <div class="voiture-card">
-              <div>
-                <h5><?php echo $titre; ?></h5>
-                <p><?php echo $description; ?></p>
-                <button class="button">
-                  <p class="titre"><?php echo $prix . "€"; ?></p>
-                </button>
-                <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="link">En savoir plus >></a>
-              </div>
-              <div>
-                <img src="<?php echo $img; ?>" alt="Logo Garge V. Parrot" style="height:150px;">
-              </div>
-            </div>
-        <?php
-          }
-        } catch (error $e) {
-          error($e->getMessage());
-        }
+        $voitureController = new VoitureController();
+        $voitureController->affichageCard();
         ?>
       </div>
     </div>

@@ -4,150 +4,154 @@ require_once './config/db.php';
 
 ?>
 
-<style>
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px 10px;
-    grid-auto-rows: minmax(100px, auto);
-    margin: 50px;
-  }
-
-  .one {
-    grid-column: 1 / 3;
-    grid-row: 1;
-
-  }
-
-  .two {
-    grid-column: 1 / 3;
-    grid-row: 2;
-
-  }
-
-  .three {
-    grid-column: 3/4;
-    grid-row: 1/3;
-
-  }
-</style>
-
-<div class="wrapper">
+<div class="wrapper" style="margin-top: 150px;">
   <div class="one">
-    <h3 class="p-3">Nos horaires <i class="bi-pen-fill"></i></h3>
-    <div class="row align-items-start">
-      <div class="col" style="width:500px;">
+    <form method="POST" action="#">
+      <div class="row align-items-start">
+        <div class="col-4">
+          <h3>Nos horaires</h3>
+        </div>
+        <div class="col-4">
+          <button type="submit" class="button" name="majheures"> <i class="bi-pen-fill"></i> Mettre à jour</button>
+        </div>
+      </div>
+      <div class="row align-items-start">
+        <div class="col" style="width:500px;" id="form-h">
 
-        <?php
-        $heures = $pdo->query("SELECT * FROM heures LEFT JOIN lbl ON jour=code_lbl");
-        foreach ($heures as $heure) {
-        ?>
-          <div class="row align-items-start">
-            <div class="col">
-              <input type="text" class="form-control" value="<?php echo $heure['lbl']; ?>">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" value="<?php echo $heure['hr_debut']; ?>">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" value="<?php echo $heure['hr_fin']; ?>">
-            </div>
+          <?php
+          require 'model/HeurreManager.php';
+          $connection = new HeureManager($pdo);
+          $heures = $connection->affichageHoraires();
+          try {
+            $k = 1;
+            foreach ($heures as $heure) {
+          ?>
+              <div class="row align-items-start">
+                <div class="col">
+                  <input type="text" class="form-control" name="jour<?php echo $k; ?>" id="jour<?php echo $k; ?>" value="<?php echo $heure->getHeureLbl(); ?>">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" name="hrdebut<?php echo $k; ?>" id="hrdebut<?php echo $k; ?>" value="<?php echo $heure->getHeureDebut(); ?>">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" name="hrfin<?php echo $k; ?>" id="hrfin<?php echo $k; ?>" value="<?php echo $heure->getHeureFin(); ?>">
+                </div>
+              </div>
+          <?php
+              $k++;
+            }
+          } catch (error $e) {
+            error($e->getMessage());
+          }
+          ?>
+        </div>
+
+        <div class=" col text-center">
+          <div>
+            <button type="submit" class="button">Ajouter un utilisateur</button>
           </div>
-        <?php
-        }
-        ?>
-
-      </div>
-
-      <div class=" col text-center">
-        <div>
-          <button type="submit">Ajouter un utilisateur</button>
-        </div>
-        <div>
-          <button type="submit">Véhicules à la vente</button>
+          <div>
+            <button type="submit" class="button">Véhicules à la vente</button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
+
   <div class="two">
     <div class="row align-items-start p-3">
       <div class="col-4">
         <h3>Nos prestations</h3>
       </div>
       <div class="col-8">
-        <button type="submit">Ajouter</button>
+        <button type="submit" class="button">Ajouter</button>
       </div>
     </div>
 
     <?php
-    $presta = $pdo->query("SELECT * FROM prestations");
-    $i = 0;
-    foreach ($presta as $row) {
-      $nom = $row['nom_p'];
-      $largeDescription = $row['large_description_p'];
-      $largeDescription = str_replace("*", "'", $largeDescription);
-      $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
 
+    try {
+      require_once 'src/model/PrestationManager.php';
+      require_once 'config/db.php';
+      $connection = new PrestationManager($pdo);
+      $prestation = $connection->affichageInfos();
+
+      $i = 0;
+      foreach ($prestation as $row) {
+        $nom = $row->getNom();
+        $largeDescription = $row->getLargeDescription();
+        $largeDescription = str_replace("*", "'", $largeDescription);
+        $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
     ?>
-      <div style="background-color: #F2F2F2; height:auto;">
-        <div class="row p-3">
-          <div class="col-6 text-start">
-            <h6><?php echo $nom; ?></h6>
+        <div class="container" style="background-color: #F2F2F2; height:auto;">
+          <div class="row p-3">
+            <div class="col-6 text-start">
+              <h5><i class="<?php echo $icons[$i]; ?>"> </i><?php echo $nom; ?></h5>
+            </div>
+            <div class="col-6 text-end">
+              <i class="bi-pen-fill" style="color:red;"></i> <i class="bi-trash-fill" style="color:red;"></i>
+            </div>
           </div>
-          <div class="col-6 text-end">
-            <i class="bi-pen-fill" style="color:red;"></i> <i class="bi-trash-fill" style="color:red;"></i>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-2 text-center">
-            <h1><i class="<?php echo $icons[$i]; ?>"></i></h1>
-          </div>
-          <div class="col-10">
+          <div>
             <p><?php echo $largeDescription; ?></p>
           </div>
         </div>
-      </div>
-      <br>
+
     <?php
-      $i++;
+        $i++;
+      }
+    } catch (error $e) {
+      error($e->getMessage());
     }
     ?>
-
   </div>
+
   <div class="three">
     <div>
       <h3 class="p-3">Avis à vérifier</h3>
-      <button type="submit">Ajouter</button>
+      <button type="submit" class="button">Ajouter</button>
     </div>
     <?php
-    $avis = $pdo->query("SELECT * FROM avis WHERE statut='En attente' ORDER BY dt_a ASC");
+    require 'src/model/AvisManager.php';
+    $connection = new AvisManager($pdo);
+    $avis = $connection->avisAValider();
+
     foreach ($avis as $row) {
-      $titre = $row['titre_a'];
-      $comment = $row['commentaire_a'];
-      $dt = $row['dt_a'];
-      $nom = $row['visiteur_nom'];
-      $prenom = $row['visiteur_prenom'];
-      $note = $row['note_a'];
+      $titre = $row->getTitre();
+      $comment = $row->getCommentaire();
+      $dt = $row->getDate();
+      $visiteur = $row->getInfosVisiteur();
+      $note = $row->getNote();
       $star = str_repeat('&#x2605;', $note);
     ?>
-      <div style="text-align: start; padding : 1%;background-color:#F2F2F2; height:200px; 
-    margin:30px;">
-        <div class="row">
-          <div class="col-4 text-start">
+      <div class="col-sm-4">
+        <div class="card-avis">
+          <div class="flex">
             <b><?php echo $titre; ?></b>
+            <p><small><?php echo $dt; ?></small></p>
+            <div>
+              <i class="bi-check-circle-fill" style="color:green;"></i> <i class="bi-x-circle-fill" style="color:red;"></i>
+            </div>
           </div>
-          <div class="col-8 text-end">
-            <small><?php echo $dt; ?></small><i class="bi-check-circle-fill" style="color:green;"></i> <i class="bi-x-circle-fill" style="color:red;"></i>
-          </div>
+          <p style="color: #EDDB35;"><?php echo $star; ?></p>
+          <p><?php echo $comment; ?></p>
+          <p><?php echo $visiteur; ?></p>
         </div>
-        <p style="color: #EDDB35;"><?php echo $star; ?></p>
-        <p><?php echo $comment; ?></p>
-        <p><?php echo $prenom . " " . $nom; ?></p>
       </div>
     <?php
     }
-
     ?>
 
   </div>
 </div>
+
+<script>
+  let div = document.getElementById('form-h');
+  let input = div.getElementsByTagName('input');
+  for (let i = 0; i < input.length; i++) {
+    input[i].addEventListener("change", () => {
+      console.log(input[i].value);
+
+    })
+  };
+</script>

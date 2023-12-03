@@ -1,7 +1,9 @@
 <?php
 
-require_once './config/db.php';
 require './config/functions.php';
+include_once './config/autoload.php';
+include_once './config/Database.php';
+include_once './src/controllers/PrestationController.php';
 
 ?>
 <div class="container-sm margin-top">
@@ -51,34 +53,9 @@ require './config/functions.php';
     <div class="container text-center">
       <div class="row align-items-start">
         <?php
-        try {
-          require_once 'src/model/PrestationManager.php';
-          require_once 'config/db.php';
-          $connection = new PrestationManager($pdo);
-          $prestation = $connection->affichageInfos();
-
-          $i = 0;
-          foreach ($prestation as $row) {
-            $nom = $row->getNom();
-            $pteDescription = $row->getPetiteDescription();
-            $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
-        ?>
-            <div class="col-sm-4 p-3">
-              <a href="index.php?page=prestations">
-                <button type="submit" class="prestation-card">
-                  <h4><i class="<?php echo $icons[$i]; ?>"></i></h4>
-                  <h4><?php echo $nom; ?></h4>
-                  <p><?php echo $pteDescription; ?></p>
-                  <p>En savoir plus >></p>
-                </button>
-              </a>
-            </div>
-        <?php
-            $i++;
-          }
-        } catch (error $e) {
-          error($e->getMessage());
-        }
+        // Création du contrôleur de prestations
+        $prestationController = new PrestationController();
+        $prestationController->affichage();
         ?>
       </div>
     </div>

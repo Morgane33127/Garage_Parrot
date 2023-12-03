@@ -10,6 +10,7 @@ class Avis
   private string $visiteur_nom;
   private string $visiteur_prenom;
   private int $note_a;
+  private string $statut;
 
   public function getId(): int
   {
@@ -39,5 +40,10 @@ class Avis
   public function getNote(): string
   {
     return $this->note_a;
+  }
+
+  public function getSatut(): string
+  {
+    return $this->statut;
   }
 }

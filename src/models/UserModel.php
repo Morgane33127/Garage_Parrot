@@ -28,7 +28,7 @@ class UserLogin
           $event->bindValue('info_e', 'Nouvelle connexion');
           $event->execute();
 
-          header("Location:index.php?page=administr&&id=$id_u");
+          header("Location:index.php?page=administr&&user_id=$id_u");
         } else {
           throw new Exception('Identifiants invalides');
         }

@@ -4,8 +4,10 @@ require './config/db.php';
 $annees = $pdo->query("SELECT DISTINCT annee FROM voitures");
 $result = $pdo->query("SELECT COUNT(*) AS count FROM voitures")->fetch(PDO::FETCH_OBJ);
 
-require 'src/model/CarInfos.php';
-$connection = new CarInfos($pdo);
+include_once './config/autoload.php';
+include_once './config/Database.php';
+include_once './src/controllers/VoitureController.php';
+
 ?>
 
 <div class="container margin-top">
