@@ -42,7 +42,8 @@ function sendMail($from, $subject, $message)
   //envoi du mail
   $from = "$from";
   $reply = "$from";
-  $destinataire = "v.parrot@example.com";
+  //$destinataire = "v.parrot@example.com";
+  $destinataire = "gut.morgane@gmail.com";
   $subject = "$subject";
   $message = "$message";
   $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME

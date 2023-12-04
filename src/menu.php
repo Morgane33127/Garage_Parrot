@@ -2,24 +2,6 @@
 
 require_once 'header.php';
 
-/*
-try {
-  if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
-    require_once 'src/model/UserLogin.php';
-    require_once 'config/db.php';
-    $login = new UserLogin($pdo);
-    $user_id = $_GET['user_id'];
-    $personne = $login->role($user_id);
-    $bonjour = "Bonjour " . $personne->getInfos();
-  } else {
-    $bonjour = '';
-  }
-} catch (PDOException $exception) {
-  error($exception->getMessage());
-  die($exception->getMessage());
-}
-*/
-
 ?>
 
 <nav class="navbar navbar-expand-lg navigation">
@@ -28,7 +10,7 @@ try {
       <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
     </div>
     <div class="col-sm-6">
-      <!--<h6><?php echo $bonjour; ?></h6>-->
+      <h6>Bonjour</h6>
     </div>
   </div>
   <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +37,7 @@ try {
         <h6><a class="link-menu" href="?page=contact" id="Contact">Contact</a></h6>
       </li>
       <li class="nav-item menu">
-        <a href="login2.php"><img src="../public/assets/img/admin-users.svg" width="40px"></a>
+        <a href="login.php"><img src="../public/assets/img/admin-users.svg" width="40px"></a>
       </li>
     </ul>
   </div>

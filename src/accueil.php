@@ -15,7 +15,7 @@ include_once './src/controllers/VoitureController.php';
     <div class="container">
       <div class="row align-items-start">
         <div class="col-sm">
-          <img src="../public/assets/img/garage.jpg" alt="photo garage v parrot" style="width:500px;">
+          <img src="public/assets/img/garage.jpg" alt="photo garage v parrot" style="width:500px;">
         </div>
         <div class="col-sm">
           <h3>Présentation</h3>

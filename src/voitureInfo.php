@@ -1,5 +1,4 @@
 <?php
-echo "<br><br><br><br><br>";
 include 'config/Database.php';
 include 'src/controllers/VoitureController.php';
 include 'src/models/VoitureManager.php';
@@ -11,7 +10,7 @@ try {
 
     $voitureController = new VoitureController();
     $voitureController->voitureInfos($v_id);
-    $voitureController->getImage();
+    
 
   }
 } catch (PDOException $exception) {

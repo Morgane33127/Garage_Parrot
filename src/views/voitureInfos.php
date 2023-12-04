@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="col-sm-5">
-          <img src="../public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getImage(); ?>" style="max-width:100%;">
+          <img src="public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getImage(); ?>" style="max-width:100%;">
           <div class="text-end m-2">
             <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#voitureContact">Nous contacter</button>
           </div>

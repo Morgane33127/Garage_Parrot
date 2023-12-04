@@ -21,7 +21,7 @@ class VoitureController
       $id = $row->getId();
       $titre = $row->getTitre();
       $description = $row->getPetiteDescription();
-      $img = '../public/assets/img/' . $row->getImage();
+      $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
       include 'src/views/voitureCard.php'; // Afficher la vue voiture
     }
@@ -48,7 +48,7 @@ class VoitureController
           $id = $row->getId();
           $titre = $row->getTitre();
           $description = $row->getPetiteDescription();
-          $img = '../public/assets/img/' . $row->getImage();
+          $img = 'public/assets/img/' . $row->getImage();
           $prix = number_format($row->getPrix(), 0, ',', ' ');
           $response .= "<div class=\"voiture-card\">
           <div>
@@ -77,7 +77,7 @@ class VoitureController
           $id = $row->getId();
           $titre = $row->getTitre();
           $description = $row->getPetiteDescription();
-          $img = '../public/assets/img/' . $row->getImage();
+          $img = 'public/assets/img/' . $row->getImage();
           $prix = number_format($row->getPrix(), 0, ',', ' ');
           $response .= "<div class=\"voiture-card\">
           <div>
@@ -106,7 +106,7 @@ class VoitureController
           $id = $row->getId();
           $titre = $row->getTitre();
           $description = $row->getPetiteDescription();
-          $img = '../public/assets/img/' . $row->getImage();
+          $img = 'public/assets/img/' . $row->getImage();
           $prix = number_format($row->getPrix(), 0, ',', ' ');
           $response .= "<div class=\"voiture-card\">
           <div>
