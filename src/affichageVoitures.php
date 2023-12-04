@@ -44,7 +44,6 @@ if(!empty($data['prix'])){
   echo $voituresMisesAJour;
 }
 
-
 } else {
   echo 'Méthode non autorisée.';
 }

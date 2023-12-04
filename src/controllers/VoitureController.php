@@ -44,6 +44,7 @@ class VoitureController
         $voiture = new VoitureManager($this->db);
         $voitures = $voiture->affichageVoituresPrix($prix, $page);
         $response = '';
+        if(count($voitures) != 0){
         foreach ($voitures as $row) {
           $id = $row->getId();
           $titre = $row->getTitre();
@@ -63,6 +64,8 @@ class VoitureController
             <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
           </div>
         </div>";
+    }  } else {
+      $response = "Aucun résultat.";
     }
     return $response;
   }
@@ -73,6 +76,7 @@ class VoitureController
         $voiture = new VoitureManager($this->db);
         $voitures = $voiture->affichageVoituresKm($km, $page);
         $response = '';
+        if(count($voitures) != 0){
         foreach ($voitures as $row) {
           $id = $row->getId();
           $titre = $row->getTitre();
@@ -92,6 +96,8 @@ class VoitureController
             <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
           </div>
         </div>";
+    }} else {
+      $response = "Aucun résultat.";
     }
     return $response;
   }
@@ -102,6 +108,7 @@ class VoitureController
         $voiture = new VoitureManager($this->db);
         $voitures = $voiture->affichageVoituresAnnee($date, $page);
         $response = '';
+        if(count($voitures) != 0){
         foreach ($voitures as $row) {
           $id = $row->getId();
           $titre = $row->getTitre();
@@ -121,6 +128,8 @@ class VoitureController
             <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
           </div>
         </div>";
+    }} else {
+      $response = "Aucun résultat.";
     }
     return $response;
   }

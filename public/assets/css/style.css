@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #D92332;
 }
 
-.button {
+.button, .button_admin {
   border: solid;
   font-weight: bold;
   border-color: #D92332;
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 50px;
 }
 
-.button:hover {
+.button:hover, .button_admin {
   border: solid;
   font-weight: bold;
   border-color: #D92332;
@@ -73,6 +73,11 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #D92332;
   color: white;
   border-radius: 30px;
+}
+
+.button_admin {
+  height: 100px;
+  width: 100%;
 }
 
 .link {

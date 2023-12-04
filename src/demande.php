@@ -49,4 +49,6 @@ if (isset($_POST['ajouteravis'])) {
   $connection = new AvisManager($pdo);
   $avis = $connection->newAvis($titre, $message, $nom, $prenom, $note);
   header('Location: index.php?page=avis');
+} else if (isset($_POST['ajouterUnePrestation'])){
+
 }

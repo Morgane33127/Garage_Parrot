@@ -4,7 +4,6 @@ class Voiture
 {
 
   private int $id_v;
-  private int $id_i;
   private string $titre_v;
   private string $petite_description_v;
   private string $large_description_v;
@@ -15,22 +14,28 @@ class Voiture
   private string $annee;
   private int $kilometre;
   private string $statut;
-  private string $type;
-  private string $carburant;
-  private string $couleur;
-  private int $nb_portes;
-  private int $nb_places;
-  private int $puissance_fiscale;
+
+  public function __construct ($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut){
+    $this->id_v = $id_v;
+    $this->titre_v = $titre_v;
+    $this->petite_description_v = $petite_description_v;
+    $this->large_description_v = $large_description_v;
+    $this->marque = $marque;
+    $this->modele = $modele;
+    $this->prix = $prix;
+    $this->img = $img;
+    $this->annee = $annee;
+    $this->kilometre = $kilometre;
+    $this->statut = $statut;
+
+  }
+
 
   public function getId(): int
   {
     return $this->id_v;
   }
 
-  public function getIdI(): int
-  {
-    return $this->id_i;
-  }
 
   public function getTitre(): string
   {
@@ -83,33 +88,5 @@ class Voiture
     return $this->statut;
   }
 
-  public function getType(): string
-  {
-    return $this->type;
-  }
-
-  public function getCarburant(): string
-  {
-    return $this->carburant;
-  }
-
-  public function getCouleur(): string
-  {
-    return $this->couleur;
-  }
-
-  public function getNbPortes(): int
-  {
-    return $this->nb_portes;
-  }
-
-  public function getNbPlaces(): int
-  {
-    return $this->nb_places;
-  }
-
-  public function getPuissance(): int
-  {
-    return $this->puissance_fiscale;
-  }
+  
 }

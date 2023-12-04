@@ -19,8 +19,12 @@ class AvisManager
       $infos->setFetchMode(PDO::FETCH_CLASS, 'Avis');
       $infos->bindValue(':start', 10 * ($page - 1), PDO::PARAM_INT);
       $infos->execute();
-      $avis = $infos->fetchAll();
-      return $avis;
+      $avis = $infos->fetchAll(PDO :: FETCH_ASSOC);
+      foreach ($avis as $value){
+        $avisAAfficher = new Avis ($value['id_a'], $value['titre_a'], $value['commentaire_a'], $value['dt_a'], $value['visiteur_nom'], $value['visiteur_prenom'], $value['note_a'], $value['statut']);
+        $avisTab[]=$avisAAfficher;
+      }
+      return($avisTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }
@@ -34,8 +38,12 @@ class AvisManager
     try {
       $infos = $this->pdo->query("SELECT * FROM avis WHERE statut='En attente' ORDER BY dt_a ASC");
       $infos->setFetchMode(PDO::FETCH_CLASS, 'Avis');
-      $avis = $infos->fetchAll();
-      return $avis;
+      $avis = $infos->fetchAll(PDO :: FETCH_ASSOC);
+      foreach ($avis as $value){
+        $avisAAfficher = new Avis ($value['id_a'], $value['titre_a'], $value['commentaire_a'], $value['dt_a'], $value['visiteur_nom'], $value['visiteur_prenom'], $value['note_a'], $value['statut']);
+        $avisTab[]=$avisAAfficher;
+      }
+      return($avisTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }

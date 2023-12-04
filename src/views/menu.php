@@ -7,7 +7,7 @@ require_once 'header.php';
 <nav class="navbar navbar-expand-lg navigation">
   <div class="row">
     <div class="col-sm-6">
-      <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
+      <img src="public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
     </div>
     <div class="col-sm-6">
       <h6>Bonjour</h6>
@@ -37,7 +37,7 @@ require_once 'header.php';
         <h6><a class="link-menu" href="?page=contact" id="Contact">Contact</a></h6>
       </li>
       <li class="nav-item menu">
-        <a href="login.php"><img src="../public/assets/img/admin-users.svg" width="40px"></a>
+        <a href="login.php"><img src="public/assets/img/admin-users.svg" width="40px"></a>
       </li>
     </ul>
   </div>

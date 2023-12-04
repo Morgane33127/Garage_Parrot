@@ -4,7 +4,7 @@
       <div class="m-3">
         <a href="index.php">Revenir au site >></a>
       </div>
-      <img src="../public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="350px;">
+      <img src="public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="350px;">
       <div class="m-3">
         <input class="form-control input" type="email" name="email" placeholder="Login" required>
         <br>

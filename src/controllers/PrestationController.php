@@ -46,4 +46,23 @@ class PrestationController
       $i++;
     }
   }
+
+  public function affichageListAdmin()
+  {
+
+    // Obtenir les détails de les prestations
+    $prestation = new PrestationManager($this->db);
+    $prestation = $prestation->affichageInfos();
+
+    $i = 0;
+    foreach ($prestation as $row) {
+      $nom = $row->getNom();
+      $largeDescription = $row->getLargeDescription();
+      $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
+      include 'src/views/prestationsListAdmin.php'; // Afficher la vue de connexion
+
+      $i++;
+    }
+  }
+
 }

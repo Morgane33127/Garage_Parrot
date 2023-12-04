@@ -61,7 +61,7 @@ $grey: #F2F2F2;
     }
     
 
-    .button {
+    .button, .button_admin {
       border: solid;
       font-weight: bold;
       border-color: #D92332;
@@ -73,7 +73,7 @@ $grey: #F2F2F2;
       height:50px
     }
   
-    .button:hover {
+    .button:hover, .button_admin {
       border: solid;
       font-weight: bold;
       border-color: #D92332;
@@ -81,6 +81,11 @@ $grey: #F2F2F2;
       background-color: #D92332;
       color: white;
       border-radius:30px;
+    }
+
+    .button_admin {
+      height: 100px;
+      width : 100%;
     }
 
 
@@ -253,5 +258,4 @@ $grey: #F2F2F2;
   .three {
     grid-column: 3/4;
     grid-row: 1/3;
-
   }

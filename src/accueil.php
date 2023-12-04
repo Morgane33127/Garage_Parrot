@@ -1,6 +1,5 @@
 <?php
 
-//require_once './config/db.php';
 require './config/functions.php';
 include_once './config/autoload.php';
 include_once './config/Database.php';
@@ -107,4 +106,4 @@ include_once './src/controllers/VoitureController.php';
 
 <?php
 
-require 'footer.php';
+require 'views/footer.php';

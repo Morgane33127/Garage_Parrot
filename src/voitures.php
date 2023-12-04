@@ -73,4 +73,4 @@ $page=1;
 
 <?php
 
-require_once 'footer.php';
+require_once 'views/footer.php';

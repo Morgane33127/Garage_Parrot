@@ -1,6 +1,7 @@
-<?php
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-include_once 'src/header.php';
+<?php
+require_once 'src/views/header.php';
 include_once 'config/autoload.php';
 include_once 'config/Database.php';
 include_once 'src/controllers/LoginController.php';

@@ -9,6 +9,14 @@ class Heure
   private string $hr_fin;
   private string $lbl;
 
+  public function __construct ($id_h, $jour, $hr_debut, $hr_fin, $lbl){
+    $this->id_h = $id_h;
+    $this->jour = $jour;
+    $this->hr_debut = $hr_debut;
+    $this->hr_fin = $hr_fin;
+    $this->lbl = $lbl;
+  }
+
   public function getInfoHeure(): array
   {
     $infosHeure = array($this->id_h, $this->jour, $this->hr_debut, $this->hr_fin);

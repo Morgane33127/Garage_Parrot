@@ -1,6 +1,6 @@
 <?php
-require_once 'src/header.php';
-require_once 'src/menu.php';
+require_once 'src/views/header.php';
+require_once 'src/views/menu.php';
 require_once 'config/autoload.php';
 
 /*Traitement des routes avec un contrôleur par défaut (UserController)
@@ -36,7 +36,7 @@ if (!empty($_GET['page'])) {
       require('src/avis.php');
       break;
     case 'contact':
-      require('src/contact.php');
+      require('src/views/contact.php');
       break;
     case 'accueil':
       require('src/accueil.php');
@@ -50,6 +50,9 @@ if (!empty($_GET['page'])) {
     case 'demande':
       require('src/demande.php');
       break;
+      case 'affichageVoiture':
+        require('src/affichageVoiture.php');
+        break;
   }
 } else {
   require('src/accueil.php');

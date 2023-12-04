@@ -11,17 +11,22 @@ class VoitureManager
   }
 
 
-  public function affichageInfos(int $v_id): Voiture
+  public function affichageInfos(int $v_id): VoitureInfos
   {
 
-    require_once 'Voiture.php';
+    require_once 'VoitureInfos.php';
     try {
       $infos = $this->pdo->prepare('SELECT * FROM voitures LEFT JOIN infos_voiture ON id_v = id_i WHERE id_v= :id');
-      $infos->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+      $infos->setFetchMode(PDO::FETCH_CLASS, 'VoitureInfos');
       $infos->bindValue(':id', $v_id);
       if ($infos->execute()) {
-        $voiture = $infos->fetch();
-        return $voiture;
+        $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($voitures as $value){
+          $voituresAAfficher = new VoitureInfos ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+          $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut'], $value['id_i'], $value['type'], $value['carburant'], 
+          $value['couleur'], $value['nb_portes'],$value['nb_places'], $value['puissance_fiscale']);
+        }
+        return($voituresAAfficher);
       } else {
         throw new Exception('Affichage impossible');
       }
@@ -37,8 +42,14 @@ class VoitureManager
     try {
       $infos = $this->pdo->query("SELECT * FROM voitures LIMIT $limit");
       $infos->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
-      $voitures = $infos->fetchAll();
-      return $voitures;
+      $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+      $voituresTab=array();
+      foreach ($voitures as $value){
+        $voituresAAfficher = new Voiture ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+        $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut']);
+        $voituresTab[]=$voituresAAfficher;
+      }
+      return($voituresTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }
@@ -55,8 +66,14 @@ class VoitureManager
       // La position de départ du LIMIT dépend de la page. Attention au type de données, qui doit être en PARAM_INT
       $infos->bindValue(':start', 10 * ($page - 1), PDO::PARAM_INT);
       $infos->execute();
-      $voitures = $infos->fetchAll();
-      return $voitures;
+      $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+      $voituresTab=array();
+      foreach ($voitures as $value){
+        $voituresAAfficher = new Voiture ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+        $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut']);
+        $voituresTab[]=$voituresAAfficher;
+      }
+      return($voituresTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }
@@ -71,8 +88,14 @@ class VoitureManager
       $infos->bindValue(':prix', $prix, PDO::PARAM_INT);
       $infos->bindValue(':start', 10 * ($page - 1), PDO::PARAM_INT);
       $infos->execute();
-      $voitures = $infos->fetchAll();
-      return $voitures;
+      $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+      $voituresTab=array();
+      foreach ($voitures as $value){
+        $voituresAAfficher = new Voiture ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+        $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut']);
+        $voituresTab[]=$voituresAAfficher;
+      }
+      return($voituresTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }
@@ -87,8 +110,14 @@ class VoitureManager
       $infos->bindValue(':km', $km, PDO::PARAM_INT);
       $infos->bindValue(':start', 10 * ($page - 1), PDO::PARAM_INT);
       $infos->execute();
-      $voitures = $infos->fetchAll();
-      return $voitures;
+      $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+      $voituresTab=array();
+      foreach ($voitures as $value){
+        $voituresAAfficher = new Voiture ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+        $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut']);
+        $voituresTab[]=$voituresAAfficher;
+      }
+      return($voituresTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }
@@ -103,8 +132,14 @@ class VoitureManager
       $infos->bindValue(':annee', $year, PDO::PARAM_STR);
       $infos->bindValue(':start', 10 * ($page - 1), PDO::PARAM_INT);
       $infos->execute();
-      $voitures = $infos->fetchAll();
-      return $voitures;
+      $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+      $voituresTab=array();
+      foreach ($voitures as $value){
+        $voituresAAfficher = new Voiture ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+        $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut']);
+        $voituresTab[]=$voituresAAfficher;
+      }
+      return($voituresTab);
     } catch (Exception $e) {
       echo $e->getMessage();
     }

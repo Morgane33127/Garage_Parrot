@@ -12,6 +12,17 @@ class Avis
   private int $note_a;
   private string $statut;
 
+  public function __construct ($id_a, $titre_a, $commentaire_a, $dt_a, $visiteur_nom, $visiteur_prenom, $note_a, $statut){
+    $this->id_a = $id_a;
+    $this->titre_a = $titre_a;
+    $this->commentaire_a = $commentaire_a;
+    $this->dt_a = $dt_a;
+    $this->visiteur_nom = $visiteur_nom;
+    $this->visiteur_prenom = $visiteur_prenom;
+    $this->note_a = $note_a;
+    $this->statut = $statut;
+  }
+
   public function getId(): int
   {
     return $this->id_a;
