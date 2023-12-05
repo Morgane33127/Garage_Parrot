@@ -16,8 +16,8 @@ class AvisController
 
     // Obtenir les détails de les avis
     $avis = new AvisManager($this->db);
-    $avis = $avis->affichageAvis(1);
-
+    $avis = $avis->affichageAvis();
+    if(!empty($avis)){
     foreach ($avis as $row) {
       $titre = $row->getTitre();
       $comment = $row->getCommentaire();
@@ -26,7 +26,8 @@ class AvisController
       $note = $row->getNote();
       $star = str_repeat('&#x2605;', $note);
       include 'src/views/avisCard.php'; // Afficher la vue
-
+    }}else {
+      echo "Aucun résultat";
     }
   }
 
@@ -35,8 +36,8 @@ class AvisController
 
     // Obtenir les détails de les avis
     $avis = new AvisManager($this->db);
-    $avis = $avis->affichageAvis(1);
-
+    $avis = $avis->avisAValider();
+    if(!empty($avis)){
     foreach ($avis as $row) {
       $titre = $row->getTitre();
       $comment = $row->getCommentaire();
@@ -44,8 +45,10 @@ class AvisController
       $visiteur = $row->getInfosVisiteur();
       $note = $row->getNote();
       $star = str_repeat('&#x2605;', $note);
-      include 'src/views/avisCardAdmin.php'; // Afficher la vue
-
+      include 'src/views/administration/avisCardAdmin.php'; // Afficher la vue
+    } 
+    }else {
+      echo "Aucun résultat";
     }
   }
 

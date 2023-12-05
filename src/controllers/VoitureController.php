@@ -27,6 +27,22 @@ class VoitureController
     }
   }
 
+    public function affichageAll()
+  {
+
+    // Obtenir les détails de les prestations
+    $voiture = new VoitureManager($this->db);
+    $voitures = $voiture->affichageVoituresAll();
+    foreach ($voitures as $row) {
+      $id = $row->getId();
+      $titre = $row->getTitre();
+      $description = $row->getPetiteDescription();
+      $img = 'public/assets/img/' . $row->getImage();
+      $prix = number_format($row->getPrix(), 0, ',', ' ');
+      include 'src/views/voitureCard.php'; // Afficher la vue voiture
+    }
+  }
+
   public function voitureInfos($id)
   {
 

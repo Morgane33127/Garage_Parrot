@@ -1,5 +1,3 @@
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 <?php
 require_once 'src/views/header.php';
 include_once 'config/autoload.php';

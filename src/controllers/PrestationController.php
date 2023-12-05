@@ -59,7 +59,7 @@ class PrestationController
       $nom = $row->getNom();
       $largeDescription = $row->getLargeDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
-      include 'src/views/prestationsListAdmin.php'; // Afficher la vue de connexion
+      include 'src/views/administration/prestationsListAdmin.php'; // Afficher la vue de connexion
 
       $i++;
     }

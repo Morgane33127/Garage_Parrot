@@ -1,6 +1,6 @@
 <?php
 
-class UserLogin
+class UserManager
 {
 
   private PDO $pdo;
@@ -11,6 +11,7 @@ class UserLogin
   }
 
 
+  /*
   public function connect(string $mdp, string $login): User
   {
 
@@ -38,6 +39,8 @@ class UserLogin
     }
   }
 
+  */
+
   public function role(string $id): User
   {
 
@@ -56,4 +59,50 @@ class UserLogin
       echo $e->getMessage();
     }
   }
+
+
+  public function affichageInfos(): array
+  {
+
+    require_once 'User.php';
+    try {
+      $user = $this->pdo->query('SELECT * FROM utilisateurs');
+      $user->setFetchMode(PDO::FETCH_CLASS, 'User');
+      if($personne  = $user->fetchAll(PDO :: FETCH_ASSOC)){
+        foreach ($personne as $value){
+          $personneAAfficher = new User ($value['id_u'], $value['prenom_u'], $value['nom_u'], $value['role_u'], $value['login_u'], $value['mdp_u']);
+          $personneTab[]=$personneAAfficher;
+        }
+        return($personneTab);
+      } else {
+        throw new Exception('Affichage impossible');
+      }
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function newUser($prenom, $nom, $role, $login, $mdp)
+  {
+    require_once 'User.php';
+    try {
+      $insert = $this->pdo->prepare("INSERT INTO utilisateurs (id_u, prenom_u, nom_u, role_u, login_u, mdp_u) VALUES (?,?,?,?,?,?)");
+      $insert->execute(['123e4567-e89b-12d3-a456-426655440000', $prenom, $nom, $role, $login, $mdp]);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+
+  public function suppUser($id)
+  {
+    require_once 'User.php';
+    try {
+      $supp = $this->pdo->prepare("DELETE FROM utilisateurs WHERE id_u=?");
+      $supp->execute([$id]);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
 }

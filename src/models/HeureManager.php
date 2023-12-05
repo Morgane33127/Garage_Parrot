@@ -27,4 +27,19 @@ class HeureManager
       echo $e->getMessage();
     }
   }
+
+  public function changeHoraires($array)
+  {
+
+    require_once 'Heure.php';
+    try {
+      for ($i=0; $i<count($array); $i += 4){
+        $modif = $this->pdo->prepare("UPDATE heures SET jour=?, hr_debut=?, hr_fin=? WHERE id_h=?");
+        $modif->execute([$array[$i+1], $array[$i+2], $array[$i+3], $array[$i]]);
+      }
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
 }

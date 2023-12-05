@@ -10,6 +10,22 @@ class VoitureManager
     $this->pdo = $pdo;
   }
 
+  public function newVoiture($object)
+  {
+
+    require_once 'VoitureInfos.php';
+    try {
+      $insert = $this->pdo->prepare("INSERT INTO voitures (titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)  VALUES (?,?,?,?,?,?,?,?,?,?)");
+      $insert->execute([$object->getTitre(), $object->getMarque(), $object->getModele(), $object->getPetiteDescription(), $object->getLargeDescription(), 
+      $object->getPrix(),$object->getImage(),$object->getAnnee(),$object->getKilometre(), $object->getStatut()]);
+      $id_i = $this->pdo->lastInsertId();
+      $insertInfos = $this->pdo->prepare("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale)  VALUES (?,?,?,?,?,?,?)");
+      $insertInfos->execute([$id_i, $object->getType(), $object->getCouleur(), $object->getNbPortes(), $object->getCarburant(), $object->getNbPlaces(), 
+      $object->getPuissance()]);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
 
   public function affichageInfos(int $v_id): VoitureInfos
   {
@@ -41,6 +57,26 @@ class VoitureManager
     require_once 'Voiture.php';
     try {
       $infos = $this->pdo->query("SELECT * FROM voitures LIMIT $limit");
+      $infos->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+      $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
+      $voituresTab=array();
+      foreach ($voitures as $value){
+        $voituresAAfficher = new Voiture ($value['id_v'], $value['titre_v'], $value['petite_description_v'], $value['large_description_v'], $value['marque'], 
+        $value['modele'], $value['prix'], $value['img'], $value['annee'], $value['kilometre'], $value['statut']);
+        $voituresTab[]=$voituresAAfficher;
+      }
+      return($voituresTab);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function affichageVoituresAll(): array
+  {
+
+    require_once 'Voiture.php';
+    try {
+      $infos = $this->pdo->query("SELECT * FROM voitures");
       $infos->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
       $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
       $voituresTab=array();

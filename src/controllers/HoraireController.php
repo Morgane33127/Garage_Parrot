@@ -34,13 +34,14 @@ class HoraireController
     $horaire = new HeureManager($this->db);
     $horaire = $horaire->affichageHoraires();
 
+    $k=1;
     foreach ($horaire as $row) {
-      $jour = $row->getHeureLbl();
+      $jour = $row->getJourHeure();
       $hr_debut = $row->getHeureDebut();
       $hr_fin = $row->getHeureFin();
-      include 'src/views/horairesViewAdmin.php'; // Afficher la vue de connexion
+      include 'src/views/administration/horairesViewAdmin.php'; // Afficher la vue de connexion
 
-    }
+   $k++; }
   }
 
 }

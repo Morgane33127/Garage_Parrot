@@ -28,4 +28,32 @@ class PrestationManager
       echo $e->getMessage();
     }
   }
+
+  public function supprimerPrestation($id)
+  {
+
+    require_once 'Prestation.php';
+    try {
+        $supp = $this->pdo->prepare("DELETE FROM prestations WHERE id_p=?");
+        $supp->execute([$id]);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function ajouterPrestation($object)
+  {
+    print_r($object);
+    require_once 'Prestation.php';
+    try {
+        $add = $this->pdo->prepare("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) VALUES (?,?,?)");
+        $add->execute([$object->getNom(), $object->getPetiteDescription(), $object->getLargeDescription()]);
+      
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+
+
 }
