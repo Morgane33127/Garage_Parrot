@@ -180,4 +180,17 @@ class VoitureManager
       echo $e->getMessage();
     }
   }
+
+  public function supprimerVoiture($id)
+  {
+  require_once 'Voiture.php';
+  try {
+      $supp = $this->pdo->prepare("DELETE FROM voitures WHERE id_v=?");
+      $supp->execute([$id]);
+      $suppinfos = $this->pdo->prepare("DELETE FROM infos_voiture WHERE id_i=?");
+      $suppinfos->execute([$id]);
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
+}
 }

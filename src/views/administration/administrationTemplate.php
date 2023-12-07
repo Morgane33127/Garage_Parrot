@@ -1,29 +1,27 @@
 <div class="container-fluid" id="div" style="margin-top:150px;">
-
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="uti-tab" data-bs-toggle="tab" data-bs-target="#uti-pane" type="button" role="tab" aria-controls="uti-tab-pane" aria-selected="true">Utilisateurs</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="voitures-tab" data-bs-toggle="tab" data-bs-target="#voitures-tab-pane" type="button" role="tab" aria-controls="voitures-tab-pane" aria-selected="false">Voitures à la vente</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="horaires-tab" data-bs-toggle="tab" data-bs-target="#horaires-tab-pane" type="button" role="tab" aria-controls="horaires-tab-pane" aria-selected="false">Horaires</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="prestations-tab" data-bs-toggle="tab" data-bs-target="#prestations-tab-pane" type="button" role="tab" aria-controls="prestations-tab-pane" aria-selected="false">Prestations</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="avis-tab" data-bs-toggle="tab" data-bs-target="#avis-tab-pane" type="button" role="tab" aria-controls="avis-tab-pane" aria-selected="false">Avis à vérifier</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="demandes-tab" data-bs-toggle="tab" data-bs-target="#demandes-tab-pane" type="button" role="tab" aria-controls="demandes-tab-pane" aria-selected="false">Nouvelles demandes</button>
-    </li>
-  </ul>
-
-  <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="uti-tab-pane" role="tabpanel" aria-labelledby="uti-tab" tabindex="0">
-      <h3><?php echo $titre1; ?></h3>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users-tab-pane" type="button" role="tab" aria-controls="users-tab-pane" aria-selected="true">Utilisateurs</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="cars-tab" data-bs-toggle="tab" data-bs-target="#cars-tab-pane" type="button" role="tab" aria-controls="cars-tab-pane" aria-selected="false">Voitures</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="hours-tab" data-bs-toggle="tab" data-bs-target="#hours-tab-pane" type="button" role="tab" aria-controls="hours-tab-pane" aria-selected="false">Horaires</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="prestations-tab" data-bs-toggle="tab" data-bs-target="#prestations-tab-pane" type="button" role="tab" aria-controls="prestations-tab-pane" aria-selected="false">Prestations</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="avis-tab" data-bs-toggle="tab" data-bs-target="#avis-tab-pane" type="button" role="tab" aria-controls="avis-tab-pane" aria-selected="false">Avis</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demands-tab" data-bs-toggle="tab" data-bs-target="#demands-tab-pane" type="button" role="tab" aria-controls="demands-tab-pane" aria-selected="false">Demandes</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="users-tab-pane" role="tabpanel" aria-labelledby="users-tab" tabindex="0">
+  <h3><?php echo $titre1; ?></h3>
       <div class="row">
         <div class="col-8">
           <form method="POST" action="index.php?page=demande">
@@ -68,18 +66,16 @@
           </form>
         </div>
       </div>
-    </div>
   </div>
-
-  <div class="tab-pane fade" id="voitures-tab-pane" role="tabpanel" aria-labelledby="voitures-tab" tabindex="0">
+  <div class="tab-pane fade" id="cars-tab-pane" role="tabpanel" aria-labelledby="cars-tab" tabindex="0">
   <h3><?php echo $titre2; ?></h3>
   <div class="row">
-      <div class="col-8">
+      <div class="col-sm-8">
         <form method="POST" action="index.php?page=demande">
           <?php echo $content2; ?>
         </form>
       </div>
-      <div class="col-4">
+      <div class="col-sm-4">
         <form method="POST" action="index.php?page=demande">
           <h4>Ajouter une voiture</h4>
           <div class="row align-items-start my-2">
@@ -147,9 +143,8 @@
       </div>
     </div>
   </div>
-
-  <div class="tab-pane fade" id="horaires-tab-pane" role="tabpanel" aria-labelledby="horaires-tab" tabindex="0">
-    <h3><?php echo $titre3; ?></h3>
+  <div class="tab-pane fade" id="hours-tab-pane" role="tabpanel" aria-labelledby="hours-tab" tabindex="0">
+  <h3><?php echo $titre3; ?></h3>
     <form method="POST" action="index.php?page=demande">
       <div>
         <?php echo $content3; ?>
@@ -179,14 +174,12 @@
           <div class="my-2 text-end">
             <button type="submit" class="button" name="adPrestation">Ajouter</button>
           </div>
-
         </div>
       </div>
     </form>
   </div>
-
   <div class="tab-pane fade" id="avis-tab-pane" role="tabpanel" aria-labelledby="avis-tab" tabindex="0">
-    <h3><?php echo $titre5; ?></h3>
+  <h3><?php echo $titre5; ?></h3>
     <div class="row">
       <div class="col-8">
         <form method="POST" action="index.php?page=demande">
@@ -226,8 +219,8 @@
       </div>
     </div>
   </div>
-
-  <div class="tab-pane fade" id="demandes-tab-pane" role="tabpanel" aria-labelledby="demandes-tab" tabindex="0">
+</div>
+<div class="tab-pane fade" id="demands-tab-pane" role="tabpanel" aria-labelledby="demands-tab" tabindex="0">
     <h3><?php echo $titre6; ?></h3>
     <form method="POST" action="index.php?page=demande">
       <div>
@@ -235,5 +228,4 @@
       </div>
     </form>
   </div>
-
 </div>

@@ -9,7 +9,7 @@
 function error(string $error)
 {
   $message = date("d-m-Y H:i:s") . " : " . $error . "\n";
-  file_put_contents('error.txt', $message, FILE_APPEND);
+  file_put_contents('/config/error.txt', $message, FILE_APPEND);
 }
 
 function verifMail($email)
@@ -26,7 +26,7 @@ function verifMail($email)
 
 function verifData($donnees)
 {
-  if (!empty($donnes)) {
+  if (!empty($donnees)) {
     $donnees = trim($donnees);
     $donnees = stripslashes($donnees);
     $donnees = htmlspecialchars($donnees, ENT_SUBSTITUTE);

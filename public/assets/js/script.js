@@ -68,7 +68,7 @@ function affichageKm(){
 function changeKm(value) {
   let kilometer = value;
 
-  fetch('src/affichageVoitures.php', {
+  fetch('src/views/affichageVoitures.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

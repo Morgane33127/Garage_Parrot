@@ -18,13 +18,7 @@
     <div class="row align-items-start">
       <div class="col-sm-4">
         <p>
-          Lundi : 08h00 - 18h00<br>
-          Mardi : 08h00 - 18h00<br>
-          Mercredi : 08h00 - 18h00<br>
-          Jeudi : 08h00 - 18h00<br>
-          Vendredi : 08h00 - 18h00<br>
-          Samedi : 08h00 - 18h00<br>
-          Dimanché : Fermé
+<?php echo $horaires; ?>
         </p>
       </div>
       <div class="col-sm-8">

@@ -39,7 +39,7 @@ class VoitureController
       $description = $row->getPetiteDescription();
       $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
-      include 'src/views/voitureCard.php'; // Afficher la vue voiture
+      include 'src/views/administration/voitureCardAdmin.php'; // Afficher la vue voiture
     }
   }
 
@@ -49,7 +49,6 @@ class VoitureController
     // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
-    echo ($voiture->getImage());
       include 'src/views/voitureInfos.php'; // Afficher la vue voitureInfos
     
   }

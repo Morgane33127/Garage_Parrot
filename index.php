@@ -1,7 +1,6 @@
 <?php
 require_once 'src/views/header.php';
 require_once 'src/views/menu.php';
-require_once 'config/autoload.php';
 
 /*Traitement des routes avec un contrôleur par défaut (UserController)
 $userController = new UserController();
@@ -36,7 +35,7 @@ if (!empty($_GET['page'])) {
       require('src/avis.php');
       break;
     case 'contact':
-      require('src/views/contact.php');
+      require('src/contact.php');
       break;
     case 'accueil':
       require('src/accueil.php');

@@ -6,7 +6,6 @@
       <div>
         <button type="submit" name="accept<?php echo $row->getId(); ?>"><i class="bi-check-circle-fill" style="color:green;"></i> </button>
         <button type="submit" name="refuse<?php echo $row->getId(); ?>"> <i class="bi-x-circle-fill" style="color:red;"></i> </button>
-
       </div>
     </div>
     <p style="color: #EDDB35;"><?php echo $star; ?></p>

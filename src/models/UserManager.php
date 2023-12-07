@@ -82,12 +82,13 @@ class UserManager
     }
   }
 
-  public function newUser($prenom, $nom, $role, $login, $mdp)
+  public function newUser($uuid, $prenom, $nom, $role, $login, $mdp)
   {
     require_once 'User.php';
     try {
+
       $insert = $this->pdo->prepare("INSERT INTO utilisateurs (id_u, prenom_u, nom_u, role_u, login_u, mdp_u) VALUES (?,?,?,?,?,?)");
-      $insert->execute(['123e4567-e89b-12d3-a456-426655440000', $prenom, $nom, $role, $login, $mdp]);
+      $insert->execute([$uuid, $prenom, $nom, $role, $login, $mdp]);
     } catch (Exception $e) {
       echo $e->getMessage();
     }

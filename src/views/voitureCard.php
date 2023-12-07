@@ -1,5 +1,5 @@
-<div class="voiture-card">
-  <div>
+<div class="row voiture-card">
+  <div class="col-sm-9">
     <h5><?php echo $titre; ?></h5>
     <p><?php echo $description; ?></p>
     <button class="button">
@@ -7,7 +7,7 @@
     </button>
     <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="link">En savoir plus >></a>
   </div>
-  <div>
-    <img src="<?php echo $img; ?>" alt="Logo Garge V. Parrot" style="height:150px;">
+  <div class="col-sm-3">
+    <img src="<?php echo $img; ?>" alt="<?php echo $img; ?>" style="height:150px;" width="230px">
   </div>
 </div>
