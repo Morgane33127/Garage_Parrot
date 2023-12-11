@@ -41,13 +41,28 @@ class PrestationManager
     }
   }
 
-  public function ajouterPrestation($object)
+  public function ajouterPrestation($donnees)
   {
-    print_r($object);
+    foreach ($donnees as $donnee) {
+      verifData($donnee);
+    }
     require_once 'Prestation.php';
     try {
+      $object = new Prestation(0, $donnees[0], $donnees[1], $donnees[2]);
         $add = $this->pdo->prepare("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) VALUES (?,?,?)");
         $add->execute([$object->getNom(), $object->getPetiteDescription(), $object->getLargeDescription()]);
+      
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function modifierPrestation($id, $petite_description_p, $large_description_p)
+  {
+    require_once 'Prestation.php';
+    try {
+        $upd = $this->pdo->prepare("UPDATE prestations SET petite_description_p = ?,  large_description_p = ? WHERE id_p = ?");
+        $upd->execute([$petite_description_p, $large_description_p, $id]);
       
     } catch (Exception $e) {
       echo $e->getMessage();

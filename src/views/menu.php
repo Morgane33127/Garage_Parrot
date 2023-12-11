@@ -1,16 +1,22 @@
 <?php
 
 require_once 'header.php';
+session_start();
+if($_SESSION['loggedin']=true){
+  $bonjour = "Bonjour " . $_SESSION['infos'];
+} else {
+  $bonjour = '';
+}
 
 ?>
 
 <nav class="navbar navbar-expand-lg navigation">
   <div class="row">
     <div class="col-sm-6">
-      <img src="public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px">
+      <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="150px">
     </div>
     <div class="col-sm-6">
-      <h6>Bonjour</h6>
+      <h6><?php echo $bonjour; ?></h6>
     </div>
   </div>
   <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

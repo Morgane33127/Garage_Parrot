@@ -47,7 +47,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <input type="hidden" name="v_id" value=<?php echo $voiture->getId(); ?>>
+              <input type="hidden" name="v_id" value=<?php echo $voiture->getId()." : ".$voiture->getTitre(); ?>>
               <p><?php echo $voiture->getModele(); ?></p>
               <p><?php echo $voiture->getPetiteDescription(); ?></p>
               <div>

@@ -88,6 +88,10 @@ $grey: #F2F2F2;
       width : 100%;
     }
 
+    .button-action {
+      border-style:none;
+    }
+
 
     .link {
       text-decoration: none;
@@ -227,29 +231,4 @@ $grey: #F2F2F2;
     color: $font-color;
     padding: 10px;
     margin:10px 0px 0px 0px;
-  }
-
-  /*Page administr style */
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px 10px;
-    grid-auto-rows: minmax(100px, auto);
-    margin: 150px 50px 0px 50px;
-  }
-
-  .one {
-    grid-column: 1 / 3;
-    grid-row: 1;
-
-  }
-
-  .two {
-    grid-column: 1 / 3;
-    grid-row: 2;
-  }
-
-  .three {
-    grid-column: 3/4;
-    grid-row: 1/3;
   }

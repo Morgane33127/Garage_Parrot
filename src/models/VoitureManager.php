@@ -10,11 +10,14 @@ class VoitureManager
     $this->pdo = $pdo;
   }
 
-  public function newVoiture($object)
+  public function newVoiture($donnees)
   {
-
+    foreach ($donnees as $donnee) {
+      verifData($donnee);
+    }
     require_once 'VoitureInfos.php';
     try {
+      $object = new VoitureInfos (0, $donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], $donnees[5], $donnees[6], $donnees[7], $donnees[8], $donnees[9], 0, $donnees[10], $donnees[11], $donnees[12], $donnees[13], $donnees[14], $donnees[15]);
       $insert = $this->pdo->prepare("INSERT INTO voitures (titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)  VALUES (?,?,?,?,?,?,?,?,?,?)");
       $insert->execute([$object->getTitre(), $object->getMarque(), $object->getModele(), $object->getPetiteDescription(), $object->getLargeDescription(), 
       $object->getPrix(),$object->getImage(),$object->getAnnee(),$object->getKilometre(), $object->getStatut()]);
@@ -185,10 +188,15 @@ class VoitureManager
   {
   require_once 'Voiture.php';
   try {
+      $img = $this->pdo->query("SELECT img FROM voitures WHERE id_v = $id")->fetch(PDO::FETCH_NUM);
+      $img = $img[0];
       $supp = $this->pdo->prepare("DELETE FROM voitures WHERE id_v=?");
       $supp->execute([$id]);
       $suppinfos = $this->pdo->prepare("DELETE FROM infos_voiture WHERE id_i=?");
       $suppinfos->execute([$id]);
+      if($img !== "gvplogo.svg"){
+      unlink("./public/assets/img/$img");
+      }
   } catch (Exception $e) {
     echo $e->getMessage();
   }

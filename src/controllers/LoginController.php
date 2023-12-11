@@ -3,6 +3,7 @@
 class LoginController
 {
 
+
   private $db;
 
   public function __construct()
@@ -18,16 +19,21 @@ class LoginController
       $inputMail = $_POST['email'];
       $inputPassword = $_POST['password'];
 
+      require 'config/functions.php';
+
+      verifData($inputPassword);
+      verifMail($inputMail);
       // Obtenir les détails de l'utilisateur à partir du modèle
       $user = new Auth($this->db);
 
       $stmt = $user->login($inputPassword, $inputMail);
 
       if (!empty($stmt)) {
-        session_start();
         $id_u = $stmt->getId();
         $_SESSION['loggedin'] = true;
         $_SESSION['id'] = $id_u;
+        $_SESSION['infos'] = $stmt->getInfos();
+        $_SESSION['role'] = $stmt->getRole();
         header("Location:index.php?page=administr&&user_id=$id_u");
       } else {
         echo "Identifiants invalides.";

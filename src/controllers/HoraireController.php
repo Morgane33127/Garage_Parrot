@@ -44,4 +44,10 @@ class HoraireController
    $k++; }
   }
 
+  public function changeHoraires($modifications)
+  {
+    $connection = new HeureManager($this->db);
+    $heure = $connection->changeHoraires($modifications);
+  }
+
 }

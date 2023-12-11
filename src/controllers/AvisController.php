@@ -52,4 +52,11 @@ class AvisController
     }
   }
 
+  public function ajouterAvis($donnees)
+  {
+    $newavis = $donnees;
+    $connection = new AvisManager($this->db);
+    $avis = $connection->newAvis($newavis);
+  }
+
 }

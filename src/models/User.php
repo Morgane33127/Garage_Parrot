@@ -43,4 +43,12 @@ class User
   {
     return $this->role_u;
   }
+  public function getPrenom(): string
+  {
+    return $this->prenom_u;
+  }
+  public function getNom(): string
+  {
+    return $this->nom_u;
+  }
 }

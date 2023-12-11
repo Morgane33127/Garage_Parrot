@@ -59,10 +59,14 @@ class AvisManager
     }
   }
 
-  public function newAvis($object)
+  public function newAvis($donnees)
   {
+    foreach ($donnees as $donnee) {
+      verifData($donnee);
+    }
     require_once 'Avis.php';
     try {
+      $object = new Avis(0, $donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], 'En attente', '');
       $insert = $this->pdo->prepare("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) VALUES (?,?,?,?,?,?)");
       $insert->execute([$object->getTitre(), $object->getCommentaire(), $object->getVisiteurNom(), $object->getVisiteurPrenom(), 
       $object->getNote(), $object->getStatut()]);

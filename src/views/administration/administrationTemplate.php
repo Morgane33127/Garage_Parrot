@@ -57,7 +57,7 @@
               <input type="email" class="form-control" name="email" placeholder="Email*" required>
             </div>
             <div class="py-2">
-              <input type="password" class="form-control" name="mdp" placeholder="Mot de passe*" required>
+              <input type="password" class="form-control" name="mdp" placeholder="Mot de passe*" minlength="8" required>
             </div>
             <div>
               <button type="submit" class="button" name="ajouterUser">Ajouter</button>
@@ -76,7 +76,7 @@
         </form>
       </div>
       <div class="col-sm-4">
-        <form method="POST" action="index.php?page=demande">
+        <form method="POST" action="index.php?page=demande" enctype="multipart/form-data">
           <h4>Ajouter une voiture</h4>
           <div class="row align-items-start my-2">
             <div class="col-sm-4">
@@ -119,13 +119,13 @@
           </div>
           <div class="row align-items-start my-2">
             <div class="col-sm-4">
-              <input type="number" class="form-control" name="nb_portes" placeholder="Nombre de portes">
+              <input type="number" class="form-control" name="nb_portes" minlength="1" placeholder="Nombre de portes">
             </div>
             <div class="col-sm-4">
-              <input type="number" class="form-control" name="nb_places" placeholder="Nombre de places">
+              <input type="number" class="form-control" name="nb_places" minlength="1" placeholder="Nombre de places">
             </div>
             <div class="col-sm-4">
-              <input type="number" class="form-control" name="cv" placeholder="CV">
+              <input type="number" class="form-control" name="cv" minlength="1" placeholder="CV">
             </div>
           </div>
           <div class="my-2">
@@ -134,10 +134,10 @@
           <div class="my-2">
             <textarea class="form-control" name="large_description" placeholder="Large description"></textarea>
           </div>
-          <!--<div class="my-2">
-              <label for="formFile" class="form-label">Sélectionner une image</label>
-              <input class="form-control" type="file" id="formFile" name="img">
-            </div>-->
+          <div class="my-2">
+              <label for="fileToUpload" class="form-label">Sélectionner une image</label>
+              <input class="form-control" type="file" id="fileToUpload" name="img">
+            </div>
           <button type="submit" class="button" name="ajouterVoiture">Ajouter une voiture</button>
         </form>
       </div>
@@ -146,22 +146,26 @@
   <div class="tab-pane fade" id="hours-tab-pane" role="tabpanel" aria-labelledby="hours-tab" tabindex="0">
   <h3><?php echo $titre3; ?></h3>
     <form method="POST" action="index.php?page=demande">
-      <div>
+      <div class="col-2">
         <?php echo $content3; ?>
       </div>
+      <div class="m-2">
       <button type="submit" class="button" name="modifierHoraires">Modifier horaires</button>
+</div>
     </form>
   </div>
 
   <div class="tab-pane fade" id="prestations-tab-pane" role="tabpanel" aria-labelledby="prestations-tab" tabindex="0">
     <h3><?php echo $titre4; ?></h3>
-    <form method="POST" action="index.php?page=demande">
       <div class="row">
         <div class="col-8">
+        <form method="POST" action="index.php?page=demande">
           <?php echo $content4; ?>
+          </form>
         </div>
         <div class="col-4">
           <h4>Ajouter une prestation</h4>
+            <form method="POST" action="index.php?page=demande">
           <div class="my-2">
             <input type="text" class="form-control" name="titre_p" placeholder="Titre*" required>
           </div>
@@ -174,9 +178,9 @@
           <div class="my-2 text-end">
             <button type="submit" class="button" name="adPrestation">Ajouter</button>
           </div>
+          </div>
+          </form>
         </div>
-      </div>
-    </form>
   </div>
   <div class="tab-pane fade" id="avis-tab-pane" role="tabpanel" aria-labelledby="avis-tab" tabindex="0">
   <h3><?php echo $titre5; ?></h3>

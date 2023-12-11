@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row align-items-start">
       <div class="col-sm-2">
-        <img src="public/assets/img/gvplogo.jpg" alt="Logo Garge V. Parrot" width="150px;">
+        <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="150px;">
       </div>
       <div class="col-sm-10">
         <p>Bienvenue chez Garage V. Parrot, votre partenaire automobile de confiance.

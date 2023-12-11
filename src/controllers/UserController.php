@@ -27,4 +27,11 @@ class UserController
     }
   }
 
+  public function ajouterUser($donnees)
+  {
+    $newuser = $donnees;
+    $connection = new UserManager($this->db);
+    $user = $connection->newUser($newuser);
+  }
+
 }

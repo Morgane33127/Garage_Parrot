@@ -82,13 +82,16 @@ class UserManager
     }
   }
 
-  public function newUser($uuid, $prenom, $nom, $role, $login, $mdp)
+  public function newUser($donnees)
   {
+    foreach ($donnees as $donnee) {
+      verifData($donnee);
+    }
     require_once 'User.php';
     try {
-
+      $object = new User($donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], $donnees[5]);
       $insert = $this->pdo->prepare("INSERT INTO utilisateurs (id_u, prenom_u, nom_u, role_u, login_u, mdp_u) VALUES (?,?,?,?,?,?)");
-      $insert->execute([$uuid, $prenom, $nom, $role, $login, $mdp]);
+      $insert->execute([$object->getId(), $object->getPrenom(), $object->getNom(), $object->getRole(), $object->getMail(), $object->getPassword()]);
     } catch (Exception $e) {
       echo $e->getMessage();
     }

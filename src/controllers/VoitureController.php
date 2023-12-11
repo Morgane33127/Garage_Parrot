@@ -53,6 +53,16 @@ class VoitureController
     
   }
 
+  public function voitureInfosAdmin($id)
+  {
+
+    // Obtenir les détails de les prestations
+    $voiture = new VoitureManager($this->db);
+    $voiture = $voiture->affichageInfos($id);
+      include 'src/views/administration/voitureInfosAdmin.php'; // Afficher la vue voitureInfos
+    
+  }
+
   public function filtrerPrice($prix)
   {
         $page=1;
@@ -147,6 +157,13 @@ class VoitureController
       $response = "Aucun résultat.";
     }
     return $response;
+  }
+
+  public function ajouterVoiture($donnees)
+  {
+    $newVoiture = $donnees;
+    $connection = new VoitureManager($this->db);
+    $voiture = $connection->newVoiture($newVoiture);
   }
 
 }

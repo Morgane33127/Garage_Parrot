@@ -4,10 +4,13 @@
 <?php
 require 'vendor/autoload.php';
 use Ramsey\Uuid\Uuid;
-
 require './config/functions.php';
 require './config/Database.php';
 require 'config/autoload.php';
+include_once './src/controllers/UserController.php';
+include_once './src/controllers/VoitureController.php';
+include_once './src/controllers/HoraireController.php';
+include_once './src/controllers/PrestationController.php';
 
 $pdo = new Database();
 $pdo = $pdo->getConnection();
@@ -62,17 +65,9 @@ if (isset($_POST['ajouteravis'])) {
   $note = $_POST['note'];
 $titre_a = $_POST['titre'];
 
-  $donnees = array($nom_a, $prenom_a, $titre_a, $commentaire_a, $note);
-
-  foreach ($donnees as $donnee) {
-    verifData($donnee);
-  }
-
-  // Ajout BDD
-
-  $avis = new Avis(0, $titre_a, $commentaire_a, $nom_a, $prenom_a, $note, 'En attente', '');
-  $connection = new AvisManager($pdo);
-  $avis = $connection->newAvis($avis);
+  $donnees = array(0=> $titre_a, 1=>$commentaire_a, 2=>$nom_a, 3=>$prenom_a, 4=>$note);
+  $connection = new AvisController();
+  $avis = $connection->ajouterAvis($donnees);
   header('Location: index.php?page=avis');
 }
 
@@ -85,22 +80,32 @@ if (isset($_POST['ajouterUser'])) {
   $login = $_POST['email'];
   $mdp = $_POST['mdp'];
   $mdp = password_hash($mdp, PASSWORD_BCRYPT);
-  $connection = new UserManager($pdo);
-  $user = $connection->newUser($uuid, $prenom, $nom, $role, $login, $mdp);
+
+  $donnees = array(0=> $uuid, 1=>$prenom, 2=>$nom, 3=>$role, 4=>$login, 5=>$mdp);
+  $connection = new UserController();
+  $user = $connection->ajouterUser($donnees);
+
   header('Location: index.php?page=administr');
 }
 
 //Ajouter une voiture
 if (isset($_POST['ajouterVoiture'])) {
 
+  if(!empty($_FILES['img']['name'])){
+  uploadFile('img');
+  $img = $_FILES['img']['name'];
+  if (file_exists("../public/assets/img/$img" === true)){
+    $img = $_FILES['img']['name'];
+  }
+} else {
+  $img = 'gvplogo.svg';
+}
   $titre_v = $_POST['titre_v'];
   $petite_description_v = $_POST['petite_description'];
   $large_description_v = $_POST['large_description'];
   $marque = $_POST['marque_v'];
   $modele = $_POST['modele_v'];
   $prix = $_POST['prix_v'];
-  //$img= $_POST['img'];
-  $img = 'gvplogo.JPG';
   $annee = $_POST['annee_v'];
   $kilometre = $_POST['km_v'];
   $statut = 'Dispo';
@@ -111,9 +116,12 @@ if (isset($_POST['ajouterVoiture'])) {
   $nb_places = $_POST['nb_places'];
   $puissance_fiscale = $_POST['cv'];
 
-  $voitureInfos = new VoitureInfos(0, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut, 0, $type, $carburant, $couleur, $nb_portes, $nb_places, $puissance_fiscale);
-  $connection = new VoitureManager($pdo);
-  $voiture = $connection->newVoiture($voitureInfos);
+  $donnees = array(0=>$titre_v, 1=>$petite_description_v, 2=>$large_description_v, 3=>$marque, 4=>$modele, 5=>$prix, 6=>$img, 7=>$annee, 
+  8=>$kilometre, 9=>$statut, 10=>$type, 11=>$carburant, 12=>$couleur, 13=>$nb_portes, 14=>$nb_places, 15=>$puissance_fiscale);
+
+$connection = new VoitureController();
+  $voiture = $connection->ajouterVoiture($donnees);
+
   header('Location: index.php?page=administr');
 }
 
@@ -125,8 +133,7 @@ if (isset($_POST['modifierHoraires'])) {
       $modifications[] = $value;
     }
   }
-
-  $connection = new HeureManager($pdo);
+  $connection = new HoraireController();
   $heure = $connection->changeHoraires($modifications);
 
   header('Location: index.php?page=administr');
@@ -140,9 +147,10 @@ if (isset($_POST['adPrestation'])) {
   $petite_description_p = $_POST['petite_description_p'];
   $large_description_p = $_POST['large_description_p'];
 
-  $prestation = new Prestation(0, $titre_p, $petite_description_p, $large_description_p);
-  $connection = new PrestationManager($pdo);
-  $prestation = $connection->ajouterPrestation($prestation);
+  $donnees = array(0=> $titre_p, 1=>$petite_description_p, 2=>$large_description_p);
+
+  $connection = new PrestationController();
+  $prestation = $connection->ajouterPrestation($donnees);
 
   header('Location: index.php?page=administr');
 }
@@ -156,10 +164,9 @@ if (isset($_POST['addAvis'])) {
   $commentaire_a = $_POST['commentaire_a'];
   $note = intval($_POST['note_a']);
 
-  $avis = new Avis(0, $titre_a, $commentaire_a, $nom_a, $prenom_a, $note, 'En attente', '');
-  $connection = new AvisManager($pdo);
-  $avis = $connection->newAvis($avis);
-
+  $donnees = array(0=> $titre_a, 1=>$commentaire_a, 2=>$nom_a, 3=>$prenom_a, 4=>$note);
+  $connection = new AvisController();
+  $avis = $connection->ajouterAvis($donnees);
   header('Location: index.php?page=administr');
 }
 
@@ -189,6 +196,20 @@ foreach ($_POST as $cle => $value) {
     $id = substr($cle, 9);
     $connection = new VoitureManager($pdo);
     $delete = $connection->supprimerVoiture($id);
+    header('Location: index.php?page=administr');
+  }
+  if (str_contains($cle, 'supp_p_')) {
+    $id = substr($cle, 7);
+    $connection = new PrestationManager($pdo);
+    $delete = $connection->supprimerPrestation($id);
+    header('Location: index.php?page=administr');
+  }
+  if (str_contains($cle, 'update_p_')) {
+    $id = substr($cle, 9);
+    $petite_description_p = $_POST['presta_petite_description_'.$id];
+    $large_description_p = $_POST['presta_large_description_'.$id];
+    $connection = new PrestationManager($pdo);
+    $updt = $connection->modifierPrestation($id, $petite_description_p, $large_description_p);
     header('Location: index.php?page=administr');
   }
 }

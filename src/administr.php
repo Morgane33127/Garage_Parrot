@@ -9,6 +9,8 @@ include_once './src/controllers/VoitureController.php';
 include_once './src/controllers/HoraireController.php';
 include_once './src/controllers/UserController.php';
 
+
+if($_SESSION['role']==='ADM'){
 ob_start(); 
 $userController = new UserController();
 $userController->affichageListUser();
@@ -36,4 +38,24 @@ $titre5='Avis';
 $content5 = ob_get_clean();
 
 require "views/administration/administrationTemplate.php";
-?>
+
+} else if ($_SESSION['role']==='USR') {
+
+
+    ob_start(); 
+    $voitureController = new VoitureController();
+    $voitureController->affichageAll();
+    $titre2='Voitures à la vente';
+    $content2 = ob_get_clean();
+    ob_start(); 
+    ob_start(); 
+    $avisController = new AvisController();
+    $avisController->affichageAdmin();
+    $titre5='Avis';
+    $content5 = ob_get_clean();
+
+    require "views/administration/administrationTemplateSimpleUser.php";
+
+} else {
+    throw new Exception('Permission inconnue');
+}

@@ -58,11 +58,18 @@ class PrestationController
     foreach ($prestation as $row) {
       $nom = $row->getNom();
       $largeDescription = $row->getLargeDescription();
+      $petiteDescription = $row->getPetiteDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
       include 'src/views/administration/prestationsListAdmin.php'; // Afficher la vue de connexion
 
       $i++;
     }
+  }
+
+  public function ajouterPrestation($donnees)
+  {
+    $connection = new PrestationManager($this->db);
+    $prestation = $connection->ajouterPrestation($donnees);
   }
 
 }

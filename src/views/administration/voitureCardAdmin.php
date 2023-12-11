@@ -5,7 +5,7 @@
     <button class="button">
       <p class="titre"><?php echo $prix . "€"; ?></p>
     </button>
-    <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="link">En savoir plus >></a>
+    <a href="index.php?page=vinfoadmin&id=<?php echo $id; ?>" class="link">En savoir plus >></a>
   </div>
   <div class="col-sm-2">
     <img src="<?php echo $img; ?>" alt="<?php echo $img; ?>" style="height:150px;"  width="100%">
