@@ -15,8 +15,9 @@ class Database
       $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       return $this->conn;
     } catch (PDOException $exception) {
+      require 'config/functions.php';
       echo "Erreur de connexion : " . $exception->getMessage();
-      file_put_contents('error.txt', $exception->getMessage() . '\n');
+      error($exception->getMessage());
     }
   }
 }

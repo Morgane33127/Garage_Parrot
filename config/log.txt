@@ -131,3 +131,26 @@ Stack trace:
 02-12-2023 11:36:12 : Failed opening required 'src/model/CarInfos.php' (include_path='.;C:\php\pear')
 02-12-2023 11:40:51 : Failed opening required 'src/model/PrestationManager.php' (include_path='.;C:\php\pear')
 02-12-2023 11:51:31 : Call to a member function affichageVoitures2() on null
+13-12-2023 18:39:13 : Mot de passe incorrect
+13-12-2023 18:39:28 : Mot de passe incorrect
+13-12-2023 18:43:48 : Mot de passe incorrect
+13-12-2023 18:43:54 : Mot de passe incorrect
+13-12-2023 18:44:00 : Mot de passe incorrect
+13-12-2023 18:44:11 : E-mail non reconnu
+13-12-2023 20:18:02 : E-mail invalide
+13-12-2023 20:18:02 : E-mail non reconnu
+13-12-2023 20:20:14 : Page introuvable.
+13-12-2023 20:20:40 : Page introuvable.
+13-12-2023 20:22:53 : Page introuvable.
+13-12-2023 20:23:02 : Page introuvable.
+13-12-2023 20:23:10 : Page introuvable.
+13-12-2023 20:24:55 : Page introuvable.
+13-12-2023 20:25:34 : Mot de passe incorrect
+13-12-2023 20:30:37 : Page introuvable.
+13-12-2023 20:31:02 : Page introuvable.
+13-12-2023 20:32:33 : Page introuvable.
+13-12-2023 20:32:37 : Page introuvable.
+13-12-2023 20:33:59 : Page introuvable.
+13-12-2023 20:34:12 : Page introuvable.
+13-12-2023 21:10:39 : Page introuvable.
+13-12-2023 21:20:28 : E-mail invalide

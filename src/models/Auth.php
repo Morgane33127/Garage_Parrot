@@ -11,13 +11,13 @@ class Auth
   public function login(string $mdp, string $login): User
   {
     require_once 'User.php';
-    try {
+
       $stmt = $this->conn->prepare('SELECT * FROM utilisateurs WHERE login_u= :email');
       $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
       $stmt->bindValue(':email', $login);
-
-      if ($stmt->execute()) {
-        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $stmt->execute();
+      $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      if (count($user) > 0) {
         $newUser = new User ($user[0]['id_u'], $user[0]['prenom_u'], $user[0]['nom_u'], $user[0]['role_u'], $user[0]['login_u'], $user[0]['mdp_u']);
         $id_u = $newUser->getId();
         if (!empty($newUser) && password_verify($mdp, $newUser->getPassword()) == true) {
@@ -27,11 +27,10 @@ class Auth
           $event->execute();
           return ($newUser);
         } else {
-          throw new Exception('Identifiants invalides');
+          throw new Exception('Mot de passe incorrect.');
         }
+      } else {
+        throw new Exception('E-mail non reconnu.');
       }
-    } catch (Exception $e) {
-      echo $e->getMessage();
-    }
   }
 }

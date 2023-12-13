@@ -19,14 +19,35 @@ class LoginController
       $inputMail = $_POST['email'];
       $inputPassword = $_POST['password'];
 
-      require 'config/functions.php';
+      try {
+        verifData($inputPassword);
+      } catch (Exception $exception) {
+        $msg = $exception->getMessage();
+        error($msg);
+        sessionAlert('danger', $msg);
+      header("Location: login.php");
+      }
 
-      verifData($inputPassword);
+      try {
       verifMail($inputMail);
+      } catch (Exception $exception) {
+        $msg = $exception->getMessage();
+        error($msg);
+        sessionAlert('danger', $msg);
+      header("Location: login.php");
+      }
+
       // Obtenir les détails de l'utilisateur à partir du modèle
       $user = new Auth($this->db);
 
-      $stmt = $user->login($inputPassword, $inputMail);
+      try{
+        $stmt = $user->login($inputPassword, $inputMail);
+      } catch (Exception $exception) {
+        $msg = $exception->getMessage();
+        error($msg);
+        sessionAlert('danger', $msg);
+      header("Location: login.php");
+    }
 
       if (!empty($stmt)) {
         $id_u = $stmt->getId();
@@ -35,8 +56,6 @@ class LoginController
         $_SESSION['infos'] = $stmt->getInfos();
         $_SESSION['role'] = $stmt->getRole();
         header("Location:index.php?page=administr&&user_id=$id_u");
-      } else {
-        echo "Identifiants invalides.";
       }
     }
 

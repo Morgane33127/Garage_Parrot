@@ -3,6 +3,7 @@
   include '../src/controllers/VoitureController.php';
   include '../src/models/VoitureManager.php';
 
+
 // Gestion de la requête
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data = json_decode(file_get_contents('php://input'), true);
@@ -43,11 +44,9 @@ if(!empty($data['prix'])){
   */
   echo $voituresMisesAJour;
 }
-
 } else {
-  echo 'Méthode non autorisée.';
+  echo "Méthode non autorisée.";
 }
-
 
 ?>
 

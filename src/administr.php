@@ -9,7 +9,7 @@ include_once './src/controllers/VoitureController.php';
 include_once './src/controllers/HoraireController.php';
 include_once './src/controllers/UserController.php';
 
-
+try {
 if($_SESSION['role']==='ADM'){
 ob_start(); 
 $userController = new UserController();
@@ -57,5 +57,10 @@ require "views/administration/administrationTemplate.php";
     require "views/administration/administrationTemplateSimpleUser.php";
 
 } else {
-    throw new Exception('Permission inconnue');
+    throw new Exception('Permission inconnue.');
 }
+} catch (Exception $exception) {
+    $msg = $exception->getMessage();
+    error($msg);
+    sessionAlert('danger', $msg);
+  }

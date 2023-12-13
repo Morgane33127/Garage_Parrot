@@ -1,6 +1,8 @@
 <?php
+
 include_once './config/autoload.php';
 include 'config/Database.php';
+include 'config/functions.php';
 include 'src/controllers/VoitureController.php';
 include 'src/controllers/HoraireController.php';
 
@@ -28,8 +30,11 @@ try {
       $horaireController->affichageHeures();
       $horaires = ob_get_clean();
     }
+  } else {
+    throw new Exception("Page introuvable.");
   }
-} catch (PDOException $exception) {
-  error($exception->getMessage());
-  die($exception->getMessage());
+} catch (Exception $exception) {
+  $msg = $exception->getMessage();
+  error($msg);
+  sessionAlert('danger', $msg);
 }

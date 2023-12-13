@@ -2,6 +2,13 @@
 require_once 'src/views/header.php';
 require_once 'src/views/menu.php';
 
+session_start();
+
+if (!empty($_SESSION['alert'])) {
+
+  require_once 'src/views/sessionView.php';
+}
+
 if (!empty($_GET['page'])) {
   switch ($_GET['page']) {
     case 'apropos':
@@ -23,7 +30,7 @@ if (!empty($_GET['page'])) {
       require('src/accueil.php');
       break;
     case 'vinfo':
-      case 'vinfoadmin':
+    case 'vinfoadmin':
       require('src/voitureInfo.php');
       break;
     case 'administr':
@@ -32,9 +39,15 @@ if (!empty($_GET['page'])) {
     case 'demande':
       require('src/demande.php');
       break;
-      case 'affichageVoiture':
-        require('src/affichageVoiture.php');
-        break;
+    case 'affichageVoiture':
+      require('src/affichageVoiture.php');
+      break;
+    case 'error':
+      require('src/errorPage.php');
+      break;
+    case 'login':
+      require('src/login copy.php');
+      break;
   }
 } else {
   require('src/accueil.php');

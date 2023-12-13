@@ -11,12 +11,20 @@ class VoitureController
     $this->db = $this->db->getConnection();
   }
 
-  public function affichageCard()
+  public function countVoiture()
   {
 
+    $model = new VoitureManager($this->db);
+    echo $totalCount = $model ->getTotalVoitureCount();
+  }
+
+  public function affichageCard($page, $limit)
+  {
+    $offset = ($page - 1) * $limit;
     // Obtenir les détails de les prestations
-    $voiture = new VoitureManager($this->db);
-    $voitures = $voiture->affichageVoitures(2);
+    $model = new VoitureManager($this->db);
+    $voitures = $model ->affichageVoitures($limit, $offset);
+    $totalCount = $model ->getTotalVoitureCount();
     foreach ($voitures as $row) {
       $id = $row->getId();
       $titre = $row->getTitre();
@@ -24,6 +32,9 @@ class VoitureController
       $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
       include 'src/views/voitureCard.php'; // Afficher la vue voiture
+    }
+    if(isset($_GET['page']) && $_GET['page']=='vehicules'){
+      include 'src/views/pagination.php'; // Afficher la pagination
     }
   }
 
@@ -63,6 +74,15 @@ class VoitureController
     
   }
 
+  public function modifierVoiture($donnees)
+  {
+
+    // Obtenir les détails de les prestations
+    $voiture = new VoitureManager($this->db);
+    $voiture = $voiture->updateVoiture($donnees);
+
+  }
+
   public function filtrerPrice($prix)
   {
         $page=1;
@@ -76,19 +96,7 @@ class VoitureController
           $description = $row->getPetiteDescription();
           $img = 'public/assets/img/' . $row->getImage();
           $prix = number_format($row->getPrix(), 0, ',', ' ');
-          $response .= "<div class=\"voiture-card\">
-          <div>
-            <h5>$titre</h5>
-            <p>$description</p>
-            <button class=\"button\">
-              <p class=\"titre\">$prix €</p>
-            </button>
-            <a href=\"index.php?page=vinfo&id=$id\" class=\"link\">En savoir plus >></a>
-          </div>
-          <div>
-            <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
-          </div>
-        </div>";
+        $response = strval(include '../src/views/voitureCard.php');
     }  } else {
       $response = "Aucun résultat.";
     }
@@ -108,19 +116,7 @@ class VoitureController
           $description = $row->getPetiteDescription();
           $img = 'public/assets/img/' . $row->getImage();
           $prix = number_format($row->getPrix(), 0, ',', ' ');
-          $response .= "<div class=\"voiture-card\">
-          <div>
-            <h5>$titre</h5>
-            <p>$description</p>
-            <button class=\"button\">
-              <p class=\"titre\">$prix €</p>
-            </button>
-            <a href=\"index.php?page=vinfo&id=$id\" class=\"link\">En savoir plus >></a>
-          </div>
-          <div>
-            <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
-          </div>
-        </div>";
+          $response = strval(include '../src/views/voitureCard.php');
     }} else {
       $response = "Aucun résultat.";
     }
@@ -140,19 +136,7 @@ class VoitureController
           $description = $row->getPetiteDescription();
           $img = 'public/assets/img/' . $row->getImage();
           $prix = number_format($row->getPrix(), 0, ',', ' ');
-          $response .= "<div class=\"voiture-card\">
-          <div>
-            <h5>$titre</h5>
-            <p>$description</p>
-            <button class=\"button\">
-              <p class=\"titre\">$prix €</p>
-            </button>
-            <a href=\"index.php?page=vinfo&id=$id\" class=\"link\">En savoir plus >></a>
-          </div>
-          <div>
-            <img src=\"$img\" alt=\"Logo Garge V. Parrot\" style=\"height:150px;\">
-          </div>
-        </div>";
+          $response = strval(include '../src/views/voitureCard.php');
     }} else {
       $response = "Aucun résultat.";
     }

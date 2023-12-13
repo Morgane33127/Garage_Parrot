@@ -1,12 +1,3 @@
-<?php
-
-if (!empty($_GET['p']) && !isset($_GET['p'])) {
-  $page = $_GET['p'];
-} else {
-  $page = 1;
-}
-
-?>
 <div class="container margin-top">
 
   <h3>Avis clients</h3>
@@ -23,25 +14,6 @@ if (!empty($_GET['p']) && !isset($_GET['p'])) {
       ?>
     </div>
   </div>
-
-
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="index.php?page=avis&p=<?php echo $page - 1; ?>" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="index.php?page=avis&p=1">1</a></li>
-      <li class="page-item"><a class="page-link" href="index.php?page=avis&p=2">2</a></li>
-      <li class="page-item"><a class="page-link" href="index.php?page=avis&p=3">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="index.php?page=avis&p=<?php echo $page + 1; ?>" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 
   <!-- Modal -->
   <form method="POST" action="index.php?page=demande">

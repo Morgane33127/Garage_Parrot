@@ -2,7 +2,7 @@
 
 require_once 'header.php';
 session_start();
-if($_SESSION['loggedin']=true){
+if(isset($_SESSION['loggedin'])){
   $bonjour = "Bonjour " . $_SESSION['infos'];
 } else {
   $bonjour = '';
@@ -10,7 +10,7 @@ if($_SESSION['loggedin']=true){
 
 ?>
 
-<nav class="navbar navbar-expand-lg navigation">
+<nav class="navbar navbar-expand-md navigation">
   <div class="row">
     <div class="col-sm-6">
       <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="150px">
@@ -48,3 +48,4 @@ if($_SESSION['loggedin']=true){
     </ul>
   </div>
 </nav>
+

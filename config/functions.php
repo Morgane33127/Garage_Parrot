@@ -9,7 +9,7 @@
 function error(string $error)
 {
   $message = date("d-m-Y H:i:s") . " : " . $error . "\n";
-  file_put_contents('/config/log.txt', $message, FILE_APPEND);
+  file_put_contents('config/log.txt', $message, FILE_APPEND);
 }
 
 /**
@@ -23,12 +23,15 @@ function verifMail(string $email)
 
   $expression = "/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/";
 
-  if (preg_match($expression, $email)) {
+  preg_match($expression, $email, $matches);
+
+  if(!empty($matches)){
     return $email;
   } else {
-    echo "Cette adresse est invalide";
+    throw new Exception("E-mail invalide");
   }
-}
+
+  } 
 
 /**
  * Verification of inputs
@@ -45,7 +48,7 @@ function verifData(string $donnees) : string
     $donnees = htmlspecialchars($donnees, ENT_SUBSTITUTE);
     return $donnees;
   } else {
-    echo "Entrée invalide";
+    throw new Exception ("Entrée invalide");
   }
 }
 
@@ -71,14 +74,14 @@ function sendMail($from, $subject, $message)
   $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire 
 
   // Envoi d'email
-  try {
-    mail($destinataire, $subject, $message, $headers);
-    echo 'Votre message a été envoyé avec succès.';
-    exit();
-  } catch (error $e) {
-    echo 'Impossible denvoyer des courriels. Veuillez réessayer.';
-    error($e->getMessage());
-  }
+    if (mail($destinataire, $subject, $message, $headers) === true){
+      $msg = 'Votre message a été envoyé avec succès.';
+      sessionAlert('success', $msg);
+      exit();
+    } else {
+      throw new Exception("Impossible denvoyer des courriels. Veuillez réessayer.");
+    }
+  
 }
 
 /**
@@ -100,40 +103,54 @@ if(isset($_POST["submit"])) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
-    echo "File is not an image.";
+    throw new Exception("Le fichier n'est pas une image.");
     $uploadOk = 0;
   }
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  echo "Le fichier existe déjà.";
+  throw new Exception("Le fichier existe déjà.");
   $uploadOk = 0;
 }
 
 // Check file size
 if ($_FILES[$filename]["size"] > 500000) {
-  echo "Taille est trop large.";
+  throw new Exception("Taille est trop large.");
   $uploadOk = 0;
 }
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-  echo "Désolé, uniquement formats JPG, JPEG, PNG & GIF autorisés.";
+  throw new Exception("Désolé, uniquement formats JPG, JPEG, PNG & GIF autorisés.");
   $uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-  echo "Le fichier n'a pas été téléversé.";
+  throw new Exception("Le fichier n'a pas été téléversé.");
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES[$filename]["tmp_name"], $target_file)) {
     echo "Le fichier ". htmlspecialchars( basename( $_FILES[$filename]["name"])). " a bien été téleversé.";
 
   } else {
-    echo "Un problème est survenu.";
+    throw new Exception("Un problème est survenu.");
   }
 }
+}
+
+/**
+ * Display a session message
+ *
+ * @param string $type
+ * @param string $msg
+ *
+ */
+function sessionAlert($type, $msg){
+  $_SESSION['alert'] = [
+    "type" => "$type",
+    "msg" => "$msg"
+  ];
 }

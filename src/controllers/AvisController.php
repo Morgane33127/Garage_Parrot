@@ -11,12 +11,13 @@ class AvisController
     $this->db = $this->db->getConnection();
   }
 
-  public function affichage()
+  public function affichage($page, $limit)
   {
-
+    $offset = ($page - 1) * $limit;
     // Obtenir les détails de les avis
-    $avis = new AvisManager($this->db);
-    $avis = $avis->affichageAvis();
+    $model = new AvisManager($this->db);
+    $avis = $model ->affichageAvis($limit, $offset);
+    $totalCount = $model ->getTotalAvisCount();
     if(!empty($avis)){
     foreach ($avis as $row) {
       $titre = $row->getTitre();
@@ -26,7 +27,14 @@ class AvisController
       $note = $row->getNote();
       $star = str_repeat('&#x2605;', $note);
       include 'src/views/avisCard.php'; // Afficher la vue
-    }}else {
+
+    }
+    if(isset($_GET['page']) && $_GET['page']=='avis'){
+      include 'src/views/pagination.php'; // Afficher la pagination
+    }
+  }
+    
+    else {
       echo "Aucun résultat";
     }
   }

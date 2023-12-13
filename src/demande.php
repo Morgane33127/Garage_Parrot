@@ -15,6 +15,14 @@ include_once './src/controllers/PrestationController.php';
 $pdo = new Database();
 $pdo = $pdo->getConnection();
 
+
+
+//Deconnexion
+if (isset($_POST['disconnect'])) {
+  session_unset();
+header("Location: login.php");
+}
+
 //Demande contact
 if (isset($_POST['contact'])) {
 
@@ -33,6 +41,7 @@ if (isset($_POST['contact'])) {
 
   // send email
   sendMail($mail, 'Contact', $message);
+  header("Location: index.php?page=accueil");
 }
 
 //Demande contact pour véhicule
@@ -54,6 +63,7 @@ if (isset($_POST['contact_voiture']) && !empty($_POST['v_id'])) {
 
   // send email
   sendMail($mail, $id_v, $message);
+  header("Location: index.php?page=vehicules");
 }
 
 //Ajouter un avis
@@ -122,6 +132,44 @@ if (isset($_POST['ajouterVoiture'])) {
 $connection = new VoitureController();
   $voiture = $connection->ajouterVoiture($donnees);
 
+  header('Location: index.php?page=administr');
+}
+
+//Modifier une voiture
+
+if (isset($_POST['modifier_une_voiture'])) {
+
+  if(!empty($_FILES['img']['name'])){
+  uploadFile('img');
+  $img = $_FILES['img']['name'];
+  if (file_exists("../public/assets/img/$img" === true)){
+    $img = $_FILES['img']['name'];
+  }
+} else {
+  $img = $_POST['img_v'];
+}
+$id_v = $_POST['id_v'];
+  $titre_v = $_POST['titre_v'];
+  $petite_description_v = $_POST['petite_description_v'];
+  $large_description_v = $_POST['large_description_v'];
+  $marque = $_POST['marque_v'];
+  $modele = $_POST['modele_v'];
+  $prix = $_POST['prix_v'];
+  $annee = $_POST['annee_v'];
+  $kilometre = $_POST['km_v'];
+  $statut = $_POST['statut_v'];
+  $type = $_POST['type_v'];
+  $carburant = $_POST['carburant_v'];
+  $couleur = $_POST['couleur_v'];
+  $nb_portes = $_POST['nb_portes'];
+  $nb_places = $_POST['nb_places'];
+  $puissance_fiscale = $_POST['cv_v'];
+
+
+  $donnees = array(0=>$id_v, 1=>$titre_v, 2=>$petite_description_v, 3=>$large_description_v, 4=>$marque, 5=>$modele, 6=>$prix, 7=>$img, 8=>$annee, 
+  9=>$kilometre, 10=>$statut, 11=> $id_v, 12=>$type, 13=>$carburant, 14=>$couleur, 15=>$nb_portes, 16=>$nb_places, 17=>$puissance_fiscale);
+$connection = new VoitureController();
+  $voiture = $connection->modifierVoiture($donnees);
   header('Location: index.php?page=administr');
 }
 
