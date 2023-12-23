@@ -15,7 +15,7 @@ class VoitureController
   {
 
     $model = new VoitureManager($this->db);
-    echo $totalCount = $model ->getTotalVoitureCount();
+    echo $totalCount = $model->getTotalVoitureCount();
   }
 
   public function affichageCard($page, $limit)
@@ -23,8 +23,8 @@ class VoitureController
     $offset = ($page - 1) * $limit;
     // Obtenir les détails de les prestations
     $model = new VoitureManager($this->db);
-    $voitures = $model ->affichageVoitures($limit, $offset);
-    $totalCount = $model ->getTotalVoitureCount();
+    $voitures = $model->affichageVoitures($limit, $offset);
+    $totalCount = $model->getTotalVoitureCount();
     foreach ($voitures as $row) {
       $id = $row->getId();
       $titre = $row->getTitre();
@@ -33,12 +33,13 @@ class VoitureController
       $prix = number_format($row->getPrix(), 0, ',', ' ');
       include 'src/views/voitureCard.php'; // Afficher la vue voiture
     }
-    if(isset($_GET['page']) && $_GET['page']=='vehicules'){
+    if (isset($_GET['page']) && $_GET['page'] == 'vehicules') {
       include 'src/views/pagination.php'; // Afficher la pagination
     }
   }
 
-    public function affichageAll()
+  
+  public function affichageAll()
   {
 
     // Obtenir les détails de les prestations
@@ -53,6 +54,7 @@ class VoitureController
       include 'src/views/administration/voitureCardAdmin.php'; // Afficher la vue voiture
     }
   }
+  
 
   public function voitureInfos($id)
   {
@@ -60,8 +62,8 @@ class VoitureController
     // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
-      include 'src/views/voitureInfos.php'; // Afficher la vue voitureInfos
-    
+    include 'src/views/voitureInfos.php'; // Afficher la vue voitureInfos
+
   }
 
   public function voitureInfosAdmin($id)
@@ -70,8 +72,8 @@ class VoitureController
     // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
-      include 'src/views/administration/voitureInfosAdmin.php'; // Afficher la vue voitureInfos
-    
+    include 'src/views/administration/voitureInfosAdmin.php'; // Afficher la vue voitureInfos
+
   }
 
   public function modifierVoiture($donnees)
@@ -80,67 +82,75 @@ class VoitureController
     // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->updateVoiture($donnees);
-
   }
 
   public function filtrerPrice($prix)
   {
-        $page=1;
-        $voiture = new VoitureManager($this->db);
-        $voitures = $voiture->affichageVoituresPrix($prix, $page);
-        $response = '';
-        if(count($voitures) != 0){
-        foreach ($voitures as $row) {
-          $id = $row->getId();
-          $titre = $row->getTitre();
-          $description = $row->getPetiteDescription();
-          $img = 'public/assets/img/' . $row->getImage();
-          $prix = number_format($row->getPrix(), 0, ',', ' ');
-        $response = strval(include '../src/views/voitureCard.php');
-    }  } else {
-      $response = "Aucun résultat.";
+    $page = 1;
+    $voiture = new VoitureManager($this->db);
+    $voitures = $voiture->affichageVoituresPrix($prix, $page);
+    $response = '';
+    if (count($voitures) != 0) {
+      if ($_GET['page'] = 'vehicules') {
+        echo count($voitures) . " résultat(s) :";
+      } 
+      foreach ($voitures as $row) {
+        $id = $row->getId();
+        $titre = $row->getTitre();
+        $description = $row->getPetiteDescription();
+        $img = 'public/assets/img/' . $row->getImage();
+        $prix = number_format($row->getPrix(), 0, ',', ' ');
+        include '../src/views/voitureCard.php';
+      }
+    } else {
+      echo "Aucun résultat.";
     }
-    return $response;
   }
 
   public function filtrerKm($km)
   {
-        $page=1;
-        $voiture = new VoitureManager($this->db);
-        $voitures = $voiture->affichageVoituresKm($km, $page);
-        $response = '';
-        if(count($voitures) != 0){
-        foreach ($voitures as $row) {
-          $id = $row->getId();
-          $titre = $row->getTitre();
-          $description = $row->getPetiteDescription();
-          $img = 'public/assets/img/' . $row->getImage();
-          $prix = number_format($row->getPrix(), 0, ',', ' ');
-          $response = strval(include '../src/views/voitureCard.php');
-    }} else {
-      $response = "Aucun résultat.";
+    $page = 1;
+    $voiture = new VoitureManager($this->db);
+    $voitures = $voiture->affichageVoituresKm($km, $page);
+    $response = '';
+    if ($_GET['page'] = 'vehicules') {
+      echo count($voitures) . " résultat(s) :";
+    } 
+    if (count($voitures) != 0) {
+      foreach ($voitures as $row) {
+        $id = $row->getId();
+        $titre = $row->getTitre();
+        $description = $row->getPetiteDescription();
+        $img = 'public/assets/img/' . $row->getImage();
+        $prix = number_format($row->getPrix(), 0, ',', ' ');
+        include '../src/views/voitureCard.php';
+      }
+    } else {
+      echo "Aucun résultat.";
     }
-    return $response;
   }
 
   public function filtrerDate($date)
   {
-        $page=1;
-        $voiture = new VoitureManager($this->db);
-        $voitures = $voiture->affichageVoituresAnnee($date, $page);
-        $response = '';
-        if(count($voitures) != 0){
-        foreach ($voitures as $row) {
-          $id = $row->getId();
-          $titre = $row->getTitre();
-          $description = $row->getPetiteDescription();
-          $img = 'public/assets/img/' . $row->getImage();
-          $prix = number_format($row->getPrix(), 0, ',', ' ');
-          $response = strval(include '../src/views/voitureCard.php');
-    }} else {
-      $response = "Aucun résultat.";
+    $page = 1;
+    $voiture = new VoitureManager($this->db);
+    $voitures = $voiture->affichageVoituresAnnee($date, $page);
+    $response = '';
+    if (count($voitures) != 0) {
+      if ($_GET['page'] = 'vehicules') {
+        echo count($voitures) . " résultat(s) :";
+      } 
+      foreach ($voitures as $row) {
+        $id = $row->getId();
+        $titre = $row->getTitre();
+        $description = $row->getPetiteDescription();
+        $img = 'public/assets/img/' . $row->getImage();
+        $prix = number_format($row->getPrix(), 0, ',', ' ');
+        include '../src/views/voitureCard.php';
+      }
+    } else {
+      echo "Aucun résultat.";
     }
-    return $response;
   }
 
   public function ajouterVoiture($donnees)
@@ -149,5 +159,4 @@ class VoitureController
     $connection = new VoitureManager($this->db);
     $voiture = $connection->newVoiture($newVoiture);
   }
-
 }

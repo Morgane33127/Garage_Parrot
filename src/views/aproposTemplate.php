@@ -1,5 +1,5 @@
 
-<div class="container-sm margin-top">
+<div class="container-sm margin-top center">
   <section>
     <h3>A propos du Garage V. Parrot</h3>
     <div class="container">

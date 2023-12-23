@@ -1,12 +1,11 @@
-<div class="container margin-top">
+<div class="container-sm margin-top center">
   <div class="row align-items-center">
-    <div class="col-sm-6">
+    <div class="col-sm-6 contact">
       <div class="py-3">
         <span class="button">1 rue de nulle part 33600 Pessac</span>
       </div>
-
-      <div class="row align-items-start">
-        <div class="col-sm-4">
+      <div class="row align-items-start my-2">
+        <div class="col-sm-4 py-3">
           <span class="button">05.56.00.00.00</span>
         </div>
         <div class="col-sm-8">
@@ -16,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 p-5">
+    <div class="col-sm-6 p-3">
       <form method="POST" action="index.php?page=demande">
         <h3>Nous contacter</h3>
         <div class="row align-items-start">

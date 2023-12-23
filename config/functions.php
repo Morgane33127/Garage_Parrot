@@ -21,11 +21,7 @@ function error(string $error)
 function verifMail(string $email)
 {
 
-  $expression = "/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/";
-
-  preg_match($expression, $email, $matches);
-
-  if(!empty($matches)){
+  if(filter_var($email, FILTER_VALIDATE_EMAIL)){
     return $email;
   } else {
     throw new Exception("E-mail invalide");
@@ -62,26 +58,49 @@ function sendMail($from, $subject, $message)
 {
 
   //envoi du mail
-  $from = "$from";
-  $reply = "$from";
+  $from = $from;
+  $reply = $from;
   //$destinataire = "v.parrot@example.com";
-  $destinataire = "gut.morgane@gmail.com";
-  $subject = "$subject";
-  $message = "$message";
+  $destinataire = "technique@a-2-s.com";
+  $subject = $subject;
+  $message = $message;
   $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
   $headers .= 'Reply-To: ' . $from . "\n"; // Mail de reponse
   $headers .= 'From: "Contact"<' . $reply . '>' . "\n"; // Expediteur
   $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire 
 
   // Envoi d'email
-    if (mail($destinataire, $subject, $message, $headers) === true){
-      $msg = 'Votre message a été envoyé avec succès.';
-      sessionAlert('success', $msg);
-      exit();
-    } else {
+  $success = mail($destinataire, $subject, $message, $headers);
+    if (!$success){
       throw new Exception("Impossible denvoyer des courriels. Veuillez réessayer.");
     }
-  
+}
+
+/**
+ * Send an email to user to reset password
+ *
+ * @param string $email
+ *
+ */
+function forgetPswdMail($email, $id_u)
+{
+
+  //envoi du mail
+  $from = 'v.parrot@example.com';
+  $reply = 'v.parrot@example.com';
+  $destinataire = $email;
+  $subject = 'Reinitiatilisation de votre mot de passe';
+  $message = 'Pour reinitaliser votre mot de passe veuillez-cliquer sur le lien suivant : http://garageparrot/Garage_Parrot/index.php?page=reset-password&id_u='.$id_u;
+  $headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
+  $headers .= 'Reply-To: ' . $from . "\n"; // Mail de reponse
+  $headers .= 'From: "Contact"<' . $reply . '>' . "\n"; // Expediteur
+  $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire 
+
+  // Envoi d'email
+  $success = mail($destinataire, $subject, $message, $headers);
+    if (!$success){
+      throw new Exception("Impossible denvoyer des courriels. Veuillez réessayer.");
+    }
 }
 
 /**
@@ -97,7 +116,6 @@ function uploadFile($filename){
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES[$filename]["tmp_name"]);
   if($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
@@ -106,7 +124,6 @@ if(isset($_POST["submit"])) {
     throw new Exception("Le fichier n'est pas une image.");
     $uploadOk = 0;
   }
-}
 
 // Check if file already exists
 if (file_exists($target_file)) {
@@ -121,9 +138,8 @@ if ($_FILES[$filename]["size"] > 500000) {
 }
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  throw new Exception("Désolé, uniquement formats JPG, JPEG, PNG & GIF autorisés.");
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+  throw new Exception("Désolé, uniquement formats JPG, JPEG, PNG autorisés.");
   $uploadOk = 0;
 }
 

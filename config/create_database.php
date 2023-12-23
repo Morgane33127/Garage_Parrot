@@ -1,7 +1,9 @@
 <?php
+include_once '../config/Database.php';
+require '../config/functions.php';
 try {
-  $pdo = new PDO('mysql:host=localhost', 'root', '');
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $db = new Database();
+  $pdo = $db->getConnection();
 
   if ($pdo->exec('DROP DATABASE IF EXISTS garageParrot') !== false) {
     if ($pdo->exec('CREATE DATABASE garageParrot') !== false) {
@@ -78,7 +80,17 @@ try {
   info_e VARCHAR(150) NOT NULL,
   dt_e TIMESTAMP DEFAULT CURRENT_TIMESTAMP)';
 
-      $table = array($uti, $lbl, $heures, $avis, $prestations, $voitures, $infos_voitures, $evenements);
+$demandes = 'CREATE TABLE demandes (
+  id_d INT PRIMARY KEY AUTO_INCREMENT,
+  dt_d TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  nom_d VARCHAR(150) NOT NULL,
+  prenom_d VARCHAR(150) NOT NULL,
+  tel_d CHAR(18) NOT NULL,
+  mail_d VARCHAR(150) NOT NULL,
+  message_d VARCHAR(150) NOT NULL
+  )';
+
+      $table = array($uti, $lbl, $heures, $avis, $prestations, $voitures, $infos_voitures, $evenements, $demandes);
 
       foreach ($table as $tabl) {
         if ($garageParrot->exec($tabl) !== false) {
@@ -87,6 +99,7 @@ try {
           echo 'Erreur installation !';
         }
       }
+      require 'insert_data.php';
     } else {
       echo 'Impossible de créer la base<br>';
     }

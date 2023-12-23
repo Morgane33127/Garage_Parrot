@@ -1,18 +1,18 @@
-<div class="container margin-top">
+<div class="container-sm margin-top center">
   <h3>Nos véhicules d'occasions</h3>
 
   <div class="container">
     <div class="row align-items-start">
-      <div class="col price">
+      <div class="col-sm price">
         <label for="prix"><b>Prix max : </b></label>
         <input id="prix" class="form-range" name="prix" type="range" min="0" max="50000" step="500">
       </div>
-      <div class="col kilometer">
+      <div class="col-sm kilometer">
         <label for="km"><b>Km max: </b></label>
         <input id="km" class="form-range" name="km" type="range" min="0" max="500000" step="1000">
       </div>
-      <div class=" col">
-        <label for="year"><b>Année min : </b></label>
+      <div class="col-sm">
+        <label for="year"><b>Année max : </b></label>
         <select id="year" class="form-select" name="year">
           <option value="">Année</option>
           <?php
@@ -27,15 +27,15 @@
     </div>
   </div>
 
-  <div style="padding:2%"><?php echo $count . " resultats :"; ?></div>
-
-  <div id="request">
+  <div id="request" class="my-3">
     <?php
-echo $content;
+    echo $count . " résultat(s) :";
+    echo $content;
     ?>
   </div>
 
 </div>
+
 
 <?php
 

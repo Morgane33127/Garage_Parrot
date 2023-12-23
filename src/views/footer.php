@@ -1,11 +1,12 @@
 <footer>
 
-  <div class="container">
+  <div class="container-sm">
     <div class="row align-items-start">
-      <div class="col-sm-2">
+      <div class="col-sm-2 display-none">
         <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="150px;">
       </div>
       <div class="col-sm-10">
+        <b>A propos</b>
         <p>Bienvenue chez Garage V. Parrot, votre partenaire automobile de confiance.
           Notre petit garage offre des services de réparation et d'entretien avec une équipe
           dévouée de mécaniciens expérimentés. Profitez de notre expertise et de notre atmosphère conviviale pour

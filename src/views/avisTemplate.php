@@ -1,4 +1,4 @@
-<div class="container margin-top">
+<div class="container-sm margin-top center">
 
   <h3>Avis clients</h3>
 

@@ -6,13 +6,18 @@ include_once './config/Database.php';
 include_once './src/controllers/AvisController.php';
 include_once './src/controllers/HoraireController.php';
 
-if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $totalCount) {
+$limit=6;
+
+ob_start(); 
+$avisController = new AvisController();
+$avisController->countAvis();
+$count = ob_get_clean();
+
+if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $count) {
     $page = $_GET['p'];
 } else {
     $page = 1;
 }
-
-$limit=6;
 
 ob_start(); 
 $avisController = new AvisController();

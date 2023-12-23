@@ -1,11 +1,11 @@
-<div class="container-sm margin-top">
+<div class="container-sm margin-top center">
   <h3>Nos prestations</h3>
 
   <?php
   // Contenus
-echo $content;
+  echo $content;
   ?>
-
+  <a href="index.php?page=vehicules" class="link">Voir les vehicules</a>
 </div>
 
 <?php

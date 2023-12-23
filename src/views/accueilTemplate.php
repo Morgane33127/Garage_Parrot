@@ -1,9 +1,9 @@
-<div class="container-sm margin-top">
+<div class="container-sm margin-top center">
 
     <section id="presentation">
         <div class="container">
             <div class="row align-items-start">
-                <div class="col-sm">
+                <div class="col-sm display-none">
                     <img src="public/assets/img/garage.jpg" alt="photo garage v parrot" style="width:500px;">
                 </div>
                 <div class="col-sm">
@@ -73,12 +73,15 @@
                 ?>
             </div>
         </div>
+        <div class="action-sup display-none1 display-block">
+            <a href="index.php?page=#"><button class="button">Laisser avis</button></a>
+        </div>
     </section>
 
     <section id="voitures">
         <h3>Nos véhicules d'occasions</h3>
         <div class="container">
-            <div class="row align-items-start">
+            <div class="row align-items-start display-none">
                 <?php
                 //Affichage des voitures
                 echo $content3;

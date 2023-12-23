@@ -1,12 +1,18 @@
 <?php
+
 require_once 'src/views/header.php';
-require_once 'src/views/menu.php';
+
+
+if(!isset($_GET['page']) || $_GET['page'] != 'administr' && $_GET['page'] != 'login' && $_GET['page'] != 'forget-pswd' && $_GET['page'] != 'reset-password' 
+&& $_GET['page'] != 'vinfoadmin'){
+  require_once 'src/views/menu.php';
+}
 
 session_start();
 
-if (!empty($_SESSION['alert'])) {
-
+if (isset($_SESSION['alert'])) {
   require_once 'src/views/sessionView.php';
+  unset($_SESSION['alert']);
 }
 
 if (!empty($_GET['page'])) {
@@ -42,12 +48,15 @@ if (!empty($_GET['page'])) {
     case 'affichageVoiture':
       require('src/affichageVoiture.php');
       break;
-    case 'error':
-      require('src/errorPage.php');
-      break;
     case 'login':
-      require('src/login copy.php');
+      require('src/login.php');
       break;
+      case 'forget-pswd':
+        require('src/mdpOublie.php');
+        break;
+        case 'reset-password':
+          require('src/resetPassword.php');
+          break;
   }
 } else {
   require('src/accueil.php');

@@ -11,6 +11,13 @@ class AvisController
     $this->db = $this->db->getConnection();
   }
 
+  public function countAvis()
+  {
+
+    $model = new AvisManager($this->db);
+    echo $totalCount = $model->getTotalAvisCount();
+  }
+
   public function affichage($page, $limit)
   {
     $offset = ($page - 1) * $limit;

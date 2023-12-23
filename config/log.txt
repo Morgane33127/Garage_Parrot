@@ -154,3 +154,31 @@ Stack trace:
 13-12-2023 20:34:12 : Page introuvable.
 13-12-2023 21:10:39 : Page introuvable.
 13-12-2023 21:20:28 : E-mail invalide
+13-12-2023 21:36:31 : E-mail invalide
+16-12-2023 10:22:26 : E-mail invalide
+16-12-2023 10:25:26 : E-mail invalide
+16-12-2023 10:36:04 : Mot de passe incorrect.
+16-12-2023 17:35:08 : Permission inconnue.
+16-12-2023 17:35:14 : Permission inconnue.
+16-12-2023 17:35:18 : Permission inconnue.
+16-12-2023 17:35:19 : Permission inconnue.
+16-12-2023 17:35:19 : Permission inconnue.
+16-12-2023 17:35:20 : Permission inconnue.
+16-12-2023 17:35:20 : Permission inconnue.
+16-12-2023 17:35:21 : Permission inconnue.
+16-12-2023 17:35:21 : Permission inconnue.
+16-12-2023 17:35:22 : Permission inconnue.
+16-12-2023 17:35:22 : Permission inconnue.
+16-12-2023 17:35:26 : Page introuvable.
+16-12-2023 17:35:30 : Page introuvable.
+18-12-2023 19:03:48 : Permission inconnue.
+23-12-2023 16:02:12 : E-mail non reconnu.
+23-12-2023 16:24:00 : SQLSTATE[42000]: Syntax error or access violation: 1064 Erreur de syntaxe prËs de 'FROM utilisateurs SET mdp_u = 'leela33210' WHERE id_u= '14dc3664-a035-11ee-b8...' ‡ la ligne 1
+23-12-2023 16:34:57 : Reinitialisation du mot de passe a echou√©.
+23-12-2023 16:41:03 : SQLSTATE[42S22]: Column not found: 1054 Champ '$2y$10$OnZ61Pk3TzGp.pCtdxQfKOIONzaHwOm8QsMSWsGhnyyWIKbsfqh.a' inconnu dans where clause
+23-12-2023 16:45:51 : SQLSTATE[42S22]: Column not found: 1054 Champ '$2y$10$SUVKawZyhGKTZhkf6A0rWeKW8NIzX80BfWZTwn7hpvlCJ6GmmS5fy' inconnu dans where clause
+23-12-2023 16:49:28 : SQLSTATE[42S22]: Column not found: 1054 Champ '32ad26cb' inconnu dans where clause
+23-12-2023 16:51:03 : SQLSTATE[42S22]: Column not found: 1054 Champ '32ad26cb' inconnu dans where clause
+23-12-2023 16:59:30 : SQLSTATE[42S22]: Column not found: 1054 Champ '32ad26cb' inconnu dans where clause
+23-12-2023 17:00:06 : Reinitialisation impossible.
+23-12-2023 17:01:40 : Mots de passe incoh√©rents.

@@ -63,6 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #D92332;
   padding: 5px 5px 5px 5px;
   height: 50px;
+  text-decoration: none;
 }
 
 .button:hover, .button_admin {
@@ -164,8 +165,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .margin-top {
-  margin-top: 150px;
-  margin-bottom: 150px;
+  margin-top: 120px;
+  margin-bottom: 50px;
 }
 
 .section {
@@ -176,6 +177,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 26px;
   font-weight: bold;
   font-family: "Montserrat-Black";
+  color: #D92332;
 }
 
 .valeur {
@@ -200,6 +202,11 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
 }
 
+.voiture-card-img {
+  height: 150px;
+  width: 230px;
+}
+
 .card-avis {
   text-align: start;
   padding: 1%;
@@ -215,5 +222,155 @@ footer {
   height: auto;
   color: white;
   padding: 10px;
-  margin: 10px 0px 0px 0px;
+  margin: 50px 0px 0px 0px;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+.btn-toggle {
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), 0.85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform 0.35s ease;
+  transform-origin: 0.5em 50%;
+}
+
+[data-bs-theme=dark] .btn-toggle::before {
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+}
+
+.btn-toggle[aria-expanded=true] {
+  color: rgba(var(--bs-emphasis-color-rgb), 0.85);
+}
+
+.btn-toggle[aria-expanded=true]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  padding: 0.1875rem 0.5rem;
+  margin-top: 0.125rem;
+  margin-left: 1.25rem;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: var(--bs-tertiary-bg);
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.sidebar-style {
+  width: 280px;
+  background-color: #F2F2F2;
+  box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+}
+
+.display-none1 {
+  display: none;
+}
+
+.contact {
+  background-color: #D92332;
+  color: #F2F2F2;
+}
+
+.star {
+  color: #EDDB35;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 320px) {
+  .display-none {
+    display: none;
+  }
+  .display-block {
+    display: block;
+  }
+  .center {
+    text-align: center;
+  }
+  .voiture-card {
+    margin: 20px 0px 20px 0px;
+    padding: 10% 2% 10% 2%;
+    background-color: #F2F2F2;
+    height: auto;
+    width: 100%;
+    box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+  }
+  .login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 25px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    font-family: "Montserrat-Black";
+    font-size: 16px;
+  }
+  .prestation-card {
+    height: 250px;
+    width: 100%;
+    color: #D92332;
+    text-align: center;
+    border: solid;
+    font-weight: bold;
+    border-color: #D92332;
+    background-color: white;
+  }
+  .prestation-card:hover {
+    height: 250px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    border: solid;
+    font-weight: bold;
+    border-color: #D92332;
+    background-color: #D92332;
+    margin: 5px;
+  }
+  .valeur {
+    text-align: center;
+    background-color: #D92332;
+    height: auto;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+  }
+  .valeur h3 {
+    line-height: 50px;
+  }
+  .card-avis {
+    text-align: start;
+    padding: 1%;
+    background-color: #F2F2F2;
+    height: 200px;
+    width: 100%;
+    margin: 5px;
+    box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+  }
+  .sidebar-style {
+    width: 100%;
+    background-color: #F2F2F2;
+    box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+  }
 }/*# sourceMappingURL=style.css.map */

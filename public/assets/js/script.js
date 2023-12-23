@@ -36,17 +36,16 @@ function changePrix(value) {
       throw new Error('Erreur lors de la requête.');
     }
     return response.text();
+
   })
   .then(data => {
     div.innerHTML = '';
     div.innerHTML = data;
-
     })
   .catch(error => {
     console.error('Erreur :', error);
   });
 };
-
 
 
 const elem2 = document.createElement('span');

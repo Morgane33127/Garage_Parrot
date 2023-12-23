@@ -1,5 +1,5 @@
-<form method="POST" action="index.php?page=demande">
-<div class="container margin-top">
+<form method="POST" action="index.php?page=demande" enctype="multipart/form-data">
+<div class="container-sm margin-top">
   <div class=" row align-items-start">
     <div class="col-sm-7">
     <input type="hidden" class="form-control" name="id_v" id=" id_v" value="<?php echo $voiture->getId(); ?>">

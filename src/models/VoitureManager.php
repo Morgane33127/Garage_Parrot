@@ -77,6 +77,7 @@ class VoitureManager
     return $result->fetch(PDO::FETCH_ASSOC)['total'];
 }
 
+
   public function affichageVoituresAll(): array
   {
 
@@ -96,6 +97,7 @@ class VoitureManager
       throw new Exception('Aucune voiture correspondante.');
     }
   }
+  
 
   public function updateVoiture($donnees)
   {

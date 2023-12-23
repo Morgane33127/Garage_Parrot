@@ -8,11 +8,6 @@ include_once './src/controllers/AvisController.php';
 include_once './src/controllers/VoitureController.php';
 include_once './src/controllers/HoraireController.php';
 
-if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $totalCount) {
-    $page = $_GET['p'];
-} else {
-    $page = 1;
-}
 
 $limit=6;
 
@@ -25,11 +20,18 @@ $voitureController = new VoitureController();
 $voitureController->countVoiture();
 $count = ob_get_clean();
 
+if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $count) {
+    $page = $_GET['p'];
+} else {
+    $page = 1;
+}
+
 
 ob_start(); 
 $voitureController = new VoitureController();
 $voitureController->affichageCard($page, $limit);
 $content = ob_get_clean();
+
 ob_start(); 
 $horaireController = new HoraireController();
 $horaireController->affichageHeures();
