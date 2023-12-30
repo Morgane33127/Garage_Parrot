@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Car Class
+ * 
+ * To construct cars and get informations
+ */
+
 class Voiture
 {
 
@@ -15,7 +21,8 @@ class Voiture
   private int $kilometre;
   private string $statut;
 
-  public function __construct ($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut){
+  public function __construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut)
+  {
     $this->id_v = $id_v;
     $this->titre_v = $titre_v;
     $this->petite_description_v = $petite_description_v;
@@ -27,7 +34,6 @@ class Voiture
     $this->annee = $annee;
     $this->kilometre = $kilometre;
     $this->statut = $statut;
-
   }
 
 
@@ -87,6 +93,4 @@ class Voiture
   {
     return $this->statut;
   }
-
-  
 }

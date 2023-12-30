@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Service Class
+ * 
+ * To construct services and get informations
+ */
+
 class Prestation
 {
 
@@ -8,7 +14,8 @@ class Prestation
   private string $petite_description_p;
   private string $large_description_p;
 
-  public function __construct ($id_p, $nom_p, $petite_description_p, $large_description_p){
+  public function __construct($id_p, $nom_p, $petite_description_p, $large_description_p)
+  {
     $this->id_p = $id_p;
     $this->nom_p = $nom_p;
     $this->petite_description_p = $petite_description_p;

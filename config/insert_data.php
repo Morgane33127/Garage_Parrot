@@ -39,25 +39,31 @@ try {
             VALUES ('Première visite.', 'Rdv rapide, prix corrects et le patron connait son travail. J\'y retournerai.', 'Sandrine', 'Petit', 5, 'En attente')") &&
     $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) 
                 VALUES ('Super garage', 'Super garage, très pro, personnel et patron au top.', 'Florient', 'Derat', 5, 'En attente')") &&
-    
+
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Entretien', 'Preservez la fiabilité et la durabilité de votre voiture', 'Nos services d\'entretien méticuleux garantissent non seulement des performances optimales mais aussi une tranquillité d\'esprit, en préservant la fiabilité et la durabilité de votre voiture.')") &&
+        VALUES ('Entretien', 'Preservez la fiabilité et la durabilité de votre voiture', 'Nos services d\'entretien méticuleux garantissent non seulement 
+        des performances optimales mais aussi une tranquillité d\'esprit, en préservant la fiabilité et la durabilité de votre voiture.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Réparation', 'Redonner vie à votre véhicule', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et fiable, pour vous remettre rapidement sur la route.')") &&
+        VALUES ('Réparation', 'Redonner vie à votre véhicule', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et 
+        fiable, pour vous remettre rapidement sur la route.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
+        VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver 
+        des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances', 'A réaliser tous les 10 000 à 15 000 km sur un moteur essence, et tous les 7000 à 10 000 km sur un moteur diesel.')") &&
+        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances', 'A réaliser tous les 10 000 à 15 000 km sur un moteur 
+        essence, et tous les 7000 à 10 000 km sur un moteur diesel.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente et des conseils experts.')") &&
-    
+        VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente 
+        et des conseils experts.')") &&
+
     $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
       VALUES(
         'KIA Picanto 2022',
         'KIA',
         'KIA Picanto 1.0 essence 66 chevaux ISG BVM5',
         'KIA Picanto 1.0 essence 66 chevaux ISG BVM5. 5 portes, 4CV, manuelle, essence.',
-        'KIA Picanto 1.0 essence 66 chevaux ISG BVM5. 5 portes, 4CV, manuelle, essence, rétroviseurs et vitres électriques, tableau de bord, bluetooth, climatisation, fermeture centralisée,  rétroviseurs dégivrants, ABS, phares antibrouillard, régulateur de vitesse.',
+        'KIA Picanto 1.0 essence 66 chevaux ISG BVM5. 5 portes, 4CV, manuelle, essence, rétroviseurs et vitres électriques, tableau de bord, bluetooth, 
+        climatisation, fermeture centralisée,  rétroviseurs dégivrants, ABS, phares antibrouillard, régulateur de vitesse.',
         11400,
         'kia-picanto.jpg',
         2022,
@@ -95,9 +101,9 @@ try {
     VALUES (2,'Manuelle','Noire',5,'Diesel',5,5);")
     !== false
   ) {
-    echo "Ajout réussis";
+    echo "Ajout réussis <br>";
   } else {
-    echo "Données non ajoutées à la BDD";
+    echo "Données non ajoutées à la BDD <br>";
     error("Données non ajoutées à la BDD");
   }
 } catch (PDOException $exception) {

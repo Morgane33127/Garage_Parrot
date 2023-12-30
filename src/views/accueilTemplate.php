@@ -68,7 +68,7 @@
         <div class="container-sm text-center">
             <div class="row align-items-start">
                 <?php
-                // Affichage des avis
+                // Display notices
                 echo $content2;
                 ?>
             </div>
@@ -83,7 +83,7 @@
         <div class="container">
             <div class="row align-items-start display-none">
                 <?php
-                //Affichage des voitures
+                //Display cars
                 echo $content3;
                 ?>
             </div>

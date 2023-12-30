@@ -3,7 +3,7 @@
 //Sidebar admin
 if ($_SESSION['role'] === 'ADM') {
 ?>
-<div class="flex-shrink-0 p-3 sidebar-style">
+  <div class="flex-shrink-0 p-3 sidebar-style">
     <a href="index.php" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
       <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="50" height="24">
       <span class="fs-5 fw-semibold">Tableau de bord</span>
@@ -65,15 +65,15 @@ if ($_SESSION['role'] === 'ADM') {
       </li>
       <li class="border-top my-3"></li>
       <form method="POST" action="index.php?page=demande">
-      <button class="button" type="submit" name="disconnect">Se deconnecter</button>
+        <button class="button" type="submit" name="disconnect">Se deconnecter</button>
       </form>
     </ul>
   </div>
-  <?php
+<?php
 } else if ($_SESSION['role'] === 'USR') {
   //Sidebar simple user
 ?>
-<div class="flex-shrink-0 p-3 sidebar-style">
+  <div class="flex-shrink-0 p-3 sidebar-style">
     <a href="index.php" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
       <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="50" height="24">
       <span class="fs-5 fw-semibold">Tableau de bord</span>
@@ -103,7 +103,7 @@ if ($_SESSION['role'] === 'ADM') {
       </li>
       <li class="border-top my-3"></li>
       <form method="POST" action="index.php?page=demande">
-      <button class="button" type="submit" name="disconnect">Se deconnecter</button>
+        <button class="button" type="submit" name="disconnect">Se deconnecter</button>
       </form>
     </ul>
   </div>

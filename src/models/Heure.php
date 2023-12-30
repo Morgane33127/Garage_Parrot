@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Hour Class
+ * 
+ * To construct hours, get and set informations
+ */
+
 class Heure
 {
 
@@ -9,7 +15,8 @@ class Heure
   private string $hr_fin;
   private string $lbl;
 
-  public function __construct ($id_h, $jour, $hr_debut, $hr_fin, $lbl){
+  public function __construct($id_h, $jour, $hr_debut, $hr_fin, $lbl)
+  {
     $this->id_h = $id_h;
     $this->jour = $jour;
     $this->hr_debut = $hr_debut;

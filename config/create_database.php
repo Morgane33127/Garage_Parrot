@@ -1,13 +1,18 @@
 <?php
 include_once '../config/Database.php';
 require '../config/functions.php';
+
+/* EN : Database and tables creation and add data
+FR : Creation de la base de donnée, creation des tables et ajouts de données
+*/
+
 try {
   $db = new Database();
-  $pdo = $db->getConnection();
+  $pdo = $db->createDatabase();
 
   if ($pdo->exec('DROP DATABASE IF EXISTS garageParrot') !== false) {
     if ($pdo->exec('CREATE DATABASE garageParrot') !== false) {
-      $garageParrot = new PDO('mysql:dbname=garageParrot;host=localhost', 'root', '');
+      $newpdo = $db->getConnection();
 
       $uti = 'CREATE TABLE utilisateurs (
    id_u UUID NOT NULL,
@@ -80,25 +85,16 @@ try {
   info_e VARCHAR(150) NOT NULL,
   dt_e TIMESTAMP DEFAULT CURRENT_TIMESTAMP)';
 
-$demandes = 'CREATE TABLE demandes (
-  id_d INT PRIMARY KEY AUTO_INCREMENT,
-  dt_d TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  nom_d VARCHAR(150) NOT NULL,
-  prenom_d VARCHAR(150) NOT NULL,
-  tel_d CHAR(18) NOT NULL,
-  mail_d VARCHAR(150) NOT NULL,
-  message_d VARCHAR(150) NOT NULL
-  )';
-
-      $table = array($uti, $lbl, $heures, $avis, $prestations, $voitures, $infos_voitures, $evenements, $demandes);
+      $table = array($uti, $lbl, $heures, $avis, $prestations, $voitures, $infos_voitures, $evenements);
 
       foreach ($table as $tabl) {
-        if ($garageParrot->exec($tabl) !== false) {
-          echo "$tabl : Installation réussis !";
+        if ($newpdo->exec($tabl) !== false) {
+          echo "$tabl : Installation réussis !<br>";
         } else {
-          echo 'Erreur installation !';
+          echo 'Erreur installation !<br>';
         }
       }
+      //If all ok -> Add data
       require 'insert_data.php';
     } else {
       echo 'Impossible de créer la base<br>';

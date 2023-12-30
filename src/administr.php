@@ -1,13 +1,14 @@
 
 <?php
-require './config/functions.php';
+
+/* EN : This page acts as a router to redirect and restrict access between USER and ADMIN.
+
+FR : Cette page joue le rôle de routeur pour rediriger et restreindres les accès entre USER et ADMIN.
+*/
+
+include_once './config/functions.php';
 include_once './config/autoload.php';
 include_once './config/Database.php';
-include_once './src/controllers/PrestationController.php';
-include_once './src/controllers/AvisController.php';
-include_once './src/controllers/VoitureController.php';
-include_once './src/controllers/HoraireController.php';
-include_once './src/controllers/UserController.php';
 
 try {
     if ($_SESSION['role'] === 'ADM') {
@@ -121,7 +122,6 @@ try {
             $titre = 'Voitures à la vente';
             $content = ob_get_clean();
         }
-
         require "views/administration/administrationTemplateSimpleUser.php";
     } else {
         throw new Exception('Permission inconnue.');

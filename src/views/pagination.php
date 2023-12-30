@@ -1,7 +1,7 @@
   <?php
-$page = $_GET['page'];
+  $page = $_GET['page'];
   ?>
-  
+
   <!-- Pagination -->
   <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">

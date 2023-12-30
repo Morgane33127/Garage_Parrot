@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * User Class
+ * 
+ * To construct users and get informations
+ */
+
 class User
 {
 
@@ -11,7 +17,8 @@ class User
   private string $mdp_u;
 
 
-  public function __construct ($id_u, $nom_u, $prenom_u, $role_u, $login_u, $mdp_u){
+  public function __construct($id_u, $nom_u, $prenom_u, $role_u, $login_u, $mdp_u)
+  {
     $this->id_u = $id_u;
     $this->nom_u = $nom_u;
     $this->prenom_u = $prenom_u;

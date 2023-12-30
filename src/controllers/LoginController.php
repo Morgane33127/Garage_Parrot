@@ -1,21 +1,35 @@
 <?php
 
+/**
+ * Controller for connexion to admin space and reset password
+ *
+ * @author Morgane G.
+ */
+
 class LoginController
 {
 
-
   private $db;
 
+  /**
+   * Constructor
+   *
+   */
   public function __construct()
   {
     $this->db = new Database();
     $this->db = $this->db->getConnection();
   }
 
+  /**
+   * Connexion to admin space
+   *
+   * Redirection to page administr
+   */
   public function login()
   {
 
-    // Vérification CSRF
+    // CSRF Vérification 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         error('Erreur CSRF !');
@@ -23,10 +37,10 @@ class LoginController
       }
     }
 
-    // Générer un nouveau jeton CSRF
+    // New token CSRF
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-    // Vérification des informations d'identification
+    // Checking  identification informations
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['connect'])) {
       $inputMail = $_POST['email'];
       $inputPassword = $_POST['password'];
@@ -49,7 +63,7 @@ class LoginController
         header("Location: index.php?page=login");
       }
 
-      // Obtenir les détails de l'utilisateur à partir du modèle
+      // Get user details from template
       $user = new Auth($this->db);
 
       try {
@@ -61,7 +75,7 @@ class LoginController
         header("Location: index.php?page=login");
       }
 
-      // Authentification réussie
+      // Authentication successful
       if (!empty($stmt)) {
         $id_u = $stmt->getId();
         $_SESSION['loggedin'] = true;
@@ -72,9 +86,14 @@ class LoginController
       }
     }
 
-    include './src/views/loginForm.php'; // Afficher la vue de connexion
+    //Show login view
+    include './src/views/loginForm.php';
   }
 
+  /**
+   * For password forgotten or to change. A link is send to the email entered IF the email is in the database.
+   *
+   */
   public function forgetPswd()
   {
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Envoyer'])) {
@@ -89,7 +108,7 @@ class LoginController
         header("Location: index.php?page=login");
       }
 
-      // Verification mail en bdd
+      //Email verification in database
       $user = new Auth($this->db);
 
       try {
@@ -101,7 +120,7 @@ class LoginController
         header("Location: index.php?page=login");
       }
 
-      // Authentification réussie
+      // Authentication successful
       if (!empty($stmt)) {
         $email = $stmt->getMail();
         $id_u = $stmt->getId();
@@ -109,9 +128,14 @@ class LoginController
         header("Location:index.php?page=login");
       }
     }
-    include './src/views/mdpOublieView.php'; // Afficher la vue de connexion
+    //Show login view
+    include './src/views/mdpOublieView.php';
   }
 
+  /**
+   * The user is redirected to the reset page to change his password.
+   *
+   */
   public function newPswd()
   {
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Valider'])) {
@@ -119,19 +143,19 @@ class LoginController
       $password2 = $_POST['password2'];
       $id_u = $_GET['id_u'];
 
-        $user = new Auth($this->db);
-        try {
-          $stmt = $user->changemdp($id_u, $password1, $password2);
-          sessionAlert('success', 'Mot de passe réinitialisé avec succès!');
-          header("Location: index.php?page=login");
-        } catch (Exception $exception) {
-          $msg = $exception->getMessage();
-          error($msg);
-          sessionAlert('danger', $msg);
-          header("Location: index.php?page=login");
-        }
+      $user = new Auth($this->db);
+      try {
+        $stmt = $user->changemdp($id_u, $password1, $password2);
+        sessionAlert('success', 'Mot de passe réinitialisé avec succès!');
+        header("Location: index.php?page=login");
+      } catch (Exception $exception) {
+        $msg = $exception->getMessage();
+        error($msg);
+        sessionAlert('danger', $msg);
+        header("Location: index.php?page=login");
       }
-    
-    include './src/views/forgetPswdView.php'; // Afficher la vue de connexion
+    }
+    //Show login view
+    include './src/views/forgetPswdView.php';
   }
 }

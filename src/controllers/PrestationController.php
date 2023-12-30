@@ -1,20 +1,33 @@
 <?php
 
+/**
+ * Controller for services
+ *
+ * @author Morgane G.
+ */
+
 class PrestationController
 {
 
   private $db;
 
+  /**
+   * Constructor
+   *
+   */
   public function __construct()
   {
     $this->db = new Database();
     $this->db = $this->db->getConnection();
   }
 
+  /**
+   * Obtain service details and display them in card form
+   *
+   */
   public function affichage()
   {
 
-    // Obtenir les détails de les prestations
     $prestation = new PrestationManager($this->db);
     $prestation = $prestation->affichageInfos();
 
@@ -23,16 +36,19 @@ class PrestationController
       $nom = $row->getNom();
       $pteDescription = $row->getPetiteDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
-      include 'src/views/prestationCard.php'; // Afficher la vue de connexion
+      include 'src/views/prestationCard.php';
 
       $i++;
     }
   }
 
+  /**
+   * Obtain service details and display them in list form
+   *
+   */
   public function affichageList()
   {
 
-    // Obtenir les détails de les prestations
     $prestation = new PrestationManager($this->db);
     $prestation = $prestation->affichageInfos();
 
@@ -41,16 +57,19 @@ class PrestationController
       $nom = $row->getNom();
       $largeDescription = $row->getLargeDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
-      include 'src/views/prestationsList.php'; // Afficher la vue de connexion
+      include 'src/views/prestationsList.php';
 
       $i++;
     }
   }
 
+  /**
+   * Obtain service details and display them in list form in admin space for modifications
+   *
+   */
   public function affichageListAdmin()
   {
 
-    // Obtenir les détails de les prestations
     $prestation = new PrestationManager($this->db);
     $prestation = $prestation->affichageInfos();
 
@@ -60,16 +79,20 @@ class PrestationController
       $largeDescription = $row->getLargeDescription();
       $petiteDescription = $row->getPetiteDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
-      include 'src/views/administration/prestationsListAdmin.php'; // Afficher la vue de connexion
+      include 'src/views/administration/prestationsListAdmin.php';
 
       $i++;
     }
   }
 
-  public function ajouterPrestation($donnees)
+  /**
+   * To add service(s) in admin space
+   *
+   * @param array $donnees
+   */
+  public function ajouterPrestation(array $donnees)
   {
     $connection = new PrestationManager($this->db);
     $prestation = $connection->ajouterPrestation($donnees);
   }
-
 }

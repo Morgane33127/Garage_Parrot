@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-8">
           <p>
-<?php echo $horaires; ?>
+            <?php echo $horaires; ?>
           </p>
         </div>
       </div>
@@ -41,7 +41,6 @@
       </form>
     </div>
   </div>
-
 </div>
 
 <?php

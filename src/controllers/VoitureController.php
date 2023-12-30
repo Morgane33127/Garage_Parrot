@@ -1,16 +1,30 @@
 <?php
 
+/**
+ * Controller for car management
+ *
+ * @author Morgane G.
+ */
+
 class VoitureController
 {
 
   private $db;
 
+  /**
+   * Constructor
+   *
+   */
   public function __construct()
   {
     $this->db = new Database();
     $this->db = $this->db->getConnection();
   }
 
+  /**
+   * To obtain the number of cars available for sale.
+   *
+   */
   public function countVoiture()
   {
 
@@ -18,10 +32,15 @@ class VoitureController
     echo $totalCount = $model->getTotalVoitureCount();
   }
 
-  public function affichageCard($page, $limit)
+  /**
+   * Obtain cars shorts details and display them in card form.
+   *
+   * @param int $page for pagination
+   * @param int $limit for pagination
+   */
+  public function affichageCard(int $page, int $limit)
   {
     $offset = ($page - 1) * $limit;
-    // Obtenir les détails de les prestations
     $model = new VoitureManager($this->db);
     $voitures = $model->affichageVoitures($limit, $offset);
     $totalCount = $model->getTotalVoitureCount();
@@ -31,18 +50,21 @@ class VoitureController
       $description = $row->getPetiteDescription();
       $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
-      include 'src/views/voitureCard.php'; // Afficher la vue voiture
+      include 'src/views/voitureCard.php';
     }
     if (isset($_GET['page']) && $_GET['page'] == 'vehicules') {
-      include 'src/views/pagination.php'; // Afficher la pagination
+      //Show pagination
+      include 'src/views/pagination.php';
     }
   }
 
-  
+  /**
+   * Obtain cars shorts details and display them in card form for space admin.
+   *
+   */
   public function affichageAll()
   {
 
-    // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voitures = $voiture->affichageVoituresAll();
     foreach ($voitures as $row) {
@@ -51,112 +73,87 @@ class VoitureController
       $description = $row->getPetiteDescription();
       $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
-      include 'src/views/administration/voitureCardAdmin.php'; // Afficher la vue voiture
+      include 'src/views/administration/voitureCardAdmin.php';
     }
   }
-  
 
-  public function voitureInfos($id)
+  /**
+   * Displays the page with detailed information about a car using its ID.
+   *
+   * @param int $id
+   */
+  public function voitureInfos(int $id)
   {
 
-    // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
-    include 'src/views/voitureInfos.php'; // Afficher la vue voitureInfos
-
+    include 'src/views/voitureInfos.php';
   }
 
-  public function voitureInfosAdmin($id)
+  /**
+   * Displays the page with detailed information about a car using its ID for admin space.
+   *
+   * @param int $id
+   */
+  public function voitureInfosAdmin(int $id)
   {
 
-    // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
-    include 'src/views/administration/voitureInfosAdmin.php'; // Afficher la vue voitureInfos
-
+    include 'src/views/administration/voitureInfosAdmin.php';
   }
 
-  public function modifierVoiture($donnees)
+  /**
+   * To update a car informations
+   *
+   * @param array $donnees
+   */
+  public function modifierVoiture(array $donnees)
   {
 
-    // Obtenir les détails de les prestations
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->updateVoiture($donnees);
   }
 
-  public function filtrerPrice($prix)
-  {
-    $page = 1;
-    $voiture = new VoitureManager($this->db);
-    $voitures = $voiture->affichageVoituresPrix($prix, $page);
-    $response = '';
-    if (count($voitures) != 0) {
-      if ($_GET['page'] = 'vehicules') {
-        echo count($voitures) . " résultat(s) :";
-      } 
-      foreach ($voitures as $row) {
-        $id = $row->getId();
-        $titre = $row->getTitre();
-        $description = $row->getPetiteDescription();
-        $img = 'public/assets/img/' . $row->getImage();
-        $prix = number_format($row->getPrix(), 0, ',', ' ');
-        include '../src/views/voitureCard.php';
-      }
-    } else {
-      echo "Aucun résultat.";
-    }
-  }
-
-  public function filtrerKm($km)
-  {
-    $page = 1;
-    $voiture = new VoitureManager($this->db);
-    $voitures = $voiture->affichageVoituresKm($km, $page);
-    $response = '';
-    if ($_GET['page'] = 'vehicules') {
-      echo count($voitures) . " résultat(s) :";
-    } 
-    if (count($voitures) != 0) {
-      foreach ($voitures as $row) {
-        $id = $row->getId();
-        $titre = $row->getTitre();
-        $description = $row->getPetiteDescription();
-        $img = 'public/assets/img/' . $row->getImage();
-        $prix = number_format($row->getPrix(), 0, ',', ' ');
-        include '../src/views/voitureCard.php';
-      }
-    } else {
-      echo "Aucun résultat.";
-    }
-  }
-
-  public function filtrerDate($date)
-  {
-    $page = 1;
-    $voiture = new VoitureManager($this->db);
-    $voitures = $voiture->affichageVoituresAnnee($date, $page);
-    $response = '';
-    if (count($voitures) != 0) {
-      if ($_GET['page'] = 'vehicules') {
-        echo count($voitures) . " résultat(s) :";
-      } 
-      foreach ($voitures as $row) {
-        $id = $row->getId();
-        $titre = $row->getTitre();
-        $description = $row->getPetiteDescription();
-        $img = 'public/assets/img/' . $row->getImage();
-        $prix = number_format($row->getPrix(), 0, ',', ' ');
-        include '../src/views/voitureCard.php';
-      }
-    } else {
-      echo "Aucun résultat.";
-    }
-  }
-
-  public function ajouterVoiture($donnees)
+  /**
+   * To add a car with informations
+   *
+   * @param array $donnees
+   */
+  public function ajouterVoiture(array $donnees)
   {
     $newVoiture = $donnees;
     $connection = new VoitureManager($this->db);
     $voiture = $connection->newVoiture($newVoiture);
+  }
+
+  /**
+   * Function associated with fetch JS to display a filtered view of cars for sale.
+   *
+   * @param int $prixSaisi
+   * @param int $kmSaisi
+   * @param string $dateSaisi
+   */
+  public function filtrerVoitures(int $prixSaisi, int $kmSaisi, string $dateSaisi)
+  {
+    $page = 1;
+    $voiture = new VoitureManager($this->db);
+    $voitures = $voiture->affichageVoituresFiltre($prixSaisi, $kmSaisi, $dateSaisi, $page);
+    $response = '';
+    if (count($voitures) != 0) {
+      if ($_GET['page'] = 'vehicules') {
+        echo count($voitures) . " résultat(s) :";
+      }
+      foreach ($voitures as $row) {
+        $id = $row->getId();
+        $titre = $row->getTitre();
+        $description = $row->getPetiteDescription();
+        $img = 'public/assets/img/' . $row->getImage();
+        $prix = number_format($row->getPrix(), 0, ',', ' ');
+        include '../src/views/voitureCard.php';
+      }
+    } else {
+      echo "Aucun résultat.";
+    }
   }
 }

@@ -1,18 +1,27 @@
-
 <div class="container-sm margin-top center">
   <section>
     <h3>A propos du Garage V. Parrot</h3>
     <div class="container">
       <div class="row align-items-start">
         <div class="col-sm-6">
-          <p>Bienvenue chez Garage V. Parrot, votre destination automobile de confiance pour des services de qualité et une expertise inégalée. Niché au cœur de notre communauté, notre petit garage est bien plus qu'un simple lieu de réparation automobile ; c'est un lieu où les passionnés se rencontrent et où chaque client est accueilli avec chaleur et professionnalisme.
-            Chez Garage V. Parrot, nous mettons l'accent sur l'excellence dans chaque aspect de notre travail. Notre équipe qualifiée de mécaniciens expérimentés est dédiée à assurer la santé optimale de votre véhicule, que ce soit pour des réparations, des entretiens réguliers ou des diagnostics approfondis. Nous comprenons l'importance de votre sécurité et de celle de votre voiture, c'est pourquoi nous nous engageons à fournir des services fiables et efficaces.
-            Notre atmosphère conviviale et notre service personnalisé font de chaque visite chez Garage V. Parrot une expérience agréable. Nous sommes fiers de créer des relations durables avec nos clients, en offrant des conseils honnêtes et des solutions adaptées à leurs besoins spécifiques.
-            Que vous soyez à la recherche d'une simple vidange d'huile, de la réparation de problèmes mécaniques complexes ou même de conseils sur l'entretien préventif, Garage V. Parrot est là pour répondre à toutes vos demandes. Nous croyons en la transparence, en fournissant des devis clairs et en expliquant chaque étape du processus pour que nos clients se sentent en confiance à chaque étape.
-            Faites confiance à Garage V. Parrot pour prendre soin de votre voiture comme si c'était la nôtre. Nous sommes passionnés par l'automobile et déterminés à vous offrir le meilleur service possible. Visitez-nous aujourd'hui et découvrez la différence Garage V. Parrot.</p>
+          <p>
+            Bienvenue chez Garage V. Parrot, votre partenaire automobile de confiance.
+            <br>
+            Notre petit garage offre des services de :
+          <ul>
+            <option>* Réparation (pas de carosserie)</option>
+            <option>* Entretien</option>
+            <option>* Révision</option>
+            <option>* Vidange</option>
+            <option>* Vente de voitures d'occasions</option>
+          </ul>
+          Le Garage V. Parrot c'est une équipe dévouée de mécaniciens expérimentés qui se chargera de votre véhicule sans délais et sans frais cachés.
+          Chez nous, chaque client est accueilli chaleureusement dans une
+          atmosphère conviviale.
+          </p>
         </div>
         <div class="col-sm-6">
-          <img src="public/assets/img/garage.jpg" alt="" width="100%">
+          <img src="public/assets/img/garage.jpg" alt="" width="80%">
         </div>
       </div>
     </div>
@@ -46,7 +55,6 @@
     <div class="container text-center">
       <div class="row align-items-start">
         <?php
-        // Contenu
         echo $content;
         ?>
       </div>

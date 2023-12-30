@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Notice Class
+ * 
+ * To construct notices and get informations
+ */
+
 class Avis
 {
 
@@ -12,7 +18,8 @@ class Avis
   private int $note_a;
   private string $statut;
 
-  public function __construct ($id_a, $titre_a, $commentaire_a, $visiteur_nom, $visiteur_prenom, $note_a, $statut, $dt_a){
+  public function __construct($id_a, $titre_a, $commentaire_a, $visiteur_nom, $visiteur_prenom, $note_a, $statut, $dt_a)
+  {
     $this->id_a = $id_a;
     $this->titre_a = $titre_a;
     $this->commentaire_a = $commentaire_a;
@@ -67,5 +74,4 @@ class Avis
   {
     return $this->statut;
   }
-
 }

@@ -1,10 +1,18 @@
 <?php
 
+/* EN : Entrance door to the site. We integrate the header. We display the menu for non-blacklisted pages. We start the session.
+The index acts as a router.
+
+FR : Porte d'entrée du site. On intègre le header. On affiche le menu pour les pages non "black-listées". On démarre la session. 
+L'index joue le rôle de routeur.
+*/
+
 require_once 'src/views/header.php';
 
-
-if(!isset($_GET['page']) || $_GET['page'] != 'administr' && $_GET['page'] != 'login' && $_GET['page'] != 'forget-pswd' && $_GET['page'] != 'reset-password' 
-&& $_GET['page'] != 'vinfoadmin'){
+if (
+  !isset($_GET['page']) || $_GET['page'] != 'administr' && $_GET['page'] != 'login' && $_GET['page'] != 'forget-pswd' && $_GET['page'] != 'reset-password'
+  && $_GET['page'] != 'vinfoadmin'
+) {
   require_once 'src/views/menu.php';
 }
 
@@ -51,12 +59,12 @@ if (!empty($_GET['page'])) {
     case 'login':
       require('src/login.php');
       break;
-      case 'forget-pswd':
-        require('src/mdpOublie.php');
-        break;
-        case 'reset-password':
-          require('src/resetPassword.php');
-          break;
+    case 'forget-pswd':
+      require('src/mdpOublie.php');
+      break;
+    case 'reset-password':
+      require('src/resetPassword.php');
+      break;
   }
 } else {
   require('src/accueil.php');

@@ -1,10 +1,15 @@
 <?php
 
+/* EN : The specific "Car information" view is displayed if the identifier of the selected car is not empty and depending on the page (visitor/admin).
+Implemented an exit delay to display data more quickly and in the right places.
+
+FR : On affiche la vue specifique "Infos voitures" si l'identifiant de la voiture sélectionnée n'est pas vide et en fonction de la page (visiteur/admin).
+Mise en place d'une temporisation de sortie pour afficher les données plus rapidemment et aux bons endroits.
+*/
+
 include_once './config/autoload.php';
-include 'config/Database.php';
-include 'config/functions.php';
-include 'src/controllers/VoitureController.php';
-include 'src/controllers/HoraireController.php';
+include_once 'config/Database.php';
+include_once 'config/functions.php';
 
 $v_id = $_GET['id'];
 
@@ -20,6 +25,7 @@ try {
       $horaireController = new HoraireController();
       $horaireController->affichageHeures();
       $horaires = ob_get_clean();
+
       require 'views/footer.php';
     } else if ($_GET['page'] == 'vinfoadmin') {
       $voitureController = new VoitureController();

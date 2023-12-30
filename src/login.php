@@ -1,17 +1,15 @@
 <?php
-include_once './config/autoload.php';
-require_once './config/functions.php';
-include_once './config/Database.php';
-include_once './src/controllers/LoginController.php';
+/* EN : Creating the connection controller
+FR : Création du contrôleur de connexion
+*/
 
-if(!empty($_SESSION['alert'])) {
-    ?>
-    <div class="alert alert-<?php echo $_SESSION['alert']['type']; ?>"  role="alert">
-    <?php echo $_SESSION['alert']['msg']; ?>
-    </div>
-    <?php
+include_once './config/autoload.php';
+include_once './config/functions.php';
+include_once './config/Database.php';
+
+if (!empty($_SESSION['alert'])) {
+    require './views/sessionView.php';
 }
 
-// Création du contrôleur de connexion
 $loginController = new LoginController();
 $loginController->login();

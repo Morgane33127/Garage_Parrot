@@ -1,15 +1,11 @@
 <div class="container-sm margin-top center">
-
   <h3>Avis clients</h3>
-
   <div class="action-sup">
     <button type="submit" class="button" data-bs-toggle="modal" data-bs-target="#ajouterAvis">Laisser un avis</button>
   </div>
-
   <div id="avis">
     <div class="row align-items-start">
       <?php
-      // Contenus
       echo $content;
       ?>
     </div>

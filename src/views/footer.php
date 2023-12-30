@@ -19,7 +19,7 @@
     <div class="row align-items-start">
       <div class="col-sm-4">
         <p>
-<?php echo $horaires; ?>
+          <?php echo $horaires; ?>
         </p>
       </div>
       <div class="col-sm-8">

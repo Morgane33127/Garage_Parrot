@@ -6,8 +6,8 @@
       </div>
       <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="90%">
       <div class="m-3">
-      <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-      <br>
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+        <br>
         <input class="form-control input" type="email" name="email" placeholder="Login" required>
         <br>
         <input class="form-control input" type="password" name="password" placeholder="Mot de passe" minlength="8" required>

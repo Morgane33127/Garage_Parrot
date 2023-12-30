@@ -2,7 +2,7 @@
   <div class="login">
     <form action="#" method="POST">
     <a href="index.php">Revenir au site >></a>
-      <h3>Réinitiliser mon mot de passe</h3>
+      <h3>Réinitialiser mon mot de passe</h3>
       <p>Nous vous enverrons un lien de réinitialisation de votre mot de passe à l'adresse email correspondante à votre compte.</p>
       <div class="m-3">
         <input class="form-control input" type="email" name="email" placeholder="E-mail" required>
