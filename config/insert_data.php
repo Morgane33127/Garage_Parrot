@@ -4,8 +4,7 @@ try {
   $db = new Database();
   $pdo = $db->getConnection();
 
-  $mdp = password_hash('Jaimelesvoitures', PASSWORD_DEFAULT);
-  $mdp2 = password_hash('2646tahah', PASSWORD_DEFAULT);
+  $mdp = password_hash('Jaimelesvoituresdu33600', PASSWORD_DEFAULT);
 
   if (
     $pdo->exec("INSERT INTO lbl (code_lbl, lbl) VALUES ('ADM', 'ADMIN')") &&
@@ -41,16 +40,16 @@ try {
                 VALUES ('Super garage', 'Super garage, très pro, personnel et patron au top.', 'Florient', 'Derat', 5, 'En attente')") &&
 
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Entretien', 'Preservez la fiabilité et la durabilité de votre voiture', 'Nos services d\'entretien méticuleux garantissent non seulement 
-        des performances optimales mais aussi une tranquillité d\'esprit, en préservant la fiabilité et la durabilité de votre voiture.')") &&
+        VALUES ('Entretien', 'Preservez la performance et la sécurité de votre véhicule.', 'Nos services d\'entretien méticuleux garantissent non seulement 
+        des performances optimales mais aussi une tranquillité d\'esprit, pour prendre la route en toute sécurité.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Réparation', 'Redonner vie à votre véhicule', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et 
+        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et 
         fiable, pour vous remettre rapidement sur la route.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
         VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver 
         des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances', 'A réaliser tous les 10 000 à 15 000 km sur un moteur 
+        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances.', 'A réaliser tous les 10 000 à 15 000 km sur un moteur 
         essence, et tous les 7000 à 10 000 km sur un moteur diesel.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
         VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente 

@@ -269,20 +269,24 @@ class VoitureManager
   /**
    * Function associated with fetch JS to display a filtered view of cars for sale.
    *
-   * @param int $prixSaisi
-   * @param int $kmSaisi
+   * @param int $prixMin
+   * @param int $prixMax
+   * @param int $kmMin
+   * @param int $kmMax
    * @param string $dateSaisi
    * @param int $page
    * @return array with car list
    */
-  public function affichageVoituresFiltre(int $prixSaisi, int $kmSaisi, string $dateSaisi, int $page): array
+  public function affichageVoituresFiltre(int $prixMin, int $prixMax, int $kmMin, int $kmMax, string $dateSaisi, int $page): array
   {
     require_once 'Voiture.php';
-    $infos = $this->pdo->prepare("SELECT * FROM voitures WHERE kilometre <= :km AND prix <= :prix AND annee <= :annee ORDER BY prix ASC LIMIT :start, 10");
+    $infos = $this->pdo->prepare("SELECT * FROM voitures WHERE kilometre >= :kmmin AND kilometre <= :kmmax AND prix >= :prixmin AND prix <= :prixmax AND annee <= :annee ORDER BY prix ASC LIMIT :start, 10");
     $infos->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
-    $infos->bindValue(':km', $kmSaisi, PDO::PARAM_INT);
+    $infos->bindValue(':kmmin', $kmMin, PDO::PARAM_INT);
+    $infos->bindValue(':kmmax', $kmMax, PDO::PARAM_INT);
     $infos->bindValue(':annee', $dateSaisi, PDO::PARAM_STR);
-    $infos->bindValue(':prix', $prixSaisi, PDO::PARAM_INT);
+    $infos->bindValue(':prixmin', $prixMin, PDO::PARAM_INT);
+    $infos->bindValue(':prixmax', $prixMax, PDO::PARAM_INT);
     $infos->bindValue(':start', 10 * ($page - 1), PDO::PARAM_INT);
     $infos->execute();
     $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);

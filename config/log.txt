@@ -183,3 +183,14 @@ Stack trace:
 23-12-2023 17:00:06 : Reinitialisation impossible.
 23-12-2023 17:01:40 : Mots de passe incohérents.
 29-12-2023 18:28:28 : Permission inconnue.
+02-01-2024 17:52:24 : Permission inconnue.
+02-01-2024 17:52:27 : Permission inconnue.
+02-01-2024 17:52:30 : Permission inconnue.
+02-01-2024 17:52:30 : Permission inconnue.
+02-01-2024 17:52:30 : Permission inconnue.
+02-01-2024 17:52:31 : Permission inconnue.
+02-01-2024 18:19:15 : Mot de passe incorrect.
+02-01-2024 18:19:39 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
+02-01-2024 18:20:51 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
+02-01-2024 18:21:23 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
+02-01-2024 18:32:34 : Désolé, uniquement formats JPG, JPEG, PNG autorisés.

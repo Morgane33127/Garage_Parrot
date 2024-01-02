@@ -36,6 +36,11 @@ class PrestationController
       $nom = $row->getNom();
       $pteDescription = $row->getPetiteDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
+      if($i >= 5){
+        $icon = '';
+      } else {
+        $icon = $icons[$i];
+      }
       include 'src/views/prestationCard.php';
 
       $i++;
@@ -57,6 +62,11 @@ class PrestationController
       $nom = $row->getNom();
       $largeDescription = $row->getLargeDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
+      if($i >= 5){
+        $icon = '';
+      } else {
+        $icon = $icons[$i];
+      }
       include 'src/views/prestationsList.php';
 
       $i++;
@@ -79,6 +89,11 @@ class PrestationController
       $largeDescription = $row->getLargeDescription();
       $petiteDescription = $row->getPetiteDescription();
       $icons = array('bi-tools', 'bi-bag-plus-fill', 'bi-stopwatch-fill', 'bi-nut-fill', 'bi-car-front-fill');
+      if($i >= 5){
+        $icon = '';
+      } else {
+        $icon = $icons[$i];
+      }
       include 'src/views/administration/prestationsListAdmin.php';
 
       $i++;

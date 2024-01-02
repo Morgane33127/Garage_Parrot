@@ -50,6 +50,7 @@ class VoitureController
       $description = $row->getPetiteDescription();
       $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
+      $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
       include 'src/views/voitureCard.php';
     }
     if (isset($_GET['page']) && $_GET['page'] == 'vehicules') {
@@ -73,6 +74,7 @@ class VoitureController
       $description = $row->getPetiteDescription();
       $img = 'public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
+      $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
       include 'src/views/administration/voitureCardAdmin.php';
     }
   }
@@ -130,15 +132,17 @@ class VoitureController
   /**
    * Function associated with fetch JS to display a filtered view of cars for sale.
    *
-   * @param int $prixSaisi
-   * @param int $kmSaisi
+   * @param int $prixMin
+   * @param int $prixMax
+   * @param int $kmMin
+   * @param int $kmMax
    * @param string $dateSaisi
    */
-  public function filtrerVoitures(int $prixSaisi, int $kmSaisi, string $dateSaisi)
+  public function filtrerVoitures(int $prixMin, int $prixMax, int $kmMin, int $kmMax, string $dateSaisi)
   {
     $page = 1;
     $voiture = new VoitureManager($this->db);
-    $voitures = $voiture->affichageVoituresFiltre($prixSaisi, $kmSaisi, $dateSaisi, $page);
+    $voitures = $voiture->affichageVoituresFiltre($prixMin, $prixMax, $kmMin, $kmMax, $dateSaisi, $page);
     $response = '';
     if (count($voitures) != 0) {
       if ($_GET['page'] = 'vehicules') {
@@ -150,6 +154,7 @@ class VoitureController
         $description = $row->getPetiteDescription();
         $img = 'public/assets/img/' . $row->getImage();
         $prix = number_format($row->getPrix(), 0, ',', ' ');
+        $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
         include '../src/views/voitureCard.php';
       }
     } else {

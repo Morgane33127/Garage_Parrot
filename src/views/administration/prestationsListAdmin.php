@@ -1,13 +1,13 @@
 <div class="voiture-card">
-  <div class="row p-3">
+  <div class="row">
     <div class="col-6 text-start">
-      <h5><i class="<?php echo $icons[$i]; ?>"> </i><?php echo $nom; ?></h5>
+      <h5><i class="<?php echo $icon; ?>"> </i><?php echo $nom; ?></h5>
     </div>
     <div class="col-5 text-end">
-      <button type="submit" name="supp_p_<?php echo $row->getId(); ?>"><i class="bi-trash-fill" style="color:red;"></i></button>
+      <button type="submit" class="trash-button" name="supp_p_<?php echo $row->getId(); ?>"><i class="bi-trash-fill"></i></button>
     </div>
     <div class="col-1 text-start">
-      <button type="submit" name="update_p_<?php echo $row->getId(); ?>"><i class="bi-pen-fill" style="color:grey;"></i> </button>
+      <button type="submit" class="modify-button" name="update_p_<?php echo $row->getId(); ?>"><i class="bi-pen-fill"></i> </button>
     </div>
   </div>
   <div class="mx-5 row">

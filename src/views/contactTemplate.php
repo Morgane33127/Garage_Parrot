@@ -2,11 +2,11 @@
   <div class="row align-items-center">
     <div class="col-sm-6 contact">
       <div class="py-3">
-        <span class="button">1 rue de nulle part 33600 Pessac</span>
+        <span class="button"><?php echo ADRESSE; ?></span>
       </div>
       <div class="row align-items-start my-2">
         <div class="col-sm-4 py-3">
-          <span class="button">05.56.00.00.00</span>
+          <span class="button"><?php echo TELEPHONE; ?></span>
         </div>
         <div class="col-sm-8">
           <p>

@@ -1,4 +1,4 @@
-/* Polices */
+/* Fonts */
 @font-face {
   font-family: 'Montserrat-Black';
   src: url('../font/Montserrat-Black.ttf') format('truetype');
@@ -8,24 +8,23 @@
   src: url('../font/QuattrocentoSans-Regular.ttf') format('truetype');
 }
 
-
-  /* Réinitialisation du navigateur */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  /* Reset navigator*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   }
 
- p {
-    font-family: 'QuattrocentoSans-Regular';
-  }
+p {
+  font-family: 'QuattrocentoSans-Regular';
+}
 
-    /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: bold;
-      font-family: 'Montserrat-Black';
-      margin: 20px 5px 20px 5px;
-    }
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  font-family: 'Montserrat-Black';
+  margin: 20px 5px 20px 5px;
+  }
 
 $font-color: white;
 $red: #D92332;
@@ -33,6 +32,142 @@ $pink: #D9777F;
 $black: #262526;
 $grey: #F2F2F2;
 
+/* Buttons and inputs */
+.input {
+  background-color: $grey; 
+  text-align:center;
+}
+
+.button, .button_admin {
+  border: solid;
+  font-weight: bold;
+  border-color: $red;
+  border-radius:30px;
+  text-align: center;
+  background-color: white;
+  color: $red;
+  padding: 5px 5px 5px 5px;
+  height:50px;
+  text-decoration: none;
+}
+
+.button:hover, .button_admin {
+  border: solid;
+  font-weight: bold;
+  border-color: $red;
+  text-align: center;
+  background-color: $red;
+  color: $font-color;
+  border-radius:30px;
+}
+
+.button_admin {
+  height: 100px;
+  width : 100%;
+}
+
+.button-action {
+  border-style:none;
+}
+
+.trash-button {
+  color: $red;
+  border : none;
+}
+
+.modify-button {
+  color: $black;
+  border : none;
+}
+
+.ok-button {
+  color: green;
+  border : none;
+}
+
+.action-sup{
+  text-align:center;
+  margin : 20px 0px 20px 0px;
+}
+
+/* Links */
+.link {
+  text-decoration: none;
+  color: $pink;
+  font-weight: bold;
+  font-family: 'Montserrat-Black';
+}
+
+.link-menu {
+  color : $black;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Montserrat-Black';
+}
+
+.link-menu:hover {
+color : $red;
+text-decoration: none;
+font-weight: bold;
+font-family: 'Montserrat-Black';
+}
+
+  /* Menu and navigation */
+  .menu-block {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-bottom: 30px;
+    justify-content :right;
+  }
+
+//Menu items
+  .menu {
+    padding-right: 20px;
+  }
+
+  .navigation {
+    background-color: $font-color;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    z-index:1000;
+    width:100%;
+  }
+
+  /* Display */
+.pagination {
+  color: $red;
+}
+
+.flex {
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+  .margin-top{
+    margin-top: 120px;
+    margin-bottom: 50px;
+  }
+
+  .section {
+    margin: 2% 5% 2% 5%;
+  }
+
+.titre{
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Montserrat-Black';
+  color: $red;
+}
+
+.display-none1{
+  display: none;
+}
+
+/* Login page */
 .login {
     position: absolute;
     left: 50%;
@@ -46,193 +181,87 @@ $grey: #F2F2F2;
     font-size: 16px;
     }
 
-    .input {
-      background-color: #F2F2F2; 
-      text-align:center;
-    }
-
-    .action-sup{
-      text-align:center;
-      margin : 20px 0px 20px 0px;
-    }
-
-    .pagination {
-      color: $red;
-    }
-    
-
-    .button, .button_admin {
-      border: solid;
-      font-weight: bold;
-      border-color: #D92332;
-      border-radius:30px;
-      text-align: center;
-      background-color: white;
-      color: #D92332;
-      padding: 5px 5px 5px 5px;
-      height:50px;
-      text-decoration: none;
-    }
-  
-    .button:hover, .button_admin {
-      border: solid;
-      font-weight: bold;
-      border-color: #D92332;
-      text-align: center;
-      background-color: #D92332;
-      color: white;
-      border-radius:30px;
-    }
-
-    .button_admin {
-      height: 100px;
-      width : 100%;
-    }
-
-    .button-action {
-      border-style:none;
-    }
-
-
-    .link {
-      text-decoration: none;
-      color: $pink;
-      font-weight: bold;
-      font-family: 'Montserrat-Black';
-    }
-
     .login a {
-        text-decoration: none;
-        color: $black;
-        font-family: 'QuattrocentoSans-Regular';
-    }
-
-    .prestation-card{
-      height:250px; 
-      width:350px;
-      color: $red;
-      text-align: center;
-      border: solid;
-      font-weight: bold;
-      border-color: $red;
-      background-color: white;
-    }
-
-    
-    .prestation-card:hover{
-      height:250px; 
-      width:350px;
-      color: white;
-      text-align: center;
-      border: solid;
-      font-weight: bold;
-      border-color: $red;
-      background-color: $red;
-    }
-
-    .link-menu {
-      color : $black;
       text-decoration: none;
-      font-weight: bold;
-      font-family: 'Montserrat-Black';
-   }
-
-   .link-menu:hover {
-    color : $red;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: 'Montserrat-Black';
- }
-    
-.flex {
-  display: flex; 
-  justify-content: space-between; 
-  flex-wrap: nowrap;
-  flex-direction: row;
-}
-
-  /* coté menu */
-  .menu-block {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    margin-bottom: 50px;
-    justify-content :right;
+      color: $black;
+      font-family: 'QuattrocentoSans-Regular';
   }
 
-  /* items du menu */
-  .menu {
-    padding-right: 20px;
-  }
-
-  .navigation {
-    background-color: white ;
-    overflow: hidden;
-    position: fixed;
-    top:0;
-    z-index:1000;
-    width:100%;
-  }
-
-
-  .margin-top{
-    margin-top: 120px;
-    margin-bottom: 50px;
-  }
-
-
-  .section {
-    margin: 2% 5% 2% 5%;
-  }
-
-
-
-.titre{
-  font-size: 26px;
+/* Prestations style */
+.prestation-card{
+  height:250px; 
+  width:350px;
+  color: $red;
+  text-align: center;
+  border: solid;
   font-weight: bold;
-  font-family: 'Montserrat-Black';
-  color: #D92332;
+  border-color: $red;
+  background-color: $font-color;
 }
 
+.prestation-card:hover{
+  height:250px; 
+  width:350px;
+  color: $font-color;
+  text-align: center;
+  border: solid;
+  font-weight: bold;
+  border-color: $red;
+  background-color: $red;
+}
 
+/* Car style */
+.voiture-card {
+  margin: 20px 0px 20px 0px;
+  padding: 1%;
+  background-color: $grey;
+  height: 200px;
+  width: 100%;
+  box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
+}
 
-  .valeur {
-    text-align: center;
-    background-color: #D92332;
-    height: 150px;
-    color: white;
-    font-weight: bold;
-    margin: 20px;
-  }
+.voiture-card-img {
+  height:150px;
+  width:230px;
+}
 
-  .valeur h3 {
-    line-height: 100px;
-  }
+/* Notice style */
+.card-avis {
+  text-align: start;
+  padding: 1%;
+  background-color: $grey;
+  height: 200px;
+  width:300px;
+  margin: 10px;
+  box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
+}
 
-  .voiture-card {
-    margin: 20px 0px 20px 0px;
-    padding: 1%;
-    background-color: #F2F2F2;
-    height: 200px;
-    width: 100%;
-    box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
-  }
+.star {
+  color: #EDDB35;
+  font-size: 20px;
+}
 
-  .voiture-card-img {
-    height:150px;
-    width:230px;
-  }
+/* Values style */
+.valeur {
+  text-align: center;
+  background-color: $red;
+  height: 150px;
+  color: $font-color;
+  font-weight: bold;
+  margin: 20px;
+}
 
-  .card-avis {
-    text-align: start;
-    padding: 1%;
-    background-color: #F2F2F2;
-    height: 200px;
-    width:300px;
-    margin: 10px;
-    box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
-  }
+.valeur h3 {
+  line-height: 100px;
+}
 
+/* Contact style */
+.contact {
+  background-color: $red;
+  color: $grey;
+}
+
+  /* Footer */
   footer {
     background-color: $black;
     height: auto;
@@ -241,7 +270,7 @@ $grey: #F2F2F2;
     margin:50px 0px 0px 0px;
   }
 
-  //Sidebar
+  /* Sidebar */
   .dropdown-toggle { outline: 0; }
 
 .btn-toggle {
@@ -295,24 +324,11 @@ $grey: #F2F2F2;
   box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
 }
 
-.display-none1{
-  display: none;
-}
 
-.contact {
-  background-color: #D92332;
-  color: #F2F2F2;
-}
-
-.star {
-  color: #EDDB35;
-  font-size: 20px;
-}
-
-
-
+ /* Responsive */
 @media only screen and (max-width : 320px) {
 
+  //Display responsive
   .display-none{
     display: none;
   }
@@ -325,15 +341,17 @@ $grey: #F2F2F2;
     text-align: center;
   }
 
+  //Cars style responsive
   .voiture-card {
     margin: 20px 0px 20px 0px;
     padding: 10% 2% 10% 2%;
-    background-color: #F2F2F2;
+    background-color: $grey;
     height: auto;
     width: 100%;
     box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
   }
 
+  //Login style responsive
   .login {
     position: absolute;
     left: 50%;
@@ -347,6 +365,7 @@ $grey: #F2F2F2;
     font-size: 16px;
     }
 
+    //Services style responsive
     .prestation-card{
       height:250px; 
       width:100%;
@@ -355,14 +374,13 @@ $grey: #F2F2F2;
       border: solid;
       font-weight: bold;
       border-color: $red;
-      background-color: white;
+      background-color: $font-color;
     }
 
-    
     .prestation-card:hover{
       height:250px; 
       width:100%;
-      color: white;
+      color: $font-color;
       text-align: center;
       border: solid;
       font-weight: bold;
@@ -371,11 +389,12 @@ $grey: #F2F2F2;
       margin: 5px;
     }
 
+    //Values style responsive
     .valeur {
       text-align: center;
-      background-color: #D92332;
+      background-color: $red;
       height: auto;
-      color: white;
+      color: $font-color;
       font-weight: bold;
       margin: 5px;
     }
@@ -384,16 +403,18 @@ $grey: #F2F2F2;
       line-height: 50px;
     }
 
+    //Notices style responsive
     .card-avis {
       text-align: start;
       padding: 1%;
-      background-color: #F2F2F2;
+      background-color: $grey;
       height: 200px;
       width:100%;
       margin: 5px;
       box-shadow: 0px 4px 8px -1px rgba(104, 104, 104);
     }
 
+    //Sidebar style responsive
     .sidebar-style {
       width: 100%; 
       background-color: $grey;

@@ -12,6 +12,7 @@ Mise en place d'une temporisation de sortie pour afficher les données plus rapi
 include_once './config/functions.php';
 include_once './config/autoload.php';
 include_once './config/Database.php';
+include_once './config/const.php';
 
 ob_start();
 $horaireController = new HoraireController();

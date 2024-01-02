@@ -4,20 +4,18 @@
         <div class="container">
             <div class="row align-items-start">
                 <div class="col-sm display-none">
-                    <img src="public/assets/img/garage.jpg" alt="photo garage v parrot" style="width:500px;">
+                    <img src="public/assets/img/garage.jpg" alt="photo garage-v-parrot, garage, automobile, voitures, réparation, entretien, vidange" 
+                    style="width:500px;">
                 </div>
                 <div class="col-sm">
                     <h3>Présentation</h3>
-                    <p>Bienvenue chez Garage V. Parrot, votre partenaire automobile de
-                        confiance. Notre petit garage offre des services de réparation et
-                        d'entretien avec une équipe dévouée de mécaniciens expérimentés.
-                        En plus de nos services, nous proposons également des voitures
-                        d'occasion de qualité, adaptées à tous les besoins. Nous priorisons la
-                        transparence, fournissant des devis clairs et des conseils honnêtes.
-                        Chez nous, chaque client est accueilli chaleureusement dans une
-                        atmosphère conviviale. Confiez-nous votre voiture, et nous nous
-                        engageons à assurer son bon fonctionnement avec
-                        professionnalisme.
+                    <p>Bienvenue chez Garage V. Parrot, votre partenaire automobile de confiance. 
+                        <br><br>
+                        Notre petit garage propose une large gamme de services mais aussi des voitures
+                        d'occasions, adaptées à tous les besoins. Chez nous, transparence et qualité sont nos priorités.
+                        Notre équipe dévouée de mécaniciens expérimentés accueille chaque client chaleureusement dans une
+                        atmosphère conviviale.
+                        <br>
                         <br><a href="index.php?page=apropos" class="link">En savoir plus >></a>
                     </p>
                     <div>

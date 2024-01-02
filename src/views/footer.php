@@ -3,7 +3,7 @@
   <div class="container-sm">
     <div class="row align-items-start">
       <div class="col-sm-2 display-none">
-        <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot" width="150px;">
+        <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot, garage, automobile, voitures, réparation, entretien, vidange" width="150px;">
       </div>
       <div class="col-sm-10">
         <b>A propos</b>

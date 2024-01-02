@@ -166,3 +166,49 @@ function sessionAlert($type, $msg)
     "msg" => "$msg"
   ];
 }
+
+/**
+ * To verificate the strong of a password
+ *
+ * @param string $mdp,
+ *
+ */
+function verifMdp(string $mdp)
+{
+  $longueur = strlen($mdp);
+  $valeur = 0;
+
+  if ($longueur >= 8){
+
+    for($i = 0; $i < $longueur; $i++){
+      $caract = $mdp[$i];
+
+      if ($caract>='a' && $caract<='z'){
+        // On ajoute 1 point pour une minuscule
+        $valeur += 1;
+      }
+      else if ($caract>='A' && $caract <='Z'){
+        // On ajoute 2 points pour une majuscule
+        $valeur += 2;  
+      }
+      else if ($caract>='0' && $caract<='9'){
+        // On ajoute 3 points pour un chiffre
+        $valeur += 3;
+      }
+      else {
+        // On ajoute 5 points pour un caractère autre
+        $valeur += 5;
+      }
+    }
+
+    if ($valeur >= 15){
+      return $mdp;
+    } else {
+      throw new Exception("Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.");
+    }
+
+  } else {
+    throw new Exception("Mot de passe trop faible : minimum 8 caractères.");
+  }
+}
+

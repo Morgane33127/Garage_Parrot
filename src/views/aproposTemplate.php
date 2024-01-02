@@ -7,21 +7,20 @@
           <p>
             Bienvenue chez Garage V. Parrot, votre partenaire automobile de confiance.
             <br>
-            Notre petit garage offre des services de :
+            Notre petit garage propose une large gamme de services :
           <ul>
-            <option>* Réparation (pas de carosserie)</option>
+            <option>* Réparation : carosserie & mécanique </option>
             <option>* Entretien</option>
             <option>* Révision</option>
             <option>* Vidange</option>
             <option>* Vente de voitures d'occasions</option>
           </ul>
           Le Garage V. Parrot c'est une équipe dévouée de mécaniciens expérimentés qui se chargera de votre véhicule sans délais et sans frais cachés.
-          Chez nous, chaque client est accueilli chaleureusement dans une
-          atmosphère conviviale.
+          Chez nous, chaque client est accueilli chaleureusement dans une atmosphère conviviale.
           </p>
         </div>
         <div class="col-sm-6">
-          <img src="public/assets/img/garage.jpg" alt="" width="80%">
+          <img src="public/assets/img/garage.jpg" alt="photo garage-v-parrot, garage, automobile, voitures, réparation, entretien, vidange" width="80%">
         </div>
       </div>
     </div>
