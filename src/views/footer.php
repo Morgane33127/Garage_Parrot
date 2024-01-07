@@ -40,8 +40,8 @@
             <p>
               <a href="index.php?page=vehicules">Nos véhicules</a><br>
               <a href="index.php?page=contact">Contact</a><br><br>
-              <b>Mentions légales</b><br>
-              <b>CGU</b>
+              <a href="index.php?page=legalMentions"><b>Mentions légales</b></a><br>
+              <a href="index.php?page=cgu"><b>CGU</b></a>
             </p>
           </div>
         </div>

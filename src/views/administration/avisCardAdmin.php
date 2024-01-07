@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-9"><b><?php echo $titre; ?></b></div>
       <div class="col-1">
-        <button class="button-action" type="submit" name="accept<?php echo $row->getId(); ?>"><i class="bi-check-circle-fill" class="ok-button"></i> </button>
+        <button class="button-action ok-button" type="submit" name="accept<?php echo $row->getId(); ?>"><i class="bi-check-circle-fill"></i> </button>
       </div>
       <div class="col-1">
-        <button class="button-action" type="submit" name="refuse<?php echo $row->getId(); ?>"> <i class="bi-x-circle-fill" class="trash-button"></i> </button>
+        <button class="button-action trash-button" type="submit" name="refuse<?php echo $row->getId(); ?>"> <i class="bi-x-circle-fill"></i> </button>
       </div>
     </div>
     <div>

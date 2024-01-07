@@ -14,15 +14,15 @@
   box-sizing: border-box;
 }
 
-p {
-  font-family: "QuattrocentoSans-Regular";
-}
-
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   font-family: "Montserrat-Black";
   margin: 20px 5px 20px 5px;
+}
+
+p {
+  font-family: "QuattrocentoSans-Regular";
 }
 
 /* Buttons and inputs */
@@ -66,16 +66,19 @@ h1, h2, h3, h4, h5, h6 {
 .trash-button {
   color: #D92332;
   border: none;
+  background-color: white;
 }
 
 .modify-button {
   color: #262526;
   border: none;
+  background-color: white;
 }
 
 .ok-button {
   color: green;
   border: none;
+  background-color: white;
 }
 
 .action-sup {
@@ -152,7 +155,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 26px;
   font-weight: bold;
   font-family: "Montserrat-Black";
-  color: #D92332;
 }
 
 .display-none1 {
@@ -206,10 +208,11 @@ h1, h2, h3, h4, h5, h6 {
 .voiture-card {
   margin: 20px 0px 20px 0px;
   padding: 1%;
-  background-color: #F2F2F2;
+  background-color: white;
   height: 200px;
   width: 100%;
-  box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+  transition: transform 0.1s;
 }
 
 .voiture-card-img {
@@ -217,15 +220,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 230px;
 }
 
+.voiture-card:hover {
+  transform: scale(1.05);
+}
+
 /* Notice style */
 .card-avis {
   text-align: start;
   padding: 1%;
-  background-color: #F2F2F2;
+  background-color: white;
   height: 200px;
   width: 300px;
   margin: 10px;
-  box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
 }
 
 .star {
@@ -322,7 +329,7 @@ footer {
 }
 
 /* Responsive */
-@media only screen and (max-width: 320px) {
+@media only screen and (min-device-width: 250px) and (max-device-width: 481px) {
   .display-none {
     display: none;
   }
@@ -335,10 +342,10 @@ footer {
   .voiture-card {
     margin: 20px 0px 20px 0px;
     padding: 10% 2% 10% 2%;
-    background-color: #F2F2F2;
+    background-color: white;
     height: auto;
     width: 100%;
-    box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
   }
   .login {
     position: absolute;
@@ -387,11 +394,11 @@ footer {
   .card-avis {
     text-align: start;
     padding: 1%;
-    background-color: #F2F2F2;
+    background-color: white;
     height: 200px;
     width: 100%;
     margin: 5px;
-    box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
   }
   .sidebar-style {
     width: 100%;

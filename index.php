@@ -65,6 +65,12 @@ if (!empty($_GET['page'])) {
     case 'reset-password':
       require('src/resetPassword.php');
       break;
+      case 'legalMentions':
+        require('src/views/legalMentions.php');
+        break;
+        case 'cgu':
+          require('src/views/cgu.php');
+          break;
   }
 } else {
   require('src/accueil.php');
