@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="action-sup display-none1 display-block">
-            <a href="index.php?page=#"><button class="button">Laisser avis</button></a>
+            <a href="index.php?page=avis"><button type="button" class="button">Laisser avis</button></a>
         </div>
     </section>
 

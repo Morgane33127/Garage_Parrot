@@ -29,10 +29,7 @@ class Auth
    */
   public function login(string $mdp, string $login): User
   {
-    require_once 'User.php';
-
     $stmt = $this->conn->prepare('SELECT * FROM utilisateurs WHERE login_u= :email');
-    $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
     $stmt->bindValue(':email', $login);
     $stmt->execute();
     $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,10 +59,7 @@ class Auth
    */
   public function verifMail(string $login): User
   {
-    require_once 'User.php';
-
     $stmt = $this->conn->prepare('SELECT * FROM utilisateurs WHERE login_u= :email');
-    $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
     $stmt->bindValue(':email', $login);
     $stmt->execute();
     $user = $stmt->fetchAll(PDO::FETCH_ASSOC);

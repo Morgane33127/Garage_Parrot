@@ -117,7 +117,7 @@ try {
     $connection = new UserController();
     $user = $connection->ajouterUser($donnees);
     sessionAlert('success', 'Utilisateur ajouté avec succès!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=users');
   }
 } catch (Exception $e) {
   error($e->getMessage());
@@ -161,12 +161,12 @@ try {
     $connection = new VoitureController();
     $voiture = $connection->ajouterVoiture($donnees);
     sessionAlert('success', 'Voiture ajoutée avec succès!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=voitures');
   }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=voitures');
 }
 
 //Update a car
@@ -205,12 +205,12 @@ try {
     $connection = new VoitureController();
     $voiture = $connection->modifierVoiture($donnees);
     sessionAlert('success', 'Voiture modifiée avec succès!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=voitures');
   }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=voitures');
 }
 
 //Update schedules
@@ -226,12 +226,12 @@ if (isset($_POST['modifierHoraires'])) {
   $connection = new HoraireController();
   $heure = $connection->changeHoraires($modifications);
   sessionAlert('success', 'Horaires modifiés avec succès!');
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=horaires');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=horaires');
 }
 
 //Add service
@@ -246,12 +246,12 @@ if (isset($_POST['adPrestation'])) {
   $connection = new PrestationController();
   $prestation = $connection->ajouterPrestation($donnees);
   sessionAlert('success', 'Prestation ajoutée avec succès!');
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=prestations');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=prestations');
 }
 
 //Add admin review
@@ -268,12 +268,12 @@ if (isset($_POST['addAvis'])) {
   $connection = new AvisController();
   $avis = $connection->ajouterAvis($donnees);
   sessionAlert('success', 'Avis ajouté avec succès!');
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=avis');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header('Location: index.php?page=administr&div=avis');
 }
 
 //Action on lines: Validate/Invalidate a notice; Delete a user
@@ -283,35 +283,35 @@ foreach ($_POST as $cle => $value) {
     $id = substr($cle, 6);
     $connection = new AvisManager($pdo);
     $accept = $connection->validAvis($id);
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=avis');
   }
 
   if (str_contains($cle, 'refuse')) {
     $id = substr($cle, 6);
     $connection = new AvisManager($pdo);
     $refuse = $connection->invalidAvis($id);
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=avis');
   }
   if (str_contains($cle, 'suppUser')) {
     $id = $_POST['idsuser' . substr($cle, 8)];
     $connection = new UserManager($pdo);
     $delete = $connection->suppUser($id);
     sessionAlert('success', 'Utilisateur supprimé avec succès!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=users');
   }
   if (str_contains($cle, 'delete_v_')) {
     $id = substr($cle, 9);
     $connection = new VoitureManager($pdo);
     $delete = $connection->supprimerVoiture($id);
     sessionAlert('success', 'Voiture supprimée avec succès!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=voitures');
   }
   if (str_contains($cle, 'supp_p_')) {
     $id = substr($cle, 7);
     $connection = new PrestationManager($pdo);
     $delete = $connection->supprimerPrestation($id);
     sessionAlert('success', 'Prestation supprimée avec succès!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=prestations');
   }
   if (str_contains($cle, 'update_p_')) {
     $id = substr($cle, 9);
@@ -320,6 +320,6 @@ foreach ($_POST as $cle => $value) {
     $connection = new PrestationManager($pdo);
     $updt = $connection->modifierPrestation($id, $petite_description_p, $large_description_p);
     sessionAlert('success', 'Mises à jour prises en comptes!');
-    header('Location: index.php?page=administr');
+    header('Location: index.php?page=administr&div=prestations');
   }
 }

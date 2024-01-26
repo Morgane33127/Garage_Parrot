@@ -16,9 +16,26 @@ class VoitureInfos extends Voiture
   private int $nb_places;
   private int $puissance_fiscale;
 
-  public function __construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, 
-  $statut, $id_i, $type, $carburant, $couleur, $nb_portes, $nb_places, $puissance_fiscale)
-  {
+  public function __construct(
+    $id_v,
+    $titre_v,
+    $petite_description_v,
+    $large_description_v,
+    $marque,
+    $modele,
+    $prix,
+    $img,
+    $annee,
+    $kilometre,
+    $statut,
+    $id_i,
+    $type,
+    $carburant,
+    $couleur,
+    $nb_portes,
+    $nb_places,
+    $puissance_fiscale
+  ) {
     parent::__construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut);
     $this->id_i = $id_i;
     $this->type = $type;
@@ -62,5 +79,35 @@ class VoitureInfos extends Voiture
   public function getPuissance(): int
   {
     return $this->puissance_fiscale;
+  }
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function setCarburant($carburant)
+  {
+    $this->carburant = $carburant;
+  }
+
+  public function setCouleur($couleur)
+  {
+    $this->couleur = $couleur;
+  }
+
+  public function setNbPortes($nb_portes)
+  {
+    $this->nb_portes = $nb_portes;
+  }
+
+  public function setNbPlaces($nb_places)
+  {
+    $this->nb_places = $nb_places;
+  }
+
+  public function setPuissance($puissance_fiscale)
+  {
+    $this->puissance_fiscale = $puissance_fiscale;
   }
 }

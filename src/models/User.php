@@ -58,4 +58,33 @@ class User
   {
     return $this->nom_u;
   }
+  public function setId($id_u)
+  {
+    $this->id_u = $id_u;
+  }
+
+  public function setPrenom($prenom_u)
+  {
+    $this->prenom_u = $prenom_u;
+  }
+
+  public function setNom($nom_u)
+  {
+    $this->nom_u = $nom_u;
+  }
+
+  public function setRole($role_u)
+  {
+    $this->role_u = $role_u;
+  }
+
+  public function setMail($login_u)
+  {
+    $this->login_u = $login_u;
+  }
+
+  public function setPassword($mdp_u)
+  {
+    $this->mdp_u = $mdp_u;
+  }
 }

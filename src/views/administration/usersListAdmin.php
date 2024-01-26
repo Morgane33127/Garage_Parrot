@@ -1,7 +1,7 @@
 <form method="POST" action="index.php?page=demande">
   <table class="table">
     <tr>
-      <th class="text-left" width="30%">Prenom Nom</th>
+      <th class="text-left" width="30%">Nom Prenom</th>
       <th class="text-left" width="10%">Role</th>
       <th class="text-left" width="50%">Mail</th>
       <th class="text-left" width="10%">Action</th>

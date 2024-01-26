@@ -1,5 +1,9 @@
 <?php
 
+include_once '../vendor/autoload.php';
+use Ramsey\Uuid\Uuid;
+$uuid = Uuid::uuid4()->toString();
+
 try {
   $db = new Database();
   $pdo = $db->getConnection();
@@ -18,7 +22,7 @@ try {
     $pdo->exec("INSERT INTO lbl (code_lbl, lbl) VALUES ('DIM', 'Dimanche')") &&
 
     $pdo->exec("INSERT INTO utilisateurs (id_u, prenom_u, nom_u, role_u, login_u, mdp_u) 
-        VALUES (UUID(), 'Vincent', 'Parrot', 'ADM', 'v.parrot@example.com','$mdp')") &&
+        VALUES ('$uuid', 'Vincent', 'Parrot', 'ADM', 'v.parrot@example.com','$mdp')") &&
 
     $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('LUN', '08:00', '18:00')") &&
     $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('MAR', '08:00', '18:00')") &&
@@ -40,20 +44,15 @@ try {
                 VALUES ('Super garage', 'Super garage, très pro, personnel et patron au top.', 'Florient', 'Derat', 5, 'En attente')") &&
 
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Entretien', 'Preservez la performance et la sécurité de votre véhicule.', 'Nos services d\'entretien méticuleux garantissent non seulement 
-        des performances optimales mais aussi une tranquillité d\'esprit, pour prendre la route en toute sécurité.')") &&
+        VALUES ('Entretien', 'Preservez la performance et la sécurité de votre véhicule.', 'Nos services d\'entretien méticuleux garantissent non seulement des performances optimales mais aussi une tranquillité d\'esprit, pour prendre la route en toute sécurité.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et 
-        fiable, pour vous remettre rapidement sur la route.')") &&
+        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et fiable, pour vous remettre rapidement sur la route.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver 
-        des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
+        VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances.', 'A réaliser tous les 10 000 à 15 000 km sur un moteur 
-        essence, et tous les 7000 à 10 000 km sur un moteur diesel.')") &&
+        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances.', 'A réaliser tous les 10 000 à 15 000 km sur un moteur essence, et tous les 7000 à 10 000 km sur un moteur diesel.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente 
-        et des conseils experts.')") &&
+        VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente et des conseils experts.')") &&
 
     $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
       VALUES(
@@ -67,7 +66,7 @@ try {
         'kia-picanto.jpg',
         2022,
         13000,
-        'Dispo');") &&
+        'Dispo')") &&
     $pdo->exec("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
     VALUES ( 1,'Manuelle','Jaune',5,'Essence',5,4);") &&
     $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
@@ -81,9 +80,9 @@ try {
           'mini-hatch.jpg',
           2019,
           22600,
-          'Dispo');") &&
+          'Dispo')") &&
     $pdo->exec("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
-      VALUES ( 3,'Manuelle','Rouge',5,'Essence',5,9);") &&
+      VALUES ( 2,'Manuelle','Rouge',5,'Essence',5,9);") &&
     $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
             VALUES(
               'RENAUD Clio V',
@@ -97,7 +96,7 @@ try {
                67845,
                'Dispo');") &&
     $pdo->exec("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
-    VALUES (2,'Manuelle','Noire',5,'Diesel',5,5);")
+    VALUES (3,'Manuelle','Noire',5,'Diesel',5,5)")
     !== false
   ) {
     echo "Ajout réussis <br>";

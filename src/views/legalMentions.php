@@ -21,16 +21,16 @@ $horaires = ob_get_clean();
             <option>SARL</option>
             <option>Adresse : <?php echo ADRESSE; ?></option>
             <option>Téléphone : <?php echo TELEPHONE; ?></option>
-            <option>N° SIRET : N° ici</option>
-            <option>Immatriculée au registre du commerce et des sociétés sous le numéro : N° ici</option>
-            <option>Capital social : Capital ici</option>
+            <option>N° SIRET : "N° ici"</option>
+            <option>Immatriculée au registre du commerce et des sociétés sous le numéro : "N° ici"</option>
+            <option>Capital social : "Capital ici"</option>
         </ul>
-        <p>La publication du site est assurée par "Responsable du site ici".</p>
+        <p>La publication du site est assurée par Morgane G.</p>
     </section>
 
     <section>
         <h5>HEBERGEUR</h5>
-        <p>Le site "site" est hébergé par "hebergeur".</p>
+        <p>Le site https://garage-v-parrot.codecreator.fr/ est hébergé par Hostinger.</p>
     </section>
 
     <section>

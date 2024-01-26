@@ -93,4 +93,58 @@ class Voiture
   {
     return $this->statut;
   }
+  public function setId($id_v)
+  {
+    $this->id_v = $id_v;
+  }
+
+  public function setTitre($titre_v)
+  {
+    $this->titre_v = $titre_v;
+  }
+
+  public function setPetiteDescription($petite_description_v)
+  {
+    $this->petite_description_v = $petite_description_v;
+  }
+
+  public function setLargeDescription($large_description_v)
+  {
+    $this->large_description_v = $large_description_v;
+  }
+
+  public function setMarque($marque)
+  {
+    $this->marque = $marque;
+  }
+
+  public function setModele($modele)
+  {
+    $this->modele = $modele;
+  }
+
+  public function setPrix($prix)
+  {
+    $this->prix = $prix;
+  }
+
+  public function setImg($img)
+  {
+    $this->img = $img;
+  }
+
+  public function setAnnee($annee)
+  {
+    $this->annee = $annee;
+  }
+
+  public function setKilometre($kilometre)
+  {
+    $this->kilometre = $kilometre;
+  }
+
+  public function setStatut($statut)
+  {
+    $this->statut = $statut;
+  }
 }

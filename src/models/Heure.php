@@ -55,7 +55,6 @@ class Heure
     return $this->lbl;
   }
 
-
   public function setJourHeure($jour)
   {
     $this->jour = $jour;
@@ -69,5 +68,10 @@ class Heure
   public function setHeureFin($hr_fin)
   {
     $this->hr_fin = $hr_fin;
+  }
+
+  public function setHeureLbl($lbl)
+  {
+    $this->lbl = $lbl;
   }
 }

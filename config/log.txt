@@ -194,3 +194,7 @@ Stack trace:
 02-01-2024 18:20:51 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
 02-01-2024 18:21:23 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
 02-01-2024 18:32:34 : Désolé, uniquement formats JPG, JPEG, PNG autorisés.
+07-01-2024 11:43:23 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
+07-01-2024 11:44:55 : Le fichier existe déjà.
+07-01-2024 11:45:15 : Le fichier existe déjà.
+26-01-2024 12:22:14 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.

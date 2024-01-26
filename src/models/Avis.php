@@ -74,4 +74,44 @@ class Avis
   {
     return $this->statut;
   }
+
+  public function setId($id_a)
+  {
+    $this->id_a = $id_a;
+  }
+
+  public function setTitre($titre_a)
+  {
+    $this->titre_a = $titre_a;
+  }
+
+  public function setCommentaire($commentaire_a)
+  {
+    $this->commentaire_a = $commentaire_a;
+  }
+
+  public function setDate($dt_a)
+  {
+    $this->dt_a = $dt_a;
+  }
+
+  public function setVisiteurNom($visiteur_nom)
+  {
+    $this->visiteur_nom = $visiteur_nom;
+  }
+
+  public function setVisiteurPrenom($visiteur_prenom)
+  {
+    $this->visiteur_prenom = $visiteur_prenom;
+  }
+
+  public function setNote($note_a)
+  {
+    $this->note_a = $note_a;
+  }
+
+  public function setStatut($statut)
+  {
+    $this->statut = $statut;
+  }
 }

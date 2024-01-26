@@ -41,4 +41,24 @@ class Prestation
   {
     return $this->large_description_p;
   }
+
+  public function setId($id_p)
+  {
+    $this->id_p = $id_p;
+  }
+
+  public function setNom($nom_p)
+  {
+    $this->nom_p = $nom_p;
+  }
+
+  public function setPetiteDescription($petite_description_p)
+  {
+    $this->petite_description_p = $petite_description_p;
+  }
+
+  public function setLargeDescription($large_description_p)
+  {
+    $this->large_description_p = $large_description_p;
+  }
 }
