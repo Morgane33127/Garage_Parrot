@@ -1,5 +1,6 @@
 <?php
 
+require 'env.php';
 /**
  * The Database class allows you to create the database and connect to it.
  *
@@ -8,11 +9,23 @@
 
 class Database
 {
-  private $host = "localhost";
-  private $username = "root";
-  private $password = "";
-  private $database = "garageParrot";
+
+  private $host;
+  private $username;
+  private $password;
+  private $database;
   public $conn;
+  
+
+  public function __construct()
+  {
+
+    $this->host = $_ENV["DB_HOST"];
+    $this->username = $_ENV["DB_USERNAME"];
+    $this->password = $_ENV["DB_PASSWORD"];
+    $this->database = $_ENV["DB_DATABASE"];
+
+  }
 
   /**
    * Database Creation
@@ -21,6 +34,7 @@ class Database
    */
   public function createDatabase()
   {
+    
     $this->conn = null;
     try {
       $this->conn = new PDO("mysql:host=" . $this->host . "", $this->username, $this->password);

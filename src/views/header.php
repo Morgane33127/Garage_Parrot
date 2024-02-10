@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="Garage V. Parrot :">
-  <meta name="keywords" content="Garage, V.Parrot, Entretien, Réparation, Révsion, Vidange, 
-  Véhicules d'occasions">
+  <meta name="keywords" content="Garage, V.Parrot, Entretien, Réparation, Révision, Vidange, 
+  Véhicules d'occasions, Carosserie">
   <meta name="author" content="MG">
   <meta name="viewport" content="width=device-width, , initial-scale=1.0">
   <title>Garage V. Parrot</title>

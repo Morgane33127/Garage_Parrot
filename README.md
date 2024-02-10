@@ -1,39 +1,77 @@
-# Garage_Parrot
-# Exercice STUDI ECF
 
-Ce fichier README a été généré le [2023-12-03] par [Morgane G.].
+# Garage_Parrot
+
+This project was created as part of the ECF to obtain the Web and Mobile Web Developer diploma provided by the Studi online school.
+
+
+![Logo](https://github.com/Morgane33127/Garage_Parrot/blob/main/public/assets/img/gvplogo.svg)
+
+
+## Authors
+
+- [@Morgane33127](https://github.com/Morgane33127)
+
+
+## Informations
+
+Ce fichier README a été généré le [2023-12-03].
 
 Dernière mise-à-jour le : [2024-01-14].
+## Documentation
 
-# INFORMATIONS GENERALES
+[Documentation](https://linktodocumentation)
 
-# Description
 
-Le site du Garage V. Parrot est un projet réalisé dans le cadre du diplome de "Developpeur web et web mobile" dispensé par l'ecole en ligne STUDI.
+## Features
 
-# Pré-requis
--serveur Web local
+- Manage users accounts from the professional space using only the administrator role
+- Manage the various garage services from the professional area
+- Manage the notices from the professional area
+- Manage vehicles for sale from the professional area
+- Update garage schedules from the professional area
+- Facilitate the search for a vehicle thanks to asynchronous system
 
-# Execution en local
-Les fichiers sont disponibles depuis le repertoire : https://github.com/Morgane33127/Garage_Parrot.git
-Pour les récupérer :
-1) git clone https://github.com/Morgane33127/Garage_Parrot.git
-OU
-2) Télécharger les fichiers depuis le repertoire et décompresser le dossier sur son serveur Web local (WAMP, XAMPP, ...).
 
-# Démarrage
-1) Ouvrir son localhost et accéder au dossier créé.
-2) La page d'accueil doit s'afficher.
-3) Si le serveur n'est pas configuré par défaut ("root", "") se rendre dans le fichier config/Database.php pour changer les informations de connexion : "host", "username" et "password". Sinon passer cette étape.
-4) Ajouter à son URL : "config/create_database.php" pour générer la base de données.
-Exemple : http://garageparrot/Garage_Parrot/config/create_database.php
-Ou "garageparrot" est le nom du virtualhost et "Garage_Parrot" le nom du dossier décompressé.
+## Run Locally
 
-L'installation est terminée !
+Clone the project
 
-# Administration du site
-Par défaut Mr parrot est créé comme administrateur de l'application web.
-Pour changer cela :
-Se rendre dans le fichier config/insert_data.php et modifier les infos de la ligne 25.
-OU
-Se connecter avec les identifiants de Mr Parrot et creer un nouvel administrateur via le formulaire dédié.
+```bash
+  git clone https://github.com/Morgane33127/Garage_Parrot.git
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+The dependency ramsey/uuid is installed with the project but if you have a problem you can install with :
+
+```bash
+  composer require ramsey/uuid
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+## Start
+
+- Go to the the virtual host
+- If the server is not configured by default ("root", "") go to the config/env.php file to change the connection information: "host", "username" and "password".
+- Add to URL : "config/create_database.php" to create the database.
+- You can start!
+
+## Site administration
+
+Mr parrot is the default administrator of the web application.
+To change this:
+Go to the config/insert_data.php file and modify the information on line 25.
+OR
+Log in with Mr Parrot's credentials and create a new administrator via the dedicated form.

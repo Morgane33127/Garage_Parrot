@@ -198,3 +198,15 @@ Stack trace:
 07-01-2024 11:44:55 : Le fichier existe dÃ©jÃ .
 07-01-2024 11:45:15 : Le fichier existe dÃ©jÃ .
 26-01-2024 12:22:14 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractÃ¨re special.
+06-02-2024 17:49:44 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 17:53:32 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:00:17 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:04:08 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:04:35 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:04:37 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:04:58 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:12:19 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:13:57 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'localhost' (mot de passe: NON)
+06-02-2024 18:42:30 : Mot de passe incorrect.
+06-02-2024 18:42:38 : Mot de passe incorrect.
+06-02-2024 18:42:48 : Mot de passe incorrect.

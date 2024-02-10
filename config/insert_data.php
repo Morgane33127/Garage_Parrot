@@ -8,7 +8,7 @@ try {
   $db = new Database();
   $pdo = $db->getConnection();
 
-  $mdp = password_hash('Jaimelesvoituresdu33600', PASSWORD_DEFAULT);
+  $mdp = password_hash('Jaimelesvoituresdu31100', PASSWORD_DEFAULT);
 
   if (
     $pdo->exec("INSERT INTO lbl (code_lbl, lbl) VALUES ('ADM', 'ADMIN')") &&
@@ -46,7 +46,7 @@ try {
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
         VALUES ('Entretien', 'Preservez la performance et la sécurité de votre véhicule.', 'Nos services d\'entretien méticuleux garantissent non seulement des performances optimales mais aussi une tranquillité d\'esprit, pour prendre la route en toute sécurité.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision, assurant une conduite sûre et fiable, pour vous remettre rapidement sur la route.')") &&
+        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision vos problèmes mécaniques et de carrosserie, assurant une conduite sûre et fiable, pour vous remettre rapidement sur la route.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
         VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
     $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
