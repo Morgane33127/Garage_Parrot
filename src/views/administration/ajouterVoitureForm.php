@@ -24,14 +24,14 @@
   <div class="row align-items-start my-2">
     <div class="col-sm-4">
       <select class="form-select" name="type_v" id="type_v" aria-label="type_v" aria-describedby="basic-addon5">
-        <option value="">Type</option>
+        <option value="">Type*</option>
         <option value="Manuelle">Manuelle</option>
         <option value="Automatique">Automatique</option>
       </select>
     </div>
     <div class="col-sm-4">
       <select class="form-select" name="carburant">
-        <option value="">Carburant</option>
+        <option value="">Carburant*</option>
         <option value="Essence">Essence</option>
         <option value="Diesel">Diesel</option>
         <option value="Hybride">Hybride</option>
@@ -39,25 +39,25 @@
       </select>
     </div>
     <div class="col-sm-4">
-      <input type="text" class="form-control" name="couleur_v" placeholder="Couleur">
+      <input type="text" class="form-control" name="couleur_v" placeholder="Couleur*" required>
     </div>
   </div>
   <div class="row align-items-start my-2">
     <div class="col-sm-4">
-      <input type="number" class="form-control" name="nb_portes" minlength="1" placeholder="Nombre de portes">
+      <input type="number" class="form-control" name="nb_portes" minlength="1" placeholder="Nombre de portes*" required>
     </div>
     <div class="col-sm-4">
-      <input type="number" class="form-control" name="nb_places" minlength="1" placeholder="Nombre de places">
+      <input type="number" class="form-control" name="nb_places" minlength="1" placeholder="Nombre de places*" required>
     </div>
     <div class="col-sm-4">
-      <input type="number" class="form-control" name="cv" minlength="1" placeholder="CV">
+      <input type="number" class="form-control" name="cv" minlength="1" placeholder="CV*" required>
     </div>
   </div>
   <div class="my-2">
     <input type="text" class="form-control" name="petite_description" placeholder="Petite description*" required>
   </div>
   <div class="my-2">
-    <textarea class="form-control" name="large_description" placeholder="Large description"></textarea>
+    <textarea class="form-control" name="large_description" placeholder="Large description*"></textarea>
   </div>
   <div class="my-2">
     <label for="fileToUpload" class="form-label">Sélectionner une image</label>

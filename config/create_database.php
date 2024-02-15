@@ -76,7 +76,8 @@ try {
   nb_portes INT(1),
   nb_places INT(2),
   puissance_fiscale CHAR(1),
-  FOREIGN KEY (id_i) REFERENCES voitures (id_v)
+  CONSTRAINT FK_infosV FOREIGN KEY (id_i)
+    REFERENCES voitures (id_v) ON DELETE SET NULL
 )';
 
       $evenements = 'CREATE TABLE evenements (
