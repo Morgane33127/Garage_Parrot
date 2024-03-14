@@ -10,6 +10,8 @@ include_once './config/functions.php';
 include_once './config/autoload.php';
 include_once './config/Database.php';
 
+connectOnly();
+
 try {
     if ($_SESSION['role'] === 'ADM') {
         if (!empty($_GET['div'])) {

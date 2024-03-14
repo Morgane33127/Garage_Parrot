@@ -45,6 +45,7 @@ class PrestationManager
   {
     $supp = $this->pdo->prepare("DELETE FROM prestations WHERE id_p=?");
     $supp->execute([$id]);
+    $event = $this->eventTable($_SESSION['id'], 'Suppression prestation');
   }
 
   /**
@@ -60,6 +61,7 @@ class PrestationManager
     $object = new Prestation(0, $donnees[0], $donnees[1], $donnees[2]);
     $add = $this->pdo->prepare("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) VALUES (?,?,?)");
     $add->execute([$object->getNom(), $object->getPetiteDescription(), $object->getLargeDescription()]);
+    $event = $this->eventTable($_SESSION['id'], 'Ajout prestation');
   }
 
   /**
@@ -73,5 +75,22 @@ class PrestationManager
   {
     $upd = $this->pdo->prepare("UPDATE prestations SET petite_description_p = ?,  large_description_p = ? WHERE id_p = ?");
     $upd->execute([$petite_description_p, $large_description_p, $id]);
+    $event = $this->eventTable($_SESSION['id'], 'Mise a jour prestation');
+  }
+
+  /**
+   * To insert event in db
+   *
+   * @param string $id_u,
+   * @param string $info_e
+   *
+   */
+  public function eventTable(string $id_u, string $info_e)
+  {
+    $event = $this->pdo->prepare("INSERT INTO evenements (id_u, ip, info_e) VALUES (:id_u, :ip, :info_e)");
+    $event->bindValue(':id_u', $id_u);
+    $event->bindValue(':ip', getIp());
+    $event->bindValue(':info_e', $info_e);
+    $event->execute();
   }
 }

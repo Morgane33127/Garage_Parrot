@@ -1,4 +1,5 @@
 <?php
+
 /* EN : Creating the connection controller
 FR : Création du contrôleur de connexion
 */

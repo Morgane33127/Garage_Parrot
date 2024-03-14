@@ -220,3 +220,19 @@ Stack trace:
 15-02-2024 18:35:09 : Entrée invalide
 15-02-2024 18:35:56 : Entrée invalide
 15-02-2024 19:50:04 : Mot de passe incorrect.
+29-02-2024 18:28:32 : SQLSTATE[HY000]: General error: 1364 Field 'ip' doesn't have a default value
+29-02-2024 18:28:57 : SQLSTATE[HY000]: General error: 1364 Field 'ip' doesn't have a default value
+29-02-2024 18:29:59 : SQLSTATE[HY000]: General error: 1364 Field 'ip' doesn't have a default value
+29-02-2024 18:30:16 : SQLSTATE[HY000]: General error: 1364 Field 'ip' doesn't have a default value
+29-02-2024 18:46:25 : SQLSTATE[23000]: Integrity constraint violation: 1048 Le champ 'info_e' ne peut �tre vide (null)
+29-02-2024 19:00:25 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
+02-03-2024 12:58:51 : Permission inconnue.
+02-03-2024 12:58:58 : Permission inconnue.
+02-03-2024 17:16:44 : Permission inconnue.
+02-03-2024 17:17:02 : Permission inconnue.
+05-03-2024 17:08:21 : Permission inconnue.
+05-03-2024 17:12:15 : Permission inconnue.
+05-03-2024 18:06:35 : Permission inconnue.
+05-03-2024 18:09:11 : Permission inconnue.
+06-03-2024 17:38:40 : Permission inconnue.
+13-03-2024 17:14:40 : Permission inconnue.

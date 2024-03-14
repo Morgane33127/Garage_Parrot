@@ -8,7 +8,7 @@
                     style="width:500px;">
                 </div>
                 <div class="col-sm">
-                    <h3>Présentation</h3>
+                    <h1>Présentation</h1>
                     <p>Bienvenue chez Garage V. Parrot, votre partenaire automobile de confiance. 
                         <br><br>
                         Notre petit garage propose une large gamme de services mais aussi des voitures
@@ -27,7 +27,7 @@
     </section>
 
     <section id="prestations">
-        <h3>Nos prestations</h3>
+        <h2>Nos prestations</h2>
         <div class="container text-center">
             <div class="row align-items-start">
                 <?php
@@ -39,7 +39,7 @@
     </section>
 
     <section id="valeurs">
-        <h3>Nos valeurs</h3>
+        <h2>Nos valeurs</h2>
         <div class="container text-center">
             <div class="row align-items-start">
                 <div class="col-sm valeur">
@@ -55,21 +55,23 @@
                     <h3>Qualité</h3>
                 </div>
                 <div class="col-sm valeur">
-                    <h3>Satisfaction client</h3>
+                    <h3>Satisfaction</h3>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="Avis">
-        <h3>Nos avis clients</h3>
+        <h2>Nos avis clients</h2>
         <div class="container-sm text-center">
-            <div class="row align-items-start">
+            <div id="slider" class="row">
+            <div class="col-1 text-center" id="back"><</div>
+            <div class="col" id="div0"></div>
                 <?php
                 // Display notices
                 echo $content2;
                 ?>
-            </div>
+            <div  class="col-1 text-center" id="next">></div>
         </div>
         <div class="action-sup display-none1 display-block">
             <a href="index.php?page=avis"><button type="button" class="button">Laisser avis</button></a>
@@ -77,7 +79,7 @@
     </section>
 
     <section id="voitures">
-        <h3>Nos véhicules d'occasions</h3>
+        <h2>Nos véhicules d'occasions</h2>
         <div class="container">
             <div class="row align-items-start display-none">
                 <?php

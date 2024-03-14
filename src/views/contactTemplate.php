@@ -17,7 +17,7 @@
     </div>
     <div class="col-sm-6 p-3">
       <form method="POST" action="index.php?page=demande">
-        <h3>Nous contacter</h3>
+        <h2>Nous contacter</h2>
         <div class="row align-items-start">
           <div class="col-sm-4">
             <input type="text" class="form-control" name="nom" placeholder="Nom*" required>

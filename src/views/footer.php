@@ -26,9 +26,9 @@
         <div class="row align-items-start">
           <div class="col-sm-4">
             <p>
-              <a href="index.php?page=accueil">Acceuil</a><br>
-              <a href="index.php?page=apropos">A propos</a><br>
-              <a href="index.php?page=prestations">Nos prestations</a><br>
+              <a href="index.php?page=accueil" class="white">Acceuil</a><br>
+              <a href="index.php?page=apropos" class="white">A propos</a><br>
+              <a href="index.php?page=prestations" class="white">Nos prestations</a><br>
               Entretien<br>
               Réparation<br>
               Révision<br>
@@ -38,10 +38,10 @@
           </div>
           <div class="col-sm-6">
             <p>
-              <a href="index.php?page=vehicules">Nos véhicules</a><br>
-              <a href="index.php?page=contact">Contact</a><br><br>
-              <a href="index.php?page=legalMentions"><b>Mentions légales</b></a><br>
-              <a href="index.php?page=cgu"><b>CGU</b></a>
+              <a href="index.php?page=vehicules" class="white">Nos véhicules</a><br>
+              <a href="index.php?page=contact" class="white">Contact</a><br><br>
+              <a href="index.php?page=legalMentions" class="white"><b>Mentions légales</b></a><br>
+              <a href="index.php?page=cgu" class="white"><b>CGU</b></a>
             </p>
           </div>
         </div>

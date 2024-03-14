@@ -72,6 +72,8 @@ class UserManager
     $object = new User($donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], $donnees[5]);
     $insert = $this->pdo->prepare("INSERT INTO utilisateurs (id_u, prenom_u, nom_u, role_u, login_u, mdp_u) VALUES (?,?,?,?,?,?)");
     $insert->execute([$object->getId(), $object->getPrenom(), $object->getNom(), $object->getRole(), $object->getMail(), $object->getPassword()]);
+
+    $event = $this->eventTable($_SESSION['id'], 'Ajout utilisateur');
   }
 
   /**
@@ -83,5 +85,22 @@ class UserManager
   {
     $supp = $this->pdo->prepare("DELETE FROM utilisateurs WHERE id_u=?");
     $supp->execute([$id]);
+    $event = $this->eventTable($_SESSION['id'], 'Suppression utilisateur');
+  }
+
+  /**
+   * To insert event in db
+   *
+   * @param string $id_u,
+   * @param string $info_e
+   *
+   */
+  public function eventTable(string $id_u, string $info_e)
+  {
+    $event = $this->pdo->prepare("INSERT INTO evenements (id_u, ip, info_e) VALUES (:id_u, :ip, :info_e)");
+    $event->bindValue(':id_u', $id_u);
+    $event->bindValue(':ip', getIp());
+    $event->bindValue(':info_e', $info_e);
+    $event->execute();
   }
 }

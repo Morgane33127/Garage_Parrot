@@ -1,1 +1,5 @@
 php_flag display_errors off
+
+RewriteEngine On
+
+RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php

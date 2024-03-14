@@ -63,6 +63,38 @@ class AvisController
     }
   }
 
+    /**
+   * Display notices with carousel
+   * 
+   *@param int $page
+   *@param int $limit
+   */
+  public function affichageCarousel(int $page, int $limit)
+  {
+    $offset = ($page - 1) * $limit;
+    $model = new AvisManager($this->db);
+    $avis = $model->affichageAvis($limit, $offset);
+    $totalCount = $model->getTotalAvisCount();
+    if (!empty($avis)) {
+      $k=1;
+      foreach ($avis as $row) {
+
+        $titre = $row->getTitre();
+        $comment = $row->getCommentaire();
+        $dt = $row->getDate();
+        $visiteur = $row->getInfosVisiteur();
+        $note = $row->getNote();
+        $star = str_repeat('&#x2605;', $note);
+        //Display the view
+        include 'src/views/avisCardCarousel.php';
+        $k++;
+
+      }
+    } else {
+      echo "Aucun résultat";
+    }
+  }
+
   /**
    * Specific display of notices for admin space : just "En attente"
    * 

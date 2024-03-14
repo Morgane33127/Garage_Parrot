@@ -1,5 +1,5 @@
 <div class="container-sm margin-top center">
-  <h3>Avis clients</h3>
+  <h2>Avis clients</h2>
   <div class="action-sup">
     <button type="submit" class="button" data-bs-toggle="modal" data-bs-target="#ajouterAvis">Laisser un avis</button>
   </div>

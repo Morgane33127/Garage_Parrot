@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="col-sm-5">
-      <img src="public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getTitre(); ?>, voiture, occasion" style="max-width:100%;">
+      <img src="public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getTitre(); ?>, voiture, occasion" class="v_info" style="max-width:100%;">
     </div>
   </div>
 

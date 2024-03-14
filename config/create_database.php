@@ -83,6 +83,7 @@ try {
       $evenements = 'CREATE TABLE evenements (
   id_e INT PRIMARY KEY AUTO_INCREMENT,
   id_u VARCHAR(150) NOT NULL,
+  ip VARCHAR(150) NOT NULL,
   info_e VARCHAR(150) NOT NULL,
   dt_e TIMESTAMP DEFAULT CURRENT_TIMESTAMP)';
 

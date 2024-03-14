@@ -17,8 +17,9 @@ if (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $nbpage) {
     $page = 1;
 }
 
-//Limit notices and cars to 3
-$limit = 3;
+//Limit notices to 6 and cars to 3
+$limit1 = 6;
+$limit2 = 3;
 
 ob_start();
 $prestationController = new PrestationController();
@@ -27,12 +28,12 @@ $content1 = ob_get_clean();
 
 ob_start();
 $avisController = new AvisController();
-$avisController->affichage($page, $limit);
+$avisController->affichageCarousel($page, $limit1);
 $content2 = ob_get_clean();
 
 ob_start();
 $voitureController = new VoitureController();
-$voitureController->affichageCard($page, $limit);
+$voitureController->affichageCard($page, $limit2);
 $content3 = ob_get_clean();
 
 ob_start();

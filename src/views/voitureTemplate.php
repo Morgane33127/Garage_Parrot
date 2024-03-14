@@ -1,5 +1,5 @@
 <div class="container-sm margin-top center">
-  <h3>Nos véhicules d'occasions</h3>
+  <h2>Nos véhicules d'occasions</h2>
   <div class="container">
     <div class="row align-items-start">
       <div class="col-sm-5" id="price">

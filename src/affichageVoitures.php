@@ -14,7 +14,6 @@ include_once '../src/models/VoitureManager.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data = json_decode(file_get_contents('php://input'), true);
 
-
   if (!empty($data['prixmin']) && !empty($data['prixmax']) && !empty($data['kmmin']) && !empty($data['kmmax']) && !empty($data['date'])) {
 
     // Processing to update the car list

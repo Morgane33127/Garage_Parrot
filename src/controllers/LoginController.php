@@ -158,4 +158,19 @@ class LoginController
     //Show login view
     include './src/views/forgetPswdView.php';
   }
+
+    /**
+   * Disconnection
+   *
+   */
+  public function disconnect()
+  {
+
+      $action = new Auth($this->db);
+      $action->disconnection();
+
+
+  }
+
+
 }

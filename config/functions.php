@@ -212,3 +212,29 @@ function verifMdp(string $mdp)
   }
 }
 
+
+/**
+ * To get Ip
+ *
+ */
+function getIp(){
+  if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  }else{
+    $ip = $_SERVER['REMOTE_ADDR'];
+  }
+  return $ip;
+}
+
+/**
+ * To restrict access to administration panel
+ *
+ */
+function connectOnly(){
+  if(!isset($_SESSION['loggedin'])){
+    header('Location:index.php?page=login');
+  }
+}
+

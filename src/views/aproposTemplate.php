@@ -1,6 +1,6 @@
 <div class="container-sm margin-top center">
   <section>
-    <h3>A propos du Garage V. Parrot</h3>
+    <h2>A propos du Garage V. Parrot</h2>
     <div class="container">
       <div class="row align-items-start">
         <div class="col-sm-6">
@@ -27,7 +27,7 @@
   </section>
 
   <section>
-    <h3>Nos valeurs</h3>
+    <h2>Nos valeurs</h2>
     <div class="container text-center">
       <div class="row align-items-start">
         <div class="col-sm valeur">
@@ -50,7 +50,7 @@
   </section>
 
   <section id="prestations">
-    <h3>Nos prestations</h3>
+    <h2>Nos prestations</h2>
     <div class="container text-center">
       <div class="row align-items-start">
         <?php

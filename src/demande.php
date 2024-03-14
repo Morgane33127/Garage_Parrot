@@ -7,8 +7,8 @@ include_once 'vendor/autoload.php';
 
 use Ramsey\Uuid\Uuid;
 
-include_once './config/functions.php';
 include_once './config/Database.php';
+include_once './config/functions.php';
 include_once 'config/autoload.php';
 
 $pdo = new Database();
@@ -95,8 +95,8 @@ if (isset($_POST['ajouteravis'])) {
 //Admin space
 //Disconnect
 if (isset($_POST['disconnect'])) {
-  session_unset();
-  header("Location: index.php?page=login");
+  $connection = new LoginController();
+  $connection->disconnect();
 }
 
 //Add a user

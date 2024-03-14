@@ -115,6 +115,12 @@ class AvisManager
       $object->getTitre(), $object->getCommentaire(), $object->getVisiteurNom(), $object->getVisiteurPrenom(),
       $object->getNote(), $object->getStatut()
     ]);
+
+    if(isset($_SESSION['id'])){
+      $event = $this->eventTable($_SESSION['id'], 'Ajout avis');
+    } else {
+      $event = $this->eventTable(0, 'Ajout avis');
+    }
   }
 
   /**
@@ -126,6 +132,8 @@ class AvisManager
   {
     $valid = $this->pdo->prepare("UPDATE avis SET statut=? WHERE id_a=?");
     $valid->execute(['Valide', $id]);
+      $event = $this->eventTable($_SESSION['id'], 'Valide avis');
+    
   }
 
   /**
@@ -137,5 +145,22 @@ class AvisManager
   {
     $valid = $this->pdo->prepare("UPDATE avis SET statut=? WHERE id_a=?");
     $valid->execute(['Invalide', $id]);
+    $event = $this->eventTable($_SESSION['id'], 'Invalide avis');
+  }
+
+  /**
+   * To insert event in db
+   *
+   * @param string $id_u,
+   * @param string $info_e
+   *
+   */
+  public function eventTable(string $id_u, string $info_e)
+  {
+    $event = $this->pdo->prepare("INSERT INTO evenements (id_u, ip, info_e) VALUES (:id_u, :ip, :info_e)");
+    $event->bindValue(':id_u', $id_u);
+    $event->bindValue(':ip', getIp());
+    $event->bindValue(':info_e', $info_e);
+    $event->execute();
   }
 }

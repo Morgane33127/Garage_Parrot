@@ -30,8 +30,26 @@ class VoitureManager
     foreach ($donnees as $donnee) {
       verifData($donnee);
     }
-    $object = new VoitureInfos(0, $donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], $donnees[5], $donnees[6], 
-    $donnees[7], $donnees[8], $donnees[9], 0, $donnees[10], $donnees[11], $donnees[12], $donnees[13], $donnees[14], $donnees[15]);
+    $object = new VoitureInfos(
+      0,
+      $donnees[0],
+      $donnees[1],
+      $donnees[2],
+      $donnees[3],
+      $donnees[4],
+      $donnees[5],
+      $donnees[6],
+      $donnees[7],
+      $donnees[8],
+      $donnees[9],
+      0,
+      $donnees[10],
+      $donnees[11],
+      $donnees[12],
+      $donnees[13],
+      $donnees[14],
+      $donnees[15]
+    );
     $insert = $this->pdo->prepare("INSERT INTO voitures (titre_v,marque,modele,petite_description_v,large_description_v,prix,
     img,annee,kilometre,statut)  VALUES (?,?,?,?,?,?,?,?,?,?)");
     $insert->execute([
@@ -45,6 +63,7 @@ class VoitureManager
       $id_i, $object->getType(), $object->getCouleur(), $object->getNbPortes(), $object->getCarburant(), $object->getNbPlaces(),
       $object->getPuissance()
     ]);
+    $event = $this->eventTable($_SESSION['id'], 'Ajout voiture');
   }
 
   /**
@@ -206,8 +225,11 @@ class VoitureManager
 
     $updtinfos = $this->pdo->prepare("UPDATE infos_voiture SET type = ?, couleur = ?, nb_portes = ?, carburant=?, nb_places = ?, 
     puissance_fiscale = ? WHERE id_i = ?");
-    $updtinfos->execute([$object->getType(), $object->getCouleur(), $object->getNbPortes(), $object->getCarburant(), $object->getNbPlaces(), 
-    $object->getPuissance(), $object->getId()]);
+    $updtinfos->execute([
+      $object->getType(), $object->getCouleur(), $object->getNbPortes(), $object->getCarburant(), $object->getNbPlaces(),
+      $object->getPuissance(), $object->getId()
+    ]);
+    $event = $this->eventTable($_SESSION['id'], 'Mise a jour voiture');
   }
 
   /**
@@ -226,6 +248,7 @@ class VoitureManager
     if ($img !== "gvplogo.svg") {
       unlink("./public/assets/img/$img");
     }
+    $event = $this->eventTable($_SESSION['id'], 'Suppression voiture');
   }
 
   /**
@@ -269,5 +292,21 @@ class VoitureManager
       $voituresTab[] = $voituresAAfficher;
     }
     return ($voituresTab);
+  }
+
+  /**
+   * To insert event in db
+   *
+   * @param string $id_u,
+   * @param string $info_e
+   *
+   */
+  public function eventTable(string $id_u, string $info_e)
+  {
+    $event = $this->pdo->prepare("INSERT INTO evenements (id_u, ip, info_e) VALUES (:id_u, :ip, :info_e)");
+    $event->bindValue(':id_u', $id_u);
+    $event->bindValue(':ip', getIp());
+    $event->bindValue(':info_e', $info_e);
+    $event->execute();
   }
 }

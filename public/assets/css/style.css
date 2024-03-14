@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: white;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
@@ -25,9 +29,13 @@ p {
   font-family: "QuattrocentoSans-Regular";
 }
 
+.h4 {
+  font-size: 30px;
+}
+
 /* Buttons and inputs */
 .input {
-  background-color: #F2F2F2;
+  background-color: white;
   text-align: center;
 }
 
@@ -90,6 +98,7 @@ p {
 .link {
   text-decoration: none;
   color: #D9777F;
+  padding: 10px;
   font-weight: bold;
   font-family: "Montserrat-Black";
 }
@@ -108,12 +117,20 @@ p {
   font-family: "Montserrat-Black";
 }
 
+.white {
+  color: white;
+}
+
+.red {
+  color: #D92332;
+}
+
 /* Menu and navigation */
 .menu-block {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  margin-bottom: 30px;
+  margin-bottom: 1px;
   justify-content: right;
 }
 
@@ -127,6 +144,7 @@ p {
   position: fixed;
   top: 0;
   z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
   width: 100%;
 }
 
@@ -161,6 +179,12 @@ p {
   display: none;
 }
 
+/* Container style */
+.filter {
+  background-color: #262526;
+  color: #D9777F;
+}
+
 /* Login page */
 .login {
   position: absolute;
@@ -191,6 +215,7 @@ p {
   font-weight: bold;
   border-color: #D92332;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
 }
 
 .prestation-card:hover {
@@ -224,20 +249,39 @@ p {
   transform: scale(1.05);
 }
 
+.v_info:hover {
+  cursor: zoom-in;
+  transform: scale(1.7);
+}
+
 /* Notice style */
 .card-avis {
   text-align: start;
-  padding: 1%;
+  padding: 30px;
   background-color: white;
   height: 200px;
-  width: 300px;
+  width: 400px;
   margin: 10px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+  max-height: 200px;
+  border: none;
 }
 
 .star {
-  color: #EDDB35;
+  color: #F1BD41;
   font-size: 20px;
+}
+
+.head-review {
+  color: #262526;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.notation-review {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 /* Values style */
@@ -329,6 +373,20 @@ footer {
   box-shadow: 0px 4px 8px -1px rgb(104, 104, 104);
 }
 
+/*Carousel*/
+#slider {
+  align-items: center;
+}
+
+#back, #next {
+  font-size: 45px;
+  cursor: pointer;
+}
+
+#div0, #div4, #div5, #div6 {
+  display: none;
+}
+
 /* Responsive */
 @media only screen and (min-device-width: 250px) and (max-device-width: 481px) {
   .display-none {
@@ -394,16 +452,26 @@ footer {
   }
   .card-avis {
     text-align: start;
-    padding: 1%;
+    padding: 30px;
     background-color: white;
-    height: 200px;
+    height: 300px;
     width: 100%;
     margin: 5px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+    max-height: 300px;
+    border: none;
   }
   .sidebar-style {
     width: 100%;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+    height: 100%;
+  }
+  /*Carousel*/
+  #back, #next {
+    display: none;
+  }
+  #div0, #div4, #div5, #div6 {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -37,10 +37,7 @@ class Auth
       $newUser = new User($user[0]['id_u'], $user[0]['prenom_u'], $user[0]['nom_u'], $user[0]['role_u'], $user[0]['login_u'], $user[0]['mdp_u']);
       $id_u = $newUser->getId();
       if (!empty($newUser) && password_verify($mdp, $newUser->getPassword()) == true) {
-        $event = $this->conn->prepare('INSERT INTO evenements (id_u, info_e) VALUES (:id_u, :info_e)');
-        $event->bindValue(':id_u', $id_u);
-        $event->bindValue('info_e', 'Nouvelle connexion');
-        $event->execute();
+        $event = $this->eventTable($id_u, 'Connexion');
         return ($newUser);
       } else {
         throw new Exception('Mot de passe incorrect.');
@@ -95,5 +92,33 @@ class Auth
     } else {
       throw new Exception('Mots de passe incohérents.');
     }
+  }
+
+  /**
+   * To disconnect
+   *
+   */
+  public function disconnection()
+  {
+    $event = $this->eventTable($_SESSION['id'], 'Deconnexion');
+    session_unset();
+    header("Location: index.php?page=login");
+  }
+
+  /**
+   * To insert event in db
+   *
+   * @param string $id_u,
+   * @param string $info_e
+   *
+   */
+  public function eventTable(string $id_u, string $info_e)
+  {
+    $ip = getIp();
+    $event = $this->conn->prepare("INSERT INTO evenements (id_u, ip, info_e) VALUES (:id_u, :ip, :info_e)");
+    $event->bindValue(':id_u', $id_u);
+    $event->bindValue(':ip', $ip);
+    $event->bindValue(':info_e', $info_e);
+    $event->execute();
   }
 }

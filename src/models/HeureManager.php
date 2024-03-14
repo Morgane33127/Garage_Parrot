@@ -49,5 +49,22 @@ class HeureManager
       $modif = $this->pdo->prepare("UPDATE heures SET jour=?, hr_debut=?, hr_fin=? WHERE id_h=?");
       $modif->execute([$array[$i + 1], $array[$i + 2], $array[$i + 3], $array[$i]]);
     }
+    $event = $this->eventTable($_SESSION['id'], 'Mise a jour horaires');
+  }
+
+  /**
+   * To insert event in db
+   *
+   * @param string $id_u,
+   * @param string $info_e
+   *
+   */
+  public function eventTable(string $id_u, string $info_e)
+  {
+    $event = $this->pdo->prepare("INSERT INTO evenements (id_u, ip, info_e) VALUES (:id_u, :ip, :info_e)");
+    $event->bindValue(':id_u', $id_u);
+    $event->bindValue(':ip', getIp());
+    $event->bindValue(':info_e', $info_e);
+    $event->execute();
   }
 }
