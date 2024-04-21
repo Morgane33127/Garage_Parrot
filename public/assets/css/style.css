@@ -35,7 +35,6 @@ p {
 
 /* Buttons and inputs */
 .input {
-  background-color: white;
   text-align: center;
 }
 
@@ -112,7 +111,8 @@ p {
 
 .link-menu:hover {
   color: #D92332;
-  text-decoration: none;
+  -webkit-text-decoration: underline #262526;
+          text-decoration: underline #262526;
   font-weight: bold;
   font-family: "Montserrat-Black";
 }
@@ -179,12 +179,6 @@ p {
   display: none;
 }
 
-/* Container style */
-.filter {
-  background-color: #262526;
-  color: #D9777F;
-}
-
 /* Login page */
 .login {
   position: absolute;
@@ -229,20 +223,32 @@ p {
   background-color: #D92332;
 }
 
-/* Car style */
-.voiture-card {
+/* Prestations style */
+.prestation-card-admin {
   margin: 20px 0px 20px 0px;
   padding: 1%;
   background-color: white;
   height: 200px;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+}
+
+/* Car style */
+.voiture-card {
+  background-color: white;
+  padding: 2%;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
   transition: transform 0.1s;
+  text-align: center;
+  width: 350px;
+  margin: 3%;
 }
 
 .voiture-card-img {
   height: 150px;
   width: 230px;
+  margin-left: 50%;
 }
 
 .voiture-card:hover {
@@ -260,11 +266,12 @@ p {
   padding: 30px;
   background-color: white;
   height: 200px;
-  width: 400px;
+  width: 100%;
   margin: 10px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
   max-height: 200px;
   border: none;
+  overflow-y: auto;
 }
 
 .star {
@@ -282,6 +289,7 @@ p {
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 /* Values style */
@@ -399,12 +407,10 @@ footer {
     text-align: center;
   }
   .voiture-card {
-    margin: 20px 0px 20px 0px;
-    padding: 10% 2% 10% 2%;
-    background-color: white;
-    height: auto;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+    padding: 5%;
+  }
+  .voiture-card-img {
+    margin-left: 0%;
   }
   .login {
     position: absolute;
@@ -439,6 +445,14 @@ footer {
     background-color: #D92332;
     margin: 5px;
   }
+  .prestation-card-admin {
+    margin: 20px 0px 20px 0px;
+    padding: 10% 2% 10% 2%;
+    background-color: white;
+    height: auto;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+  }
   .valeur {
     text-align: center;
     background-color: #D92332;
@@ -455,11 +469,12 @@ footer {
     padding: 30px;
     background-color: white;
     height: 300px;
-    width: 100%;
+    width: 95%;
     margin: 5px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
     max-height: 300px;
     border: none;
+    overflow-y: auto;
   }
   .sidebar-style {
     width: 100%;

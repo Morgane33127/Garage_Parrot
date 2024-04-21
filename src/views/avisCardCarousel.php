@@ -1,5 +1,5 @@
 <div class="col" id="div<?php echo $k;?>">
-  <div class="card-avis" style="width: 300px;">
+  <div class="card-avis">
     <div class="row head-review">
       <div class="col-6"><?php echo $visiteur; ?></div>
       <div class="col-6" style="text-align:end"><?php echo $dt; ?></div>

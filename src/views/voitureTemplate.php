@@ -36,8 +36,12 @@
   <div id="request" class="my-3">
     <?php
     echo $count . " résultat(s) :";
+    ?>
+    <div class="row align-items-center">
+    <?php
     echo $content;
     ?>
+    </div>
   </div>
 </div>
 

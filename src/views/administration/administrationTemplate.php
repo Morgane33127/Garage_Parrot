@@ -5,7 +5,9 @@
   <div class="col-sm-8">
     <form method="POST" action="index.php?page=demande">
       <h3><?php echo $titre; ?></h3>
+      <div class="row">
       <?php echo $content; ?>
+      </div>
     </form>
   </div>
 </div>

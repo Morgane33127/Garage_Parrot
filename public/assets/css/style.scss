@@ -123,7 +123,7 @@ p {
 
 .link-menu:hover {
 color : $red;
-text-decoration: none;
+text-decoration: underline $black;
 font-weight: bold;
 font-family: 'Montserrat-Black';
 }
@@ -235,20 +235,32 @@ font-family: 'Montserrat-Black';
   background-color: $red;
 }
 
-/* Car style */
-.voiture-card {
+/* Prestations style */
+.prestation-card-admin{
   margin: 20px 0px 20px 0px;
   padding: 1%;
-  background-color: $font-color;
+  background-color: white;
   height: 200px;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+}
+
+/* Car style */
+.voiture-card {
+  background-color: $font-color;
+  padding: 2%;
+  height: 100%;
   box-shadow: rgba(0,0,0,0.19) 0px 0px 13px 0px;
   transition: transform .1s;
+  text-align: center;
+  width: 350px;
+  margin: 3%;
 }
 
 .voiture-card-img {
   height:150px;
   width:230px;
+  margin-left: 50%;
 }
 
 .voiture-card:hover{
@@ -266,11 +278,12 @@ font-family: 'Montserrat-Black';
   padding: 30px;
   background-color: $font-color;
   height: 200px;
-  width:400px;
+  width:100%;
   margin: 10px;
   box-shadow: rgba(0,0,0,0.19) 0px 0px 13px 0px;
   max-height: 200px;
   border: none;
+  overflow-y: auto;
 }
 
 .star {
@@ -288,6 +301,7 @@ font-family: 'Montserrat-Black';
   font-weight: bold;
   font-size:20px;
   margin-bottom:10px;
+  word-wrap: break-word;
 }
 
 /* Values style */
@@ -407,12 +421,11 @@ font-family: 'Montserrat-Black';
 
   //Cars style responsive
   .voiture-card {
-    margin: 20px 0px 20px 0px;
-    padding: 10% 2% 10% 2%;
-    background-color: $font-color;
-    height: auto;
-    width: 100%;
-    box-shadow: rgba(0,0,0,0.19) 0px 0px 13px 0px;
+    padding: 5%;
+  }
+
+  .voiture-card-img {
+    margin-left: 0%;
   }
 
   //Login style responsive
@@ -453,6 +466,15 @@ font-family: 'Montserrat-Black';
       margin: 5px;
     }
 
+.prestation-card-admin{
+  margin: 20px 0px 20px 0px;
+  padding: 10% 2% 10% 2%;
+  background-color: white;
+  height: auto;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 13px 0px;
+}
+
     //Values style responsive
     .valeur {
       text-align: center;
@@ -473,11 +495,12 @@ font-family: 'Montserrat-Black';
       padding: 30px;
       background-color: $font-color;
       height: 300px;
-      width:100%;
+      width:95%;
       margin: 5px;
       box-shadow: rgba(0,0,0,0.19) 0px 0px 13px 0px;
       max-height: 300px;
       border: none;
+      overflow-y: auto;
     }
 
     //Sidebar style responsive

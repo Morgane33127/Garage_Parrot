@@ -1,24 +1,9 @@
-<div id="voiture-card1" class="row voiture-card display-none">
-  <div class="col-sm-9">
-    <h5><?php echo $titre; ?></h5>
-    <p><?php echo $description . " *** " . $kilometre . "km *** "; ?></p>
-    <button class="button">
-      <p class="titre"><?php echo $prix . "€"; ?></p>
-    </button>
-    <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="link">En savoir plus >></a>
-  </div>
-  <div class="col-sm-3">
-    <img class="voiture-card-img" src="<?php echo $img; ?>" alt="<?php echo $titre; ?>, voiture, occasion">
-  </div>
-</div>
-
-<!--responsive voiture card -->
-<div id="voiture-card" class="row voiture-card display-none1 display-block ">
+<div id="voiture-card" class="col-4 voiture-card">
   <h5><?php echo $titre; ?></h5>
   <p class="titre"><?php echo $prix . "€"; ?></p>
   <div class="col-sm-3">
     <img class="voiture-card-img" src="<?php echo $img; ?>" alt="<?php echo $titre; ?>, voiture, occasion">
   </div>
   <p><?php echo $description . "<br> *** " . $kilometre . "km *** "; ?></p>
-  <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="button display-none1 display-block">En savoir plus</a>
+  <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="button">En savoir plus</a>
 </div>

@@ -11,6 +11,7 @@ if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") ==
     let countDiv = divs.children.length;
     let lastDiv = document.getElementById("div" + (countDiv-3));
 
+
     try {
     next.addEventListener("click", nextEvent);
     } catch (e){
@@ -33,12 +34,16 @@ if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") ==
    * If div0 is empty back button is hidden
    * If div3 is empty next button is hidden
    */
-    function nextEvent (){
+    function nextEvent () {
 
       for (let i = 1; i < countDiv-1; i++) {
           if(divs.children[(i+1)].id !== "next"){
-            divs.children[i].innerHTML =  divs.children[(i+1)].innerHTML;
+            divs.children[i].innerHTML =  divs.children[(i+1)].innerHTML; 
           }
+          if(i === countDiv-2){
+          lastDiv.innerHTML = div0.innerHTML;
+          }
+
       }
 
       if(div0.innerHTML !== ""){
@@ -47,6 +52,7 @@ if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") ==
         back.style.visibility= "hidden";
       }
 
+      
       if(div3.innerHTML !== lastDiv.innerHTML){
         next.style.visibility= "visible";
       } else {
@@ -66,7 +72,9 @@ if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") ==
         if(divs.children[(i)].id != "next"){
           divs.children[i].innerHTML =  divs.children[(i-1)].innerHTML;
         }
-
+        if(i === countDiv-1){
+           div0.innerHTML = lastDiv.innerHTML;
+          }
     }
     if(div3.innerHTML !== lastDiv.innerHTML){
       next.style.visibility= "visible";
@@ -74,7 +82,6 @@ if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") ==
       next.style.visibility= "hidden";
     }
 
-      div0.innerHTML = "";
       if(div0.innerHTML !== ""){
       back.style.visibility= "visible";
     } else {

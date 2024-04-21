@@ -1,4 +1,4 @@
-<div class="voiture-card">
+<div class="prestation-card-admin">
   <div class="row">
     <div class="col-6 text-start">
       <h5><i class="<?php echo $icon; ?>"> </i><?php echo $nom; ?></h5>
@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="mx-5 row">
-    <input name="presta_petite_description_<?php echo $row->getId(); ?>" value="<?php echo $petiteDescription; ?>">
-    <textarea maxlength="1500" name="presta_large_description_<?php echo $row->getId(); ?>"><?php echo $largeDescription; ?></textarea>
+    <input name="presta_petite_description_<?php echo $row->getId(); ?>" value="<?php echo $petiteDescription; ?>" class="form-control">
+    <textarea maxlength="1500" name="presta_large_description_<?php echo $row->getId(); ?>" class="form-control"><?php echo $largeDescription; ?></textarea>
   </div>
 </div>

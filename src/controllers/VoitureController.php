@@ -148,6 +148,7 @@ class VoitureController
       if ($_GET['page'] = 'vehicules') {
         echo count($voitures) . " résultat(s) :";
       }
+      echo '<div class="row align-items-center">';
       foreach ($voitures as $row) {
         $id = $row->getId();
         $titre = $row->getTitre();
@@ -155,8 +156,11 @@ class VoitureController
         $img = 'public/assets/img/' . $row->getImage();
         $prix = number_format($row->getPrix(), 0, ',', ' ');
         $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
+
         include '../src/views/voitureCard.php';
+
       }
+      echo '</div>';
     } else {
       echo "Aucun résultat.";
     }

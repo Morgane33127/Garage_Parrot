@@ -66,7 +66,7 @@
         <div class="container-sm text-center">
             <div id="slider" class="row">
             <div class="col-1 text-center" id="back"><</div>
-            <div class="col" id="div0"></div>
+            <div class="col-1" id="div0"></div>
                 <?php
                 // Display notices
                 echo $content2;
@@ -81,7 +81,7 @@
     <section id="voitures">
         <h2>Nos véhicules d'occasions</h2>
         <div class="container">
-            <div class="row align-items-start display-none">
+            <div class="row align-items-center display-none">
                 <?php
                 //Display cars
                 echo $content3;

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navigation">
-  <img class="mx-5" src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot, garage, automobile, voitures, réparation, entretien, vidange" width="150px">
+  <a href="?page=accueil"><img class="mx-5" src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot, garage, automobile, voitures, réparation, entretien, vidange" width="150px"></a>
   <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
