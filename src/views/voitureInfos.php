@@ -29,12 +29,12 @@
       </div>
     </div>
     <div class="col-sm-5">
-      <img src="public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getTitre(); ?>, voiture, occasion" class="v_info" style="max-width:100%;">
+      <img src="<?php echo BASE_URL; ?>/public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getTitre(); ?>, voiture, occasion" class="v_info" style="max-width:100%;">
     </div>
   </div>
 
   <div>
-    <form method="POST" action="index.php?page=demande">
+    <form method="POST" action="<?php echo BASE_URL; ?>/demande">
       <h4>Vous êtes interessé(e) ?</h4>
       <h5>Sujet : <?php echo $voiture->getTitre(); ?></h5>
       <input type="hidden" name="v_id" value='<?php echo $voiture->getId() . " : " . $voiture->getTitre(); ?>'>
@@ -67,3 +67,7 @@
   </div>
 
 </div>
+
+<?php
+require 'footer.php';
+

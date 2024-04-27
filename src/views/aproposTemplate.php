@@ -20,7 +20,7 @@
           </p>
         </div>
         <div class="col-sm-6">
-          <img src="public/assets/img/garage.jpg" alt="photo garage-v-parrot, garage, automobile, voitures, réparation, entretien, vidange" width="80%">
+          <img src="<?php echo BASE_URL; ?>/public/assets/img/garage.jpg" alt="photo garage-v-parrot, garage, automobile, voitures, réparation, entretien, vidange" width="80%">
         </div>
       </div>
     </div>

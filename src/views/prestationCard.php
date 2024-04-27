@@ -1,5 +1,5 @@
 <div class="col-sm-4 p-3">
-  <a href="index.php?page=prestations">
+  <a href="<?php echo BASE_URL . '/prestations'; ?>">
     <button type="submit" class="prestation-card">
       <i class="<?php echo $icon; ?> h4"></i>
       <h4><?php echo $nom; ?></h4>

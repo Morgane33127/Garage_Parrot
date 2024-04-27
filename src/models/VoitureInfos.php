@@ -27,6 +27,7 @@ class VoitureInfos extends Voiture
     $img,
     $annee,
     $kilometre,
+    $id_u,
     $statut,
     $id_i,
     $type,
@@ -36,7 +37,7 @@ class VoitureInfos extends Voiture
     $nb_places,
     $puissance_fiscale
   ) {
-    parent::__construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut);
+    parent::__construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $id_u, $statut);
     $this->id_i = $id_i;
     $this->type = $type;
     $this->carburant = $carburant;

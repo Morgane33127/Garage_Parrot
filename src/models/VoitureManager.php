@@ -41,6 +41,7 @@ class VoitureManager
       $donnees[6],
       $donnees[7],
       $donnees[8],
+      $donnees[16],
       $donnees[9],
       0,
       $donnees[10],
@@ -51,10 +52,10 @@ class VoitureManager
       $donnees[15]
     );
     $insert = $this->pdo->prepare("INSERT INTO voitures (titre_v,marque,modele,petite_description_v,large_description_v,prix,
-    img,annee,kilometre,statut)  VALUES (?,?,?,?,?,?,?,?,?,?)");
+    img,annee,kilometre,id_u, statut)  VALUES (?,?,?,?,?,?,?,?,?,?,?)");
     $insert->execute([
       $object->getTitre(), $object->getMarque(), $object->getModele(), $object->getPetiteDescription(), $object->getLargeDescription(),
-      $object->getPrix(), $object->getImage(), $object->getAnnee(), $object->getKilometre(), $object->getStatut()
+      $object->getPrix(), $object->getImage(), $object->getAnnee(), $object->getKilometre(), $object->getUserId(), $object->getStatut()
     ]);
     $id_i = $this->pdo->lastInsertId();
     $insertInfos = $this->pdo->prepare("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
@@ -74,7 +75,7 @@ class VoitureManager
    */
   public function affichageInfos(int $v_id): VoitureInfos
   {
-    $infos = $this->pdo->prepare('SELECT * FROM voitures LEFT JOIN infos_voiture ON id_v = id_i WHERE id_v= :id');
+    $infos = $this->pdo->prepare('SELECT * FROM voitures LEFT JOIN infos_voiture ON id_v = id_i WHERE id_v= :id ORDER BY annee ASC');
     $infos->bindValue(':id', $v_id);
     $infos->execute();
     $voitures = $infos->fetchAll(PDO::FETCH_ASSOC);
@@ -91,6 +92,7 @@ class VoitureManager
           $value['img'],
           $value['annee'],
           $value['kilometre'],
+          $value['id_u'],
           $value['statut'],
           $value['id_i'],
           $value['type'],
@@ -116,7 +118,7 @@ class VoitureManager
    */
   public function affichageVoitures(int $limit, int $offset): array
   {
-    $infos = $this->pdo->prepare("SELECT * FROM voitures WHERE statut='dispo' LIMIT :limit OFFSET :offset");
+    $infos = $this->pdo->prepare("SELECT * FROM voitures WHERE statut='dispo' ORDER BY annee ASC LIMIT :limit OFFSET :offset");
     $infos->bindValue(':limit', $limit, PDO::PARAM_INT);
     $infos->bindValue(':offset', $offset, PDO::PARAM_INT);
     $infos->execute();
@@ -135,6 +137,7 @@ class VoitureManager
           $value['img'],
           $value['annee'],
           $value['kilometre'],
+          $value['id_u'],
           $value['statut']
         );
         $voituresTab[] = $voituresAAfficher;
@@ -179,6 +182,7 @@ class VoitureManager
           $value['img'],
           $value['annee'],
           $value['kilometre'],
+          $value['id_u'],
           $value['statut']
         );
         $voituresTab[] = $voituresAAfficher;
@@ -207,6 +211,7 @@ class VoitureManager
       $donnees[7],
       $donnees[8],
       $donnees[9],
+      $donnees[18],
       $donnees[10],
       $donnees[11],
       $donnees[12],
@@ -217,10 +222,10 @@ class VoitureManager
       $donnees[17]
     );
     $updt = $this->pdo->prepare("UPDATE voitures SET titre_v =? ,marque = ?,modele = ?,petite_description_v = ?,large_description_v = ?,prix = ?,
-      img = ?,annee = ?,kilometre = ?,statut=? WHERE id_v = ?");
+      img = ?,annee = ?,kilometre = ?, id_u = ?, statut=? WHERE id_v = ?");
     $updt->execute([
       $object->getTitre(), $object->getMarque(), $object->getModele(), $object->getPetiteDescription(), $object->getLargeDescription(),
-      $object->getPrix(), $object->getImage(), $object->getAnnee(), $object->getKilometre(), $object->getStatut(), $object->getId()
+      $object->getPrix(), $object->getImage(), $object->getAnnee(), $object->getKilometre(), $object->getUserId(), $object->getStatut(), $object->getId()
     ]);
 
     $updtinfos = $this->pdo->prepare("UPDATE infos_voiture SET type = ?, couleur = ?, nb_portes = ?, carburant=?, nb_places = ?, 
@@ -265,7 +270,7 @@ class VoitureManager
   public function affichageVoituresFiltre(int $prixMin, int $prixMax, int $kmMin, int $kmMax, string $dateSaisi, int $page): array
   {
     require_once 'Voiture.php';
-    $infos = $this->pdo->prepare("SELECT * FROM voitures WHERE kilometre >= :kmmin AND kilometre <= :kmmax AND prix >= :prixmin AND prix <= :prixmax AND annee <= :annee ORDER BY prix ASC LIMIT :start, 10");
+    $infos = $this->pdo->prepare("SELECT * FROM voitures WHERE kilometre >= :kmmin AND kilometre <= :kmmax AND prix >= :prixmin AND prix <= :prixmax AND annee <= :annee AND statut='Dispo' ORDER BY prix ASC LIMIT :start, 10");
     $infos->bindValue(':kmmin', $kmMin, PDO::PARAM_INT);
     $infos->bindValue(':kmmax', $kmMax, PDO::PARAM_INT);
     $infos->bindValue(':annee', $dateSaisi, PDO::PARAM_STR);
@@ -287,6 +292,7 @@ class VoitureManager
         $value['img'],
         $value['annee'],
         $value['kilometre'],
+        $value['id_u'],
         $value['statut']
       );
       $voituresTab[] = $voituresAAfficher;

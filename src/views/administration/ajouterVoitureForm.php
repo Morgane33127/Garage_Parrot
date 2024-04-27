@@ -1,4 +1,4 @@
-<form method="POST" action="index.php?page=demande" enctype="multipart/form-data">
+<form method="POST" action="<?php echo BASE_URL; ?>/demande" enctype="multipart/form-data">
   <div class="row align-items-start my-2">
     <div class="col-sm-4">
       <input type="text" class="form-control" name="titre_v" placeholder="Titre*" required>
@@ -67,7 +67,7 @@
 </form>
 <div class="tab-pane fade" id="hours-tab-pane" role="tabpanel" aria-labelledby="hours-tab" tabindex="0">
   <h3><?php echo $titre3; ?></h3>
-  <form method="POST" action="index.php?page=demande">
+  <form method="POST" action="<?php echo BASE_URL; ?>/demande">
     <div class="col-2">
       <?php echo $content3; ?>
     </div>

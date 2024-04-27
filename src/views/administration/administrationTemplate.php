@@ -3,7 +3,7 @@
     <?php require 'sidebar.php'; ?>
   </div>
   <div class="col-sm-8">
-    <form method="POST" action="index.php?page=demande">
+    <form method="POST" action="<?php echo BASE_URL; ?>/demande">
       <h3><?php echo $titre; ?></h3>
       <div class="row">
       <?php echo $content; ?>

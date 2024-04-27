@@ -5,5 +5,5 @@
     <img class="voiture-card-img" src="<?php echo $img; ?>" alt="<?php echo $titre; ?>, voiture, occasion">
   </div>
   <p><?php echo $description . "<br> *** " . $kilometre . "km *** "; ?></p>
-  <a href="index.php?page=vinfo&id=<?php echo $id; ?>" class="button">En savoir plus</a>
+  <a href="<?php echo BASE_URL; ?>/v-info/<?php echo $id; ?>" class="button">En savoir plus</a>
 </div>

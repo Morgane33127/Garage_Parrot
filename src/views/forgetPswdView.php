@@ -1,7 +1,7 @@
 <div class="container-sm margin-top center">
   <div class="login">
     <form action="#" method="POST">
-      <a href="index.php">Revenir au site >></a>
+      <a href="<?php echo BASE_URL; ?>">Revenir au site >></a>
       <h3>Reinitialisation de votre mot de passe</h3>
       <p>Pour reinitialiser votre mot de passe merci de le saisir deux fois.</p>
       <div class="m-3">

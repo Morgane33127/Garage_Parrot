@@ -1,5 +1,8 @@
-php_flag display_errors off
+php_flag display_errors on
 
 RewriteEngine On
 
-RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^public/assets/css/(.*)$ public/assets/css/$1 [L]
+RewriteRule ^([a-zA-Z0-9\-\-\/]*)$ index.php

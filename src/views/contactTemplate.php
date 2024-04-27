@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="col-sm-6 p-3">
-      <form method="POST" action="index.php?page=demande">
+      <form method="POST" action="<?php echo BASE_URL . '/demande'; ?>">
         <h2>Nous contacter</h2>
         <div class="row align-items-start">
           <div class="col-sm-4">

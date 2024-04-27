@@ -14,14 +14,16 @@ class Heure
   private string $hr_debut;
   private string $hr_fin;
   private string $lbl;
+  private string $id_u;
 
-  public function __construct($id_h, $jour, $hr_debut, $hr_fin, $lbl)
+  public function __construct($id_h, $jour, $hr_debut, $hr_fin, $lbl, $id_u)
   {
     $this->id_h = $id_h;
     $this->jour = $jour;
     $this->hr_debut = $hr_debut;
     $this->hr_fin = $hr_fin;
     $this->lbl = $lbl;
+    $this->id_u = $id_u;
   }
 
   public function getInfoHeure(): array
@@ -55,6 +57,11 @@ class Heure
     return $this->lbl;
   }
 
+  public function getUserId(): string
+  {
+  return $this->id_u;
+  }
+
   public function setJourHeure($jour)
   {
     $this->jour = $jour;
@@ -73,5 +80,10 @@ class Heure
   public function setHeureLbl($lbl)
   {
     $this->lbl = $lbl;
+  }
+
+  public function setUserId($id_u)
+  {
+    $this->id_u = $id_u;
   }
 }

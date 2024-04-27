@@ -102,7 +102,6 @@ class Auth
   {
     $event = $this->eventTable($_SESSION['id'], 'Deconnexion');
     session_unset();
-    header("Location: index.php?page=login");
   }
 
   /**

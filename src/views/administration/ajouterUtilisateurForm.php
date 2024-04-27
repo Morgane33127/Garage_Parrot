@@ -1,4 +1,4 @@
-<form method="POST" action="index.php?page=demande">
+<form method="POST" action="<?php echo BASE_URL; ?>/demande">
   <div class="row align-items-start">
     <div class="col-sm-4">
       <input type="text" class="form-control" name="nom" placeholder="Nom*" required>

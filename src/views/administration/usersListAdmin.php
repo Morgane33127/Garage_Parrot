@@ -1,4 +1,4 @@
-<form method="POST" action="index.php?page=demande">
+<form method="POST" action="<?php echo BASE_URL; ?>/demande">
   <table class="table">
     <tr>
       <th class="text-left" width="30%">Nom Prenom</th>

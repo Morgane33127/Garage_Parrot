@@ -48,7 +48,7 @@ class VoitureController
       $id = $row->getId();
       $titre = $row->getTitre();
       $description = $row->getPetiteDescription();
-      $img = 'public/assets/img/' . $row->getImage();
+      $img = BASE_URL . '/public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
       $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
       include 'src/views/voitureCard.php';
@@ -72,9 +72,15 @@ class VoitureController
       $id = $row->getId();
       $titre = $row->getTitre();
       $description = $row->getPetiteDescription();
-      $img = 'public/assets/img/' . $row->getImage();
+      $img = BASE_URL . '/public/assets/img/' . $row->getImage();
       $prix = number_format($row->getPrix(), 0, ',', ' ');
       $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
+      $statut = $row->getStatut();
+      if($statut === 'Dispo'){
+        $badge = 'success';
+      } else {
+        $badge = 'warning';
+      }
       include 'src/views/administration/voitureCardAdmin.php';
     }
   }
@@ -84,11 +90,15 @@ class VoitureController
    *
    * @param int $id
    */
-  public function voitureInfos(int $id)
+  public function voitureInfos(array $id)
   {
-
+    $id = $id[0];
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
+    ob_start();
+    $horaireController = new HoraireController();
+    $horaireController->affichageHeures();
+    $horaires = ob_get_clean();
     include 'src/views/voitureInfos.php';
   }
 
@@ -97,9 +107,9 @@ class VoitureController
    *
    * @param int $id
    */
-  public function voitureInfosAdmin(int $id)
+  public function voitureInfosAdmin(array $id)
   {
-
+    $id = $id[0];
     $voiture = new VoitureManager($this->db);
     $voiture = $voiture->affichageInfos($id);
     include 'src/views/administration/voitureInfosAdmin.php';
@@ -145,15 +155,16 @@ class VoitureController
     $voitures = $voiture->affichageVoituresFiltre($prixMin, $prixMax, $kmMin, $kmMax, $dateSaisi, $page);
     $response = '';
     if (count($voitures) != 0) {
-      if ($_GET['page'] = 'vehicules') {
-        echo count($voitures) . " résultat(s) :";
+      $nbResult = count($voitures);
+      if (str_contains($_SERVER['REQUEST_URI'], BASE_URL.'/src')) {
+        echo $nbResult . " résultat(s) :";
       }
       echo '<div class="row align-items-center">';
       foreach ($voitures as $row) {
         $id = $row->getId();
         $titre = $row->getTitre();
         $description = $row->getPetiteDescription();
-        $img = 'public/assets/img/' . $row->getImage();
+        $img = BASE_URL . '/public/assets/img/' . $row->getImage();
         $prix = number_format($row->getPrix(), 0, ',', ' ');
         $kilometre = number_format($row->getKilometre(), 0, ',', ' ');
 

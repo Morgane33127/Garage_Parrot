@@ -9,6 +9,7 @@ use Ramsey\Uuid\Uuid;
 
 include_once './config/Database.php';
 include_once './config/functions.php';
+include_once './config/const.php';
 include_once 'config/autoload.php';
 
 $pdo = new Database();
@@ -34,12 +35,12 @@ if (isset($_POST['contact'])) {
 
   sendMail($mail, 'Contact', $message);
   sessionAlert('success', 'Votre message a été envoyé avec succès.');
-  header("Location: index.php?page=contact");
+  header("Location: " . BASE_URL . '/contact');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header("Location: " . BASE_URL . '/vehicules/1');
 }
 
 //Contact request for vehicle
@@ -62,12 +63,12 @@ if (isset($_POST['contact_voiture']) && !empty($_POST['v_id'])) {
 
   sendMail($mail, $id_v, $message);
   sessionAlert('success', 'Votre message a été envoyé avec succès.');
-  header("Location: index.php?page=vehicules");
+  header("Location: " . BASE_URL . '/vehicules/1');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
+  header("Location: " . BASE_URL . '/vehicules/1');
 }
 
 //Add a review
@@ -79,24 +80,17 @@ if (isset($_POST['ajouteravis'])) {
   $commentaire_a = $_POST['message'];
   $note = $_POST['note'];
   $titre_a = $_POST['titre'];
+  $user = 'ND';
 
-  $donnees = array(0 => $titre_a, 1 => $commentaire_a, 2 => $nom_a, 3 => $prenom_a, 4 => $note);
+  $donnees = array(0 => $titre_a, 1 => $commentaire_a, 2 => $nom_a, 3 => $prenom_a, 4 => $note, 5 => $user);
   $connection = new AvisController();
   $avis = $connection->ajouterAvis($donnees);
   sessionAlert('success', 'Avis envoyé pour vérification!');
-  header('Location: index.php?page=avis&div=avis');
+  header("Location: " . BASE_URL . '/avis/1');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr');
-}
-
-//Admin space
-//Disconnect
-if (isset($_POST['disconnect'])) {
-  $connection = new LoginController();
-  $connection->disconnect();
 }
 
 //Add a user
@@ -117,12 +111,12 @@ try {
     $connection = new UserController();
     $user = $connection->ajouterUser($donnees);
     sessionAlert('success', 'Utilisateur ajouté avec succès!');
-    header('Location: index.php?page=administr&div=users');
+    header("Location: " . BASE_URL . '/administration/users');
   }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr&div=adduser');
+  header("Location: " . BASE_URL . '/administration/adduser');
 }
 
 //Add a car
@@ -153,20 +147,21 @@ try {
     $nb_portes = $_POST['nb_portes'];
     $nb_places = $_POST['nb_places'];
     $puissance_fiscale = $_POST['cv'];
+    $user = $_SESSION['id'];
 
     $donnees = array(
       0 => $titre_v, 1 => $petite_description_v, 2 => $large_description_v, 3 => $marque, 4 => $modele, 5 => $prix, 6 => $img, 7 => $annee,
-      8 => $kilometre, 9 => $statut, 10 => $type, 11 => $carburant, 12 => $couleur, 13 => $nb_portes, 14 => $nb_places, 15 => $puissance_fiscale
-    );
+      8 => $kilometre, 9 => $statut, 10 => $type, 11 => $carburant, 12 => $couleur, 13 => $nb_portes, 14 => $nb_places, 15 => $puissance_fiscale,
+      16 => $user);
     $connection = new VoitureController();
     $voiture = $connection->ajouterVoiture($donnees);
     sessionAlert('success', 'Voiture ajoutée avec succès!');
-    header('Location: index.php?page=administr&div=voitures');
+    header("Location: " . BASE_URL . '/administration/voitures');
   }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr&div=voitures');
+  header("Location: " . BASE_URL . '/administration/voitures');
 }
 
 //Update a car
@@ -197,20 +192,21 @@ try {
     $nb_portes = $_POST['nb_portes'];
     $nb_places = $_POST['nb_places'];
     $puissance_fiscale = $_POST['cv_v'];
+    $user = $_SESSION['id'];
 
     $donnees = array(
       0 => $id_v, 1 => $titre_v, 2 => $petite_description_v, 3 => $large_description_v, 4 => $marque, 5 => $modele, 6 => $prix, 7 => $img, 8 => $annee,
-      9 => $kilometre, 10 => $statut, 11 => $id_v, 12 => $type, 13 => $carburant, 14 => $couleur, 15 => $nb_portes, 16 => $nb_places, 17 => $puissance_fiscale
-    );
+      9 => $kilometre, 10 => $statut, 11 => $id_v, 12 => $type, 13 => $carburant, 14 => $couleur, 15 => $nb_portes, 16 => $nb_places, 17 => $puissance_fiscale,
+      18 => $user);
     $connection = new VoitureController();
     $voiture = $connection->modifierVoiture($donnees);
     sessionAlert('success', 'Voiture modifiée avec succès!');
-    header('Location: index.php?page=administr&div=voitures');
+    header("Location: " . BASE_URL . '/administration/voitures');
   }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr&div=voitures');
+  header("Location: " . BASE_URL . '/administration/voitures');
 }
 
 //Update schedules
@@ -226,12 +222,12 @@ if (isset($_POST['modifierHoraires'])) {
   $connection = new HoraireController();
   $heure = $connection->changeHoraires($modifications);
   sessionAlert('success', 'Horaires modifiés avec succès!');
-  header('Location: index.php?page=administr&div=horaires');
+  header("Location: " . BASE_URL . '/administration/horaires');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr&div=horaires');
+  header("Location: " . BASE_URL . '/administration/horaires');
 }
 
 //Add service
@@ -241,17 +237,18 @@ if (isset($_POST['adPrestation'])) {
   $titre_p = $_POST['titre_p'];
   $petite_description_p = $_POST['petite_description_p'];
   $large_description_p = $_POST['large_description_p'];
+  $user = $_SESSION['id'];
 
-  $donnees = array(0 => $titre_p, 1 => $petite_description_p, 2 => $large_description_p);
+  $donnees = array(0 => $titre_p, 1 => $petite_description_p, 2 => $large_description_p, 3 => $user);
   $connection = new PrestationController();
   $prestation = $connection->ajouterPrestation($donnees);
   sessionAlert('success', 'Prestation ajoutée avec succès!');
-  header('Location: index.php?page=administr&div=prestations');
+  header("Location: " . BASE_URL . '/administration/prestations');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr&div=prestations');
+  header("Location: " . BASE_URL . '/administration/prestations');
 }
 
 //Add admin review
@@ -263,17 +260,18 @@ if (isset($_POST['addAvis'])) {
   $prenom_a = $_POST['prenom_a'];
   $commentaire_a = $_POST['commentaire_a'];
   $note = intval($_POST['note_a']);
+  $user = $_SESSION['id'];
 
-  $donnees = array(0 => $titre_a, 1 => $commentaire_a, 2 => $nom_a, 3 => $prenom_a, 4 => $note);
+  $donnees = array(0 => $titre_a, 1 => $commentaire_a, 2 => $nom_a, 3 => $prenom_a, 4 => $note, 5 => $user);
   $connection = new AvisController();
   $avis = $connection->ajouterAvis($donnees);
   sessionAlert('success', 'Avis ajouté avec succès!');
-  header('Location: index.php?page=administr&div=avis');
+  header("Location: " . BASE_URL . '/administration/avis');
 }
 } catch (Exception $e) {
   error($e->getMessage());
   sessionAlert('danger', $e->getMessage());
-  header('Location: index.php?page=administr&div=avis');
+  header("Location: " . BASE_URL . '/administration/avis');
 }
 
 //Action on lines: Validate/Invalidate a notice; Delete a user
@@ -283,35 +281,35 @@ foreach ($_POST as $cle => $value) {
     $id = substr($cle, 6);
     $connection = new AvisManager($pdo);
     $accept = $connection->validAvis($id);
-    header('Location: index.php?page=administr&div=avis');
+    header("Location: " . BASE_URL . '/administration/avis');
   }
 
   if (str_contains($cle, 'refuse')) {
     $id = substr($cle, 6);
     $connection = new AvisManager($pdo);
     $refuse = $connection->invalidAvis($id);
-    header('Location: index.php?page=administr&div=avis');
+    header("Location: " . BASE_URL . '/administration/avis');
   }
   if (str_contains($cle, 'suppUser')) {
     $id = $_POST['idsuser' . substr($cle, 8)];
     $connection = new UserManager($pdo);
     $delete = $connection->suppUser($id);
     sessionAlert('success', 'Utilisateur supprimé avec succès!');
-    header('Location: index.php?page=administr&div=users');
+    header("Location: " . BASE_URL . '/administration/users');
   }
   if (str_contains($cle, 'delete_v_')) {
     $id = substr($cle, 9);
     $connection = new VoitureManager($pdo);
     $delete = $connection->supprimerVoiture($id);
     sessionAlert('success', 'Voiture supprimée avec succès!');
-    header('Location: index.php?page=administr&div=voitures');
+    header("Location: " . BASE_URL . '/administration/voitures');
   }
   if (str_contains($cle, 'supp_p_')) {
     $id = substr($cle, 7);
     $connection = new PrestationManager($pdo);
     $delete = $connection->supprimerPrestation($id);
     sessionAlert('success', 'Prestation supprimée avec succès!');
-    header('Location: index.php?page=administr&div=prestations');
+    header("Location: " . BASE_URL . '/administration/prestations');
   }
   if (str_contains($cle, 'update_p_')) {
     $id = substr($cle, 9);
@@ -320,6 +318,6 @@ foreach ($_POST as $cle => $value) {
     $connection = new PrestationManager($pdo);
     $updt = $connection->modifierPrestation($id, $petite_description_p, $large_description_p);
     sessionAlert('success', 'Mises à jour prises en comptes!');
-    header('Location: index.php?page=administr&div=prestations');
+    header("Location: " . BASE_URL . '/administration/prestations');
   }
 }

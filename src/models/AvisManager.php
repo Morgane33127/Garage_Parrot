@@ -44,6 +44,7 @@ class AvisManager
           $value['visiteur_nom'],
           $value['visiteur_prenom'],
           $value['note_a'],
+          $value['id_u'],
           $value['statut'],
           $value['dt_a']
         );
@@ -87,6 +88,7 @@ class AvisManager
           $value['visiteur_nom'],
           $value['visiteur_prenom'],
           $value['note_a'],
+          $value['id_u'],
           $value['statut'],
           $value['dt_a']
         );
@@ -109,11 +111,16 @@ class AvisManager
     foreach ($donnees as $donnee) {
       verifData($donnee);
     }
-    $object = new Avis(0, $donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], 'En attente', '');
-    $insert = $this->pdo->prepare("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) VALUES (?,?,?,?,?,?)");
+    if($donnees[5] != 'ND' && !empty($donnees[5])){
+      $user = $donnees[5];
+    } else {
+      $user = '';
+    }
+    $object = new Avis(0, $donnees[0], $donnees[1], $donnees[2], $donnees[3], $donnees[4], '', 'En attente', $user);
+    $insert = $this->pdo->prepare("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, id_u, statut) VALUES (?,?,?,?,?,?,?)");
     $insert->execute([
       $object->getTitre(), $object->getCommentaire(), $object->getVisiteurNom(), $object->getVisiteurPrenom(),
-      $object->getNote(), $object->getStatut()
+      $object->getNote(), $object->getIdUser(), $object->getStatut()
     ]);
 
     if(isset($_SESSION['id'])){

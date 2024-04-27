@@ -234,7 +234,40 @@ function getIp(){
  */
 function connectOnly(){
   if(!isset($_SESSION['loggedin'])){
-    header('Location:index.php?page=login');
+    header('Location: ' . BASE_URL . '/login');
   }
+}
+
+function baseUrl(string $url) : string {
+
+  $segments = explode("/", $url);
+  $count = count($segments);
+
+  $url = '';
+  for ($i=0; $i < ($count -1); $i++){
+    if($i === ($count -2)){
+      $url .= $segments[$i];
+    } else {
+      $url .= $segments[$i] . "/";
+    }
+  }
+
+  return $url;
+}
+
+function backPage(string $url) : int {
+
+  $segments = explode("/", $url);
+  $count = count($segments);
+
+  return ($segments[($count-1)]-1);
+}
+
+function nextPage(string $url) : int {
+
+  $segments = explode("/", $url);
+  $count = count($segments);
+
+  return ($segments[($count-1)]+1);
 }
 

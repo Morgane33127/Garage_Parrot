@@ -1,80 +1,61 @@
 <?php
+session_start();
 
-/* EN : Entrance door to the site. We integrate the header. We display the menu for non-blacklisted pages. We start the session.
-The index acts as a router.
-
-FR : Porte d'entrée du site. On intègre le header. On affiche le menu pour les pages non "black-listées". On démarre la session. 
-L'index joue le rôle de routeur.
-*/
-
+require_once 'config/Router.php';
+require_once 'config/Database.php';
+require_once 'config/const.php';
+require_once 'config/functions.php';
+require_once 'config/autoload.php';
 require_once 'src/views/header.php';
 
-if (
-  !isset($_GET['page']) || $_GET['page'] != 'administr' && $_GET['page'] != 'login' && $_GET['page'] != 'forget-pswd' && $_GET['page'] != 'reset-password'
-  && $_GET['page'] != 'vinfoadmin'
-) {
-  require_once 'src/views/menu.php';
+if($_SERVER['REQUEST_URI'] != BASE_URL.'/login' 
+&& $_SERVER['REQUEST_URI'] != BASE_URL.'/forget' 
+&& $_SERVER['REQUEST_URI'] != BASE_URL.'/reset'
+&& !str_contains($_SERVER['REQUEST_URI'], BASE_URL.'/administration')){
+require_once 'src/views/menu.php';
 }
-
-session_start();
 
 if (isset($_SESSION['alert'])) {
   require_once 'src/views/sessionView.php';
   unset($_SESSION['alert']);
 }
 
-if (!empty($_GET['page'])) {
-  switch ($_GET['page']) {
-    case 'apropos':
-      require('src/apropos.php');
-      break;
-    case 'prestations':
-      require('src/prestations.php');
-      break;
-    case 'vehicules':
-      require('src/voitures.php');
-      break;
-    case 'avis':
-      require('src/avis.php');
-      break;
-    case 'contact':
-      require('src/contact.php');
-      break;
-    case 'accueil':
-      require('src/accueil.php');
-      break;
-    case 'vinfo':
-    case 'vinfoadmin':
-      require('src/voitureInfo.php');
-      break;
-    case 'administr':
-      require('src/administr.php');
-      break;
-    case 'demande':
-      require('src/demande.php');
-      break;
-    case 'affichageVoiture':
-      require('src/affichageVoiture.php');
-      break;
-    case 'login':
-      require('src/login.php');
-      break;
-    case 'forget-pswd':
-      require('src/mdpOublie.php');
-      break;
-    case 'reset-password':
-      require('src/resetPassword.php');
-      break;
-    case 'legalMentions':
-      require('src/views/legalMentions.php');
-      break;
-    case 'cgu':
-      require('src/views/cgu.php');
-      break;
-    case 'request':
-      require('src/affichageVoitures.php');
-      break;
-  }
-} else {
-  require('src/accueil.php');
+$router = new Router();
+$router->addRoute('GET', BASE_URL . '/', 'PageController', 'index');
+$router->addRoute('GET', BASE_URL . '/details', 'PageController', 'details');
+$router->addRoute('GET', BASE_URL . '/prestations', 'PageController', 'prestations');
+$router->addRoute('GET', BASE_URL . '/vehicules/{page}', 'PageController', 'vehicules');
+$router->addRoute('GET', BASE_URL . '/avis/{page}', 'PageController', 'avis');
+$router->addRoute('GET', BASE_URL . '/contact', 'PageController', 'contact');
+$router->addRoute('GET', BASE_URL . '/cgu', 'PageController', 'cgu');
+$router->addRoute('GET', BASE_URL . '/legal-mentions', 'PageController', 'legal');
+$router->addRoute('GET', BASE_URL . '/login', 'LoginController', 'login');
+$router->addRoute('POST', BASE_URL . '/demande', 'PageController', 'demande');
+$router->addRoute('GET', BASE_URL . '/forget', 'LoginController', 'forgetPswd');
+$router->addRoute('GET', BASE_URL . '/reset', 'LoginController', 'newPswd');
+$router->addRoute('GET', BASE_URL . '/v-info/{id}', 'VoitureController', 'voitureInfos');
+
+$router->addRoute('POST', BASE_URL . '/login', 'LoginController', 'login');
+$router->addRoute('GET', BASE_URL . '/verification', 'LoginController', 'verification');
+
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+
+  $router->addRoute('GET', BASE_URL . '/administration/{div}', 'AdministrationPageController', 'administrationOnglet');
+  $router->addRoute('GET', BASE_URL . '/administration/voitures/infos/{id}', 'VoitureController', 'voitureInfosAdmin');
+  $router->addRoute('POST', BASE_URL . '/deconnexion', 'LoginController', 'disconnect');
 }
+
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+$handler = $router->getHandler($method, $uri);
+if($handler == null){
+  header('HTTP/1.1 404 not found');
+  exit();
+}
+
+$controller = new $handler['controller']();
+$action = $handler['action'];
+$params = $handler['params'];
+$controller->$action($params);
+

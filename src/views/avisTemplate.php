@@ -12,7 +12,7 @@
   </div>
 
   <!-- Modal -->
-  <form method="POST" action="index.php?page=demande">
+  <form method="POST" action="<?php echo BASE_URL . '/demande'; ?>">
     <div class="modal fade" id="ajouterAvis" tabindex="-1" aria-labelledby="ajouterAvisLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -60,5 +60,5 @@
 </div>
 
 <?php
-
+require 'pagination.php';
 require_once 'footer.php';

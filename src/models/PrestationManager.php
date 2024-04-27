@@ -30,7 +30,7 @@ class PrestationManager
     $infos = $this->pdo->query('SELECT * FROM prestations');
     $prestations = $infos->fetchAll(PDO::FETCH_ASSOC);
     foreach ($prestations as $value) {
-      $prestationAAfficher = new Prestation($value['id_p'], $value['nom_p'], $value['petite_description_p'], $value['large_description_p']);
+      $prestationAAfficher = new Prestation($value['id_p'], $value['nom_p'], $value['petite_description_p'], $value['large_description_p'], $value['id_u']);
       $prestationTab[] = $prestationAAfficher;
     }
     return ($prestationTab);
@@ -58,9 +58,9 @@ class PrestationManager
     foreach ($donnees as $donnee) {
       verifData($donnee);
     }
-    $object = new Prestation(0, $donnees[0], $donnees[1], $donnees[2]);
-    $add = $this->pdo->prepare("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) VALUES (?,?,?)");
-    $add->execute([$object->getNom(), $object->getPetiteDescription(), $object->getLargeDescription()]);
+    $object = new Prestation(0, $donnees[0], $donnees[1], $donnees[2], $donnees[3]);
+    $add = $this->pdo->prepare("INSERT INTO prestations (nom_p, petite_description_p, large_description_p, id_u) VALUES (?,?,?,?)");
+    $add->execute([$object->getNom(), $object->getPetiteDescription(), $object->getLargeDescription(), $object->getUserId()]);
     $event = $this->eventTable($_SESSION['id'], 'Ajout prestation');
   }
 

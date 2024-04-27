@@ -16,10 +16,10 @@
                         Notre équipe dévouée de mécaniciens expérimentés accueille chaque client chaleureusement dans une
                         atmosphère conviviale.
                         <br>
-                        <br><a href="index.php?page=apropos" class="link">En savoir plus >></a>
+                        <br><a href="<?php echo BASE_URL . '/details'; ?>" class="link">En savoir plus >></a>
                     </p>
                     <div>
-                        <a href="index.php?page=contact"><button type="button" class="button">Nous contacter</button></a>
+                        <a href="<?php echo BASE_URL . '/contact'; ?>"><button type="button" class="button">Nous contacter</button></a>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
             <div  class="col-1 text-center" id="next">></div>
         </div>
         <div class="action-sup display-none1 display-block">
-            <a href="index.php?page=avis"><button type="button" class="button">Laisser avis</button></a>
+            <a href="<?php echo BASE_URL . '/avis'; ?>"><button type="button" class="button">Laisser avis</button></a>
         </div>
     </section>
 
@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="action-sup">
-            <a href="index.php?page=vehicules"><button class="button">Voir +</button></a>
+            <a href="<?php echo BASE_URL . '/vehicules/1'; ?>"><button class="button">Voir +</button></a>
         </div>
     </section>
 

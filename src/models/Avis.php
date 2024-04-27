@@ -16,9 +16,10 @@ class Avis
   private string $visiteur_nom;
   private string $visiteur_prenom;
   private int $note_a;
+  private string $id_u;
   private string $statut;
 
-  public function __construct($id_a, $titre_a, $commentaire_a, $visiteur_nom, $visiteur_prenom, $note_a, $statut, $dt_a)
+  public function __construct($id_a, $titre_a, $commentaire_a, $visiteur_nom, $visiteur_prenom, $note_a, $id_u, $statut, $dt_a)
   {
     $this->id_a = $id_a;
     $this->titre_a = $titre_a;
@@ -26,6 +27,7 @@ class Avis
     $this->visiteur_nom = $visiteur_nom;
     $this->visiteur_prenom = $visiteur_prenom;
     $this->note_a = $note_a;
+    $this->id_u = $id_u;
     $this->statut = $statut;
     $this->dt_a = $dt_a;
   }
@@ -70,6 +72,11 @@ class Avis
     return $this->note_a;
   }
 
+  public function getIdUser(): string
+  {
+    return $this->id_u;
+  }
+
   public function getStatut(): string
   {
     return $this->statut;
@@ -108,6 +115,11 @@ class Avis
   public function setNote($note_a)
   {
     $this->note_a = $note_a;
+  }
+
+  public function setIdUser($id_u)
+  {
+    $this->id_u = $id_u;
   }
 
   public function setStatut($statut)

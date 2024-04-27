@@ -31,7 +31,7 @@ class HeureManager
     $heures = $this->pdo->query("SELECT * FROM heures LEFT JOIN lbl ON jour=code_lbl");
     $horaires = $heures->fetchAll(PDO::FETCH_ASSOC);
     foreach ($horaires as $value) {
-      $horaireAAfficher = new Heure($value['id_h'], $value['jour'], $value['hr_debut'], $value['hr_fin'], $value['lbl']);
+      $horaireAAfficher = new Heure($value['id_h'], $value['jour'], $value['hr_debut'], $value['hr_fin'] ,$value['lbl'], $value['id_u']);
       $horaireTab[] = $horaireAAfficher;
     }
     return ($horaireTab);

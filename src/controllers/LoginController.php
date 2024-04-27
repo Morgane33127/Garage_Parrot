@@ -51,7 +51,8 @@ class LoginController
         $msg = $exception->getMessage();
         error($msg);
         sessionAlert('danger', $msg);
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
 
       try {
@@ -60,7 +61,8 @@ class LoginController
         $msg = $exception->getMessage();
         error($msg);
         sessionAlert('danger', $msg);
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
 
       // Get user details from template
@@ -72,7 +74,8 @@ class LoginController
         $msg = $exception->getMessage();
         error($msg);
         sessionAlert('danger', $msg);
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
 
       // Authentication successful
@@ -82,7 +85,8 @@ class LoginController
         $_SESSION['id'] = $id_u;
         $_SESSION['infos'] = $stmt->getInfos();
         $_SESSION['role'] = $stmt->getRole();
-        header("Location:index.php?page=administr&user_id=$id_u");
+        $this->redirection("administration/voitures");
+        exit;
       }
     }
 
@@ -105,7 +109,8 @@ class LoginController
         $msg = $exception->getMessage();
         error($msg);
         sessionAlert('danger', $msg);
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
 
       //Email verification in database
@@ -117,7 +122,8 @@ class LoginController
         $msg = $exception->getMessage();
         error($msg);
         sessionAlert('danger', $msg);
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
 
       // Authentication successful
@@ -125,7 +131,8 @@ class LoginController
         $email = $stmt->getMail();
         $id_u = $stmt->getId();
         forgetPswdMail($email, $id_u);
-        header("Location:index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
     }
     //Show login view
@@ -147,12 +154,14 @@ class LoginController
       try {
         $stmt = $user->changemdp($id_u, $password1, $password2);
         sessionAlert('success', 'Mot de passe réinitialisé avec succès!');
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       } catch (Exception $exception) {
         $msg = $exception->getMessage();
         error($msg);
         sessionAlert('danger', $msg);
-        header("Location: index.php?page=login");
+        $this->redirection("login");
+        exit;
       }
     }
     //Show login view
@@ -165,11 +174,17 @@ class LoginController
    */
   public function disconnect()
   {
-
+    if (isset($_POST['disconnect'])) {
       $action = new Auth($this->db);
       $action->disconnection();
+      $this->redirection('login');
+    }
 
+  }
 
+  public function redirection($page)
+  {
+    header("Location: " . BASE_URL . '/' . $page);
   }
 
 

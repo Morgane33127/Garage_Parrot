@@ -33,7 +33,9 @@ try {
   id_h INT PRIMARY KEY AUTO_INCREMENT,
   jour CHAR(3) NOT NULL,
   hr_debut CHAR(5) NOT NULL,
-  hr_fin CHAR(5) NOT NULL
+  hr_fin CHAR(5) NOT NULL,
+  id_u VARCHAR(150) NOT NULL,
+  FOREIGN KEY (id_u) REFERENCES utilisateurs (id_u)
 )';
 
       $avis = 'CREATE TABLE avis (
@@ -44,14 +46,18 @@ try {
   visiteur_nom VARCHAR(30) NOT NULL,
   visiteur_prenom VARCHAR(30) NOT NULL,
   note_a INT(1) NOT NULL,
-  statut VARCHAR(15) NOT NULL
+  id_u VARCHAR(150) NOT NULL,
+  statut VARCHAR(15) NOT NULL,
+  FOREIGN KEY (id_u) REFERENCES utilisateurs (id_u)
 )';
 
       $prestations = 'CREATE TABLE prestations (
   id_p INT PRIMARY KEY AUTO_INCREMENT,
   nom_p VARCHAR(30) NOT NULL,
   petite_description_p VARCHAR(100) NOT NULL,
-  large_description_p VARCHAR(500)
+  large_description_p VARCHAR(500),
+  id_u VARCHAR(150) NOT NULL,
+  FOREIGN KEY (id_u) REFERENCES utilisateurs (id_u)
 )';
 
       $voitures = 'CREATE TABLE voitures (
@@ -65,7 +71,9 @@ try {
   img VARCHAR(100) DEFAULT "public/assets/img/gvplogo.JPG",
   annee CHAR(4) NOT NULL,
   kilometre INT(10) NOT NULL,
-  statut VARCHAR(30) NOT NULL
+  id_u VARCHAR(150) NOT NULL,
+  statut VARCHAR(30) NOT NULL,
+  FOREIGN KEY (id_u) REFERENCES utilisateurs (id_u)
 )';
 
       $infos_voitures = 'CREATE TABLE infos_voiture (
@@ -82,10 +90,11 @@ try {
 
       $evenements = 'CREATE TABLE evenements (
   id_e INT PRIMARY KEY AUTO_INCREMENT,
-  id_u VARCHAR(150) NOT NULL,
+  id_u VARCHAR(150),
   ip VARCHAR(150) NOT NULL,
   info_e VARCHAR(150) NOT NULL,
-  dt_e TIMESTAMP DEFAULT CURRENT_TIMESTAMP)';
+  dt_e TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_u) REFERENCES utilisateurs (id_u))';
 
       $table = array($uti, $lbl, $heures, $avis, $prestations, $voitures, $infos_voitures, $evenements);
 
@@ -106,3 +115,4 @@ try {
   error($exception->getMessage());
   die($exception->getMessage());
 }
+

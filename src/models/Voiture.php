@@ -19,9 +19,10 @@ class Voiture
   private string $img;
   private string $annee;
   private int $kilometre;
+  private string $id_u;
   private string $statut;
 
-  public function __construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $statut)
+  public function __construct($id_v, $titre_v, $petite_description_v, $large_description_v, $marque, $modele, $prix, $img, $annee, $kilometre, $id_u, $statut)
   {
     $this->id_v = $id_v;
     $this->titre_v = $titre_v;
@@ -33,6 +34,7 @@ class Voiture
     $this->img = $img;
     $this->annee = $annee;
     $this->kilometre = $kilometre;
+    $this->id_u = $id_u;
     $this->statut = $statut;
   }
 
@@ -40,6 +42,11 @@ class Voiture
   public function getId(): int
   {
     return $this->id_v;
+  }
+
+  public function getUserId(): string
+  {
+    return $this->id_u;
   }
 
 
@@ -96,6 +103,11 @@ class Voiture
   public function setId($id_v)
   {
     $this->id_v = $id_v;
+  }
+
+  public function setUserId($id_u)
+  {
+    $this->id_u = $id_u;
   }
 
   public function setTitre($titre_v)

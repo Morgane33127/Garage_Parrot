@@ -1,6 +1,6 @@
-<form method="POST" action="index.php?page=demande" enctype="multipart/form-data">
+<form method="POST" action="<?php echo BASE_URL; ?>/demande" enctype="multipart/form-data">
   <div class="container-sm margin-top">
-  <a href="index.php?page=administr" class="link"><< Revenir page précédente</a>
+  <a href="<?php echo BASE_URL; ?>/administration/voitures" class="link"><< Revenir page précédente</a>
     <div class=" row align-items-start">
       <div class="col-sm-7">
         <input type="hidden" class="form-control" name="id_v" id=" id_v" value="<?php echo $voiture->getId(); ?>">
@@ -78,7 +78,7 @@
         </div>
       </div>
       <div class="col-sm-5">
-        <img src="public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getImage(); ?>" style="max-width:100%;">
+        <img src="<?php echo BASE_URL; ?>/public/assets/img/<?php echo $voiture->getImage(); ?>" alt="<?php echo $voiture->getImage(); ?>" style="max-width:100%;">
         <input type="hidden" class="form-control" name="img_v" id=" img_v" value="<?php echo $voiture->getImage(); ?>">
         <div class="my-2">
           <label for="fileToUpload" class="form-label">Changer l'image</label>

@@ -35,7 +35,7 @@
   </div>
   <div id="request" class="my-3">
     <?php
-    echo $count . " résultat(s) :";
+    echo $nbResult . " résultat(s) :";
     ?>
     <div class="row align-items-center">
     <?php
@@ -46,5 +46,5 @@
 </div>
 
 <?php
-
+require 'pagination.php';
 require_once 'footer.php';

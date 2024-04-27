@@ -8,6 +8,7 @@ pour filtrer et modifier la vue.
 */
 
 include_once '../config/Database.php';
+include_once '../config/const.php';
 include_once '../src/controllers/VoitureController.php';
 include_once '../src/models/VoitureManager.php';
 

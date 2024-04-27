@@ -1,6 +1,8 @@
 let url = new URL(document.location.href);
+const path = "/Garage_Parrot/";
+console.log(url.pathname.indexOf(path + "vehicules/"))
 
-if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") === null){
+if(url.pathname  === path){
 
 //Carousel
     const back = document.getElementById("back");
@@ -90,8 +92,7 @@ if(url.searchParams.get("page") === "accueil" || url.searchParams.get("page") ==
     }
   }
 
-  if(url.searchParams.get("page") === "vehicules"){
-
+  if(url.pathname.indexOf(path + "vehicules/") === 0){
 /* EN : Selection of input range and date field. For range field creation of a div to display values ​​on input input.
 Update cars if one of the 3 filters is changed.
 
@@ -180,7 +181,7 @@ function changeVoitures(priceMinValue, priceMaxValue, kmMinValue, kmMaxValue, da
     dateValue = d.getFullYear();
   }
 
-  fetch('src/affichageVoitures.php', {
+  fetch('../src/affichageVoitures.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

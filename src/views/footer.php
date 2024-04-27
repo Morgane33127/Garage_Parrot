@@ -3,7 +3,7 @@
   <div class="container-sm">
     <div class="row align-items-start">
       <div class="col-sm-2 display-none">
-        <img src="public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot, garage, automobile, voitures, réparation, entretien, vidange" width="150px;">
+        <img src="<?php echo BASE_URL;?>/public/assets/img/gvplogo.svg" alt="Logo Garge V. Parrot, garage, automobile, voitures, réparation, entretien, vidange" width="150px;">
       </div>
       <div class="col-sm-10">
         <b>A propos</b>
@@ -26,9 +26,9 @@
         <div class="row align-items-start">
           <div class="col-sm-4">
             <p>
-              <a href="index.php?page=accueil" class="white">Acceuil</a><br>
-              <a href="index.php?page=apropos" class="white">A propos</a><br>
-              <a href="index.php?page=prestations" class="white">Nos prestations</a><br>
+              <a href="<?php echo BASE_URL . '/'; ?>" class="white">Accueil</a><br>
+              <a href="<?php echo BASE_URL . '/details'; ?>" class="white">A propos</a><br>
+              <a href="<?php echo BASE_URL . '/prestations'; ?>" class="white">Nos prestations</a><br>
               Entretien<br>
               Réparation<br>
               Révision<br>
@@ -38,10 +38,11 @@
           </div>
           <div class="col-sm-6">
             <p>
-              <a href="index.php?page=vehicules" class="white">Nos véhicules</a><br>
-              <a href="index.php?page=contact" class="white">Contact</a><br><br>
-              <a href="index.php?page=legalMentions" class="white"><b>Mentions légales</b></a><br>
-              <a href="index.php?page=cgu" class="white"><b>CGU</b></a>
+              <a href="<?php echo BASE_URL . '/vehicules/1'; ?>" class="white">Nos véhicules</a><br>
+              <a href="<?php echo BASE_URL . '/contact'; ?>" class="white">Contact</a><br><br>
+              <a href="<?php echo BASE_URL . '/avis/1'; ?>" class="white">Avis clients</a><br><br>
+              <a href="<?php echo BASE_URL . '/legal-mentions'; ?>" class="white"><b>Mentions légales</b></a><br>
+              <a href="<?php echo BASE_URL . '/cgu'; ?>" class="white"><b>CGU</b></a>
             </p>
           </div>
         </div>

@@ -24,37 +24,37 @@ try {
     $pdo->exec("INSERT INTO utilisateurs (id_u, prenom_u, nom_u, role_u, login_u, mdp_u) 
         VALUES ('$uuid', 'Vincent', 'Parrot', 'ADM', 'v.parrot@example.com','$mdp')") &&
 
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('LUN', '08:00', '18:00')") &&
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('MAR', '08:00', '18:00')") &&
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('MER', '08:00', '18:00')") &&
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('JEU', '08:00', '18:00')") &&
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('VEN', '08:00', '18:00')") &&
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('SAM', '08:00', '18:00')") &&
-    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin) VALUES ('DIM', 'Ferme', 'Ferme')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('LUN', '08:00', '18:00', '$uuid')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('MAR', '08:00', '18:00', '$uuid')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('MER', '08:00', '18:00', '$uuid')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('JEU', '08:00', '18:00', '$uuid')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('VEN', '08:00', '18:00', '$uuid')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('SAM', '08:00', '18:00', '$uuid')") &&
+    $pdo->exec("INSERT INTO heures (jour, hr_debut, hr_fin, id_u) VALUES ('DIM', 'Ferme', 'Ferme', '$uuid')") &&
 
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut)
-    VALUES ('Super', 'Très bon garage. Acceuil chaleureux. Réparations rapide.', 'Parker', 'Peter', 5, 'Valide')") &&
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut)
-        VALUES ('Très bien.', 'Réparations rapides.', 'Jane', 'Marie', 5, 'Valide')") &&
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) 
-            VALUES ('Top!', 'Très serviable ! Voiture rendue plus que dans les temps.', 'John', 'Martinez', 5, 'Valide')") &&
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) 
-            VALUES ('Première visite.', 'Rdv rapide, prix corrects et le patron connait son travail. J\'y retournerai.', 'Sandrine', 'Petit', 5, 'En attente')") &&
-    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, statut) 
-                VALUES ('Super garage', 'Super garage, très pro, personnel et patron au top.', 'Florient', 'Derat', 5, 'En attente')") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, id_u, statut)
+    VALUES ('Super', 'Très bon garage. Acceuil chaleureux. Réparations rapide.', 'Parker', 'Peter', 5, '', 'Valide')") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, id_u, statut)
+        VALUES ('Très bien.', 'Réparations rapides.', 'Jane', 'Marie', 5, '', 'Valide')") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, id_u, statut) 
+            VALUES ('Top!', 'Très serviable ! Voiture rendue plus que dans les temps.', 'John', 'Martinez', 5, '', 'Valide')") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, id_u, statut) 
+            VALUES ('Première visite.', 'Rdv rapide, prix corrects et le patron connait son travail. J\'y retournerai.', 'Sandrine', 'Petit', 5, '', 'En attente')") &&
+    $pdo->exec("INSERT INTO avis (titre_a, commentaire_a, visiteur_nom, visiteur_prenom, note_a, id_u, statut) 
+                VALUES ('Super garage', 'Super garage, très pro, personnel et patron au top.', 'Florient', 'Derat', 5, '', 'En attente')") &&
 
-    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Entretien', 'Preservez la performance et la sécurité de votre véhicule.', 'Nos services d\'entretien méticuleux garantissent non seulement des performances optimales mais aussi une tranquillité d\'esprit, pour prendre la route en toute sécurité.')") &&
-    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision vos problèmes mécaniques et de carrosserie, assurant une conduite sûre et fiable, pour vous remettre rapidement sur la route.')") &&
-    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.')") &&
-    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances.', 'A réaliser tous les 10 000 à 15 000 km sur un moteur essence, et tous les 7000 à 10 000 km sur un moteur diesel.')") &&
-    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p) 
-        VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente et des conseils experts.')") &&
+    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p, id_u) 
+        VALUES ('Entretien', 'Preservez la performance et la sécurité de votre véhicule.', 'Nos services d\'entretien méticuleux garantissent non seulement des performances optimales mais aussi une tranquillité d\'esprit, pour prendre la route en toute sécurité.', '$uuid')") &&
+    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p, id_u) 
+        VALUES ('Réparation', 'Redonner vie à votre véhicule.', 'Nos mécaniciens experts diagnostiquent et réparent avec précision vos problèmes mécaniques et de carrosserie, assurant une conduite sûre et fiable, pour vous remettre rapidement sur la route.', '$uuid')") &&
+    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p, id_u) 
+        VALUES ('Révision', 'Pour circuler en sécurité.', 'Le rendez-vous indispensable! Afin d\'assurer votre sécurité sur la route, mais aussi de conserver des performances optimales, nous vérifions méticuleusement les dizaines de points de contrôle.', '$uuid')") &&
+    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p, id_u) 
+        VALUES ('Vidange', 'Prolongez la durée de vie de votre véhicule et optimisez ses performances.', 'A réaliser tous les 10 000 à 15 000 km sur un moteur essence, et tous les 7000 à 10 000 km sur un moteur diesel.', '$uuid')") &&
+    $pdo->exec("INSERT INTO prestations (nom_p, petite_description_p, large_description_p, id_u) 
+        VALUES ('Vente de véhicules', 'Trouvez le compagnon de route idéal.', 'Trouvez le compagnon de route idéal grâce à nos voitures disponibles à la vente et des conseils experts.', '$uuid')") &&
 
-    $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
+    $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre, id_u, statut)
       VALUES(
         'KIA Picanto 2022',
         'KIA',
@@ -66,10 +66,11 @@ try {
         'kia-picanto.jpg',
         2022,
         13000,
+        '$uuid',
         'Dispo')") &&
     $pdo->exec("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
     VALUES ( 1,'Manuelle','Jaune',5,'Essence',5,4);") &&
-    $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
+    $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,id_u, statut)
         VALUES(
           'Mini Hatch',
           'Mini',
@@ -80,10 +81,11 @@ try {
           'mini-hatch.jpg',
           2019,
           22600,
+          '$uuid',
           'Dispo')") &&
     $pdo->exec("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
       VALUES ( 2,'Manuelle','Rouge',5,'Essence',5,9);") &&
-    $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,statut)
+    $pdo->exec("INSERT INTO voitures(titre_v,marque,modele,petite_description_v,large_description_v,prix,img,annee,kilometre,id_u,statut)
             VALUES(
               'RENAUD Clio V',
               'RENAUD',
@@ -94,6 +96,7 @@ try {
                'renaud-clio.jpg',
                2020,
                67845,
+               '$uuid',
                'Dispo');") &&
     $pdo->exec("INSERT INTO infos_voiture(id_i, type, couleur, nb_portes, carburant, nb_places, puissance_fiscale) 
     VALUES (3,'Manuelle','Noire',5,'Diesel',5,5)")
@@ -108,3 +111,4 @@ try {
   error($exception->getMessage());
   die($exception->getMessage());
 }
+
