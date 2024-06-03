@@ -34,6 +34,8 @@ class LoginController
       if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         error('Erreur CSRF !');
         sessionAlert('danger', 'Erreur CSRF !');
+        $this->redirection("login");
+        exit;
       }
     }
 

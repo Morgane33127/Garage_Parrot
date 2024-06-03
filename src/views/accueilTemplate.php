@@ -74,7 +74,7 @@
             <div  class="col-1 text-center" id="next">></div>
         </div>
         <div class="action-sup display-none1 display-block">
-            <a href="<?php echo BASE_URL . '/avis'; ?>"><button type="button" class="button">Laisser avis</button></a>
+            <a href="<?php echo BASE_URL . '/avis/1'; ?>"><button type="button" class="button">Laisser avis</button></a>
         </div>
     </section>
 

@@ -255,3 +255,4 @@ Stack trace:
 27-04-2024 09:53:57 : Permission inconnue.
 27-04-2024 10:02:38 : Mot de passe incorrect.
 27-04-2024 14:11:26 : Mot de passe trop faible : Au moins 1 miniscule, 1 majuscule, 1 chiffre, 1 caractère special.
+27-05-2024 06:25:55 : Erreur CSRF !

@@ -1,4 +1,4 @@
-<div class="col" id="div<?php echo $k;?>">
+<div class="col-sm" id="div<?php echo $k;?>">
   <div class="card-avis">
     <div class="row head-review">
       <div class="col-6"><?php echo $visiteur; ?></div>
